@@ -7,18 +7,67 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C1548902872B5D7003E55A0 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C15488F2872B5D7003E55A0 /* SettingView.swift */; };
+		9C1548942872F230003E55A0 /* SecurityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1548932872F230003E55A0 /* SecurityView.swift */; };
+		9C1548962872F71B003E55A0 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1548952872F71B003E55A0 /* ChangePasswordView.swift */; };
+		9C36B73C286AE28F0042CE50 /* ChoosePlayerTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C36B73B286AE28F0042CE50 /* ChoosePlayerTypeView.swift */; };
+		9C36B745286AF69D0042CE50 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C36B744286AF69D0042CE50 /* View.swift */; };
+		9C5CAA2A287AFC3A00ADABEA /* ConnectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5CAA29287AFC3900ADABEA /* ConnectsView.swift */; };
+		9C839C2528742F77002E88F1 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C839C2428742F77002E88F1 /* AccountView.swift */; };
+		9C839C272874303D002E88F1 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C839C262874303D002E88F1 /* AboutView.swift */; };
+		9C8B009D286B358C002AC70A /* ChooseSignInMethodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B009C286B358B002AC70A /* ChooseSignInMethodView.swift */; };
+		9C8B009F286B36D1002AC70A /* SignInWithEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B009E286B36D1002AC70A /* SignInWithEmailView.swift */; };
+		9C8B00A4286B4433002AC70A /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 9C8B00A3286B4433002AC70A /* FacebookLogin */; };
+		9C8B00A6286B51AC002AC70A /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B00A5286B51AC002AC70A /* AuthViewModel.swift */; };
+		9C9007202871CFED00E66A74 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C90071F2871CFED00E66A74 /* Array.swift */; };
+		9CB54122287583F300109E8A /* SignInContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB54121287583F300109E8A /* SignInContentView.swift */; };
+		9CBA2779286B5B820083A55D /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 9CBA2778286B5B820083A55D /* GoogleSignIn */; };
 		9CBBE819286ABEF80089994E /* Quoridor_iOS_GameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBE818286ABEF80089994E /* Quoridor_iOS_GameApp.swift */; };
 		9CBBE81B286ABEF80089994E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBE81A286ABEF80089994E /* ContentView.swift */; };
 		9CBBE81D286ABEF90089994E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBE81C286ABEF90089994E /* Assets.xcassets */; };
 		9CBBE820286ABEF90089994E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBE81F286ABEF90089994E /* Preview Assets.xcassets */; };
+		9CBBE828286AC0930089994E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9CBBE827286AC0930089994E /* FirebaseAuth */; };
+		9CBBE82A286AC0930089994E /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9CBBE829286AC0930089994E /* FirebaseFirestoreSwift */; };
+		9CBBE82C286AC0930089994E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9CBBE82B286AC0930089994E /* FirebaseStorage */; };
+		9CBBE82E286AC2F60089994E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBE82D286AC2F60089994E /* GoogleService-Info.plist */; };
+		9CC824ED28780BC10048B097 /* DeleteAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC824EC28780BC10048B097 /* DeleteAccountView.swift */; };
+		9CE5F4D1286DC33A000E8351 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5F4D0286DC339000E8351 /* Player.swift */; };
+		9CE5F4D3286DCF25000E8351 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5F4D2286DCF24000E8351 /* PlayerViewModel.swift */; };
+		9CE5F4D7286EA072000E8351 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5F4D6286EA072000E8351 /* ProfileView.swift */; };
+		9CE5F4D9286EF81C000E8351 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5F4D8286EF81C000E8351 /* Color.swift */; };
+		9CE5F4DB286F23C8000E8351 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5F4DA286F23C8000E8351 /* ProfileEditView.swift */; };
+		9CE5F4DD286F69A2000E8351 /* AvatarDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5F4DC286F69A2000E8351 /* AvatarDesignView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9CBBE815286ABEF80089994E /* Quoridor-iOS-Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quoridor-iOS-Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C15488F2872B5D7003E55A0 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		9C1548932872F230003E55A0 /* SecurityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityView.swift; sourceTree = "<group>"; };
+		9C1548952872F71B003E55A0 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
+		9C36B73B286AE28F0042CE50 /* ChoosePlayerTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePlayerTypeView.swift; sourceTree = "<group>"; };
+		9C36B744286AF69D0042CE50 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		9C5CAA29287AFC3900ADABEA /* ConnectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectsView.swift; sourceTree = "<group>"; };
+		9C839C2428742F77002E88F1 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		9C839C262874303D002E88F1 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		9C8B009C286B358B002AC70A /* ChooseSignInMethodView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSignInMethodView.swift; sourceTree = "<group>"; };
+		9C8B009E286B36D1002AC70A /* SignInWithEmailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWithEmailView.swift; sourceTree = "<group>"; };
+		9C8B00A0286B3FEA002AC70A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9C8B00A1286B42BB002AC70A /* Quoridor-iOS-Game.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Quoridor-iOS-Game.entitlements"; sourceTree = "<group>"; };
+		9C8B00A5286B51AC002AC70A /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		9C90071F2871CFED00E66A74 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		9CB54121287583F300109E8A /* SignInContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInContentView.swift; sourceTree = "<group>"; };
+		9CBBE815286ABEF80089994E /* Quoridor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quoridor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CBBE818286ABEF80089994E /* Quoridor_iOS_GameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quoridor_iOS_GameApp.swift; sourceTree = "<group>"; };
 		9CBBE81A286ABEF80089994E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9CBBE81C286ABEF90089994E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CBBE81F286ABEF90089994E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9CBBE82D286AC2F60089994E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9CC824EC28780BC10048B097 /* DeleteAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountView.swift; sourceTree = "<group>"; };
+		9CE5F4D0286DC339000E8351 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		9CE5F4D2286DCF24000E8351 /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
+		9CE5F4D6286EA072000E8351 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		9CE5F4D8286EF81C000E8351 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		9CE5F4DA286F23C8000E8351 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
+		9CE5F4DC286F69A2000E8351 /* AvatarDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarDesignView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,12 +75,79 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CBA2779286B5B820083A55D /* GoogleSignIn in Frameworks */,
+				9C8B00A4286B4433002AC70A /* FacebookLogin in Frameworks */,
+				9CBBE828286AC0930089994E /* FirebaseAuth in Frameworks */,
+				9CBBE82A286AC0930089994E /* FirebaseFirestoreSwift in Frameworks */,
+				9CBBE82C286AC0930089994E /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C15488E2872B5AF003E55A0 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				9C15488F2872B5D7003E55A0 /* SettingView.swift */,
+				9C1548932872F230003E55A0 /* SecurityView.swift */,
+				9C839C2428742F77002E88F1 /* AccountView.swift */,
+				9C839C262874303D002E88F1 /* AboutView.swift */,
+				9C1548952872F71B003E55A0 /* ChangePasswordView.swift */,
+				9C5CAA29287AFC3900ADABEA /* ConnectsView.swift */,
+				9CC824EC28780BC10048B097 /* DeleteAccountView.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		9C157AC8286ACFA300B09F45 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9CE5F4D0286DC339000E8351 /* Player.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9C157ACA286ACFB100B09F45 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9C157ACF286AD51700B09F45 /* Sign In */,
+				9CE5F4D5286EA04E000E8351 /* Profile */,
+				9C15488E2872B5AF003E55A0 /* Setting */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9C157ACB286ACFBD00B09F45 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				9C8B00A5286B51AC002AC70A /* AuthViewModel.swift */,
+				9CE5F4D2286DCF24000E8351 /* PlayerViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		9C157ACF286AD51700B09F45 /* Sign In */ = {
+			isa = PBXGroup;
+			children = (
+				9CB54121287583F300109E8A /* SignInContentView.swift */,
+				9C36B73B286AE28F0042CE50 /* ChoosePlayerTypeView.swift */,
+				9C8B009C286B358B002AC70A /* ChooseSignInMethodView.swift */,
+				9C8B009E286B36D1002AC70A /* SignInWithEmailView.swift */,
+			);
+			path = "Sign In";
+			sourceTree = "<group>";
+		};
+		9C36B743286AF6800042CE50 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				9C36B744286AF69D0042CE50 /* View.swift */,
+				9CE5F4D8286EF81C000E8351 /* Color.swift */,
+				9C90071F2871CFED00E66A74 /* Array.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		9CBBE80C286ABEF80089994E = {
 			isa = PBXGroup;
 			children = (
@@ -43,7 +159,7 @@
 		9CBBE816286ABEF80089994E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9CBBE815286ABEF80089994E /* Quoridor-iOS-Game.app */,
+				9CBBE815286ABEF80089994E /* Quoridor.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -51,8 +167,15 @@
 		9CBBE817286ABEF80089994E /* Quoridor-iOS-Game */ = {
 			isa = PBXGroup;
 			children = (
+				9C8B00A1286B42BB002AC70A /* Quoridor-iOS-Game.entitlements */,
+				9C8B00A0286B3FEA002AC70A /* Info.plist */,
+				9CBBE82D286AC2F60089994E /* GoogleService-Info.plist */,
 				9CBBE818286ABEF80089994E /* Quoridor_iOS_GameApp.swift */,
 				9CBBE81A286ABEF80089994E /* ContentView.swift */,
+				9C157AC8286ACFA300B09F45 /* Models */,
+				9C157ACA286ACFB100B09F45 /* Views */,
+				9C157ACB286ACFBD00B09F45 /* View Models */,
+				9C36B743286AF6800042CE50 /* Extension */,
 				9CBBE81C286ABEF90089994E /* Assets.xcassets */,
 				9CBBE81E286ABEF90089994E /* Preview Content */,
 			);
@@ -65,6 +188,16 @@
 				9CBBE81F286ABEF90089994E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9CE5F4D5286EA04E000E8351 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				9CE5F4D6286EA072000E8351 /* ProfileView.swift */,
+				9CE5F4DA286F23C8000E8351 /* ProfileEditView.swift */,
+				9CE5F4DC286F69A2000E8351 /* AvatarDesignView.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,8 +216,15 @@
 			dependencies = (
 			);
 			name = "Quoridor-iOS-Game";
+			packageProductDependencies = (
+				9CBBE827286AC0930089994E /* FirebaseAuth */,
+				9CBBE829286AC0930089994E /* FirebaseFirestoreSwift */,
+				9CBBE82B286AC0930089994E /* FirebaseStorage */,
+				9C8B00A3286B4433002AC70A /* FacebookLogin */,
+				9CBA2778286B5B820083A55D /* GoogleSignIn */,
+			);
 			productName = "Quoridor-iOS-Game";
-			productReference = 9CBBE815286ABEF80089994E /* Quoridor-iOS-Game.app */;
+			productReference = 9CBBE815286ABEF80089994E /* Quoridor.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -111,6 +251,11 @@
 				Base,
 			);
 			mainGroup = 9CBBE80C286ABEF80089994E;
+			packageReferences = (
+				9CBBE826286AC0930089994E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				9C8B00A2286B4433002AC70A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				9CBA2777286B5B820083A55D /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+			);
 			productRefGroup = 9CBBE816286ABEF80089994E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,6 +272,7 @@
 			files = (
 				9CBBE820286ABEF90089994E /* Preview Assets.xcassets in Resources */,
 				9CBBE81D286ABEF90089994E /* Assets.xcassets in Resources */,
+				9CBBE82E286AC2F60089994E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,8 +283,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CB54122287583F300109E8A /* SignInContentView.swift in Sources */,
+				9C5CAA2A287AFC3A00ADABEA /* ConnectsView.swift in Sources */,
+				9C8B009D286B358C002AC70A /* ChooseSignInMethodView.swift in Sources */,
+				9CE5F4D3286DCF25000E8351 /* PlayerViewModel.swift in Sources */,
+				9C1548942872F230003E55A0 /* SecurityView.swift in Sources */,
+				9C36B73C286AE28F0042CE50 /* ChoosePlayerTypeView.swift in Sources */,
+				9CC824ED28780BC10048B097 /* DeleteAccountView.swift in Sources */,
+				9C839C272874303D002E88F1 /* AboutView.swift in Sources */,
+				9C8B009F286B36D1002AC70A /* SignInWithEmailView.swift in Sources */,
+				9C36B745286AF69D0042CE50 /* View.swift in Sources */,
+				9C1548902872B5D7003E55A0 /* SettingView.swift in Sources */,
 				9CBBE81B286ABEF80089994E /* ContentView.swift in Sources */,
+				9C9007202871CFED00E66A74 /* Array.swift in Sources */,
+				9CE5F4D9286EF81C000E8351 /* Color.swift in Sources */,
+				9CE5F4DB286F23C8000E8351 /* ProfileEditView.swift in Sources */,
 				9CBBE819286ABEF80089994E /* Quoridor_iOS_GameApp.swift in Sources */,
+				9C839C2528742F77002E88F1 /* AccountView.swift in Sources */,
+				9C1548962872F71B003E55A0 /* ChangePasswordView.swift in Sources */,
+				9CE5F4D1286DC33A000E8351 /* Player.swift in Sources */,
+				9CE5F4D7286EA072000E8351 /* ProfileView.swift in Sources */,
+				9C8B00A6286B51AC002AC70A /* AuthViewModel.swift in Sources */,
+				9CE5F4DD286F69A2000E8351 /* AvatarDesignView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,12 +430,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Quoridor-iOS-Game/Quoridor-iOS-Game.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Quoridor-iOS-Game/Preview Content\"";
 				DEVELOPMENT_TEAM = 24SCJHS57L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Quoridor-iOS-Game/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -281,7 +449,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Ricky.Quoridor-iOS-Game";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Quoridor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -293,12 +461,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Quoridor-iOS-Game/Quoridor-iOS-Game.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Quoridor-iOS-Game/Preview Content\"";
 				DEVELOPMENT_TEAM = 24SCJHS57L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Quoridor-iOS-Game/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -310,7 +480,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Ricky.Quoridor-iOS-Game";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Quoridor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -339,6 +509,61 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9C8B00A2286B4433002AC70A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 13.0.0;
+			};
+		};
+		9CBA2777286B5B820083A55D /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS/";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		9CBBE826286AC0930089994E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9C8B00A3286B4433002AC70A /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9C8B00A2286B4433002AC70A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+		9CBA2778286B5B820083A55D /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9CBA2777286B5B820083A55D /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		9CBBE827286AC0930089994E /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9CBBE826286AC0930089994E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		9CBBE829286AC0930089994E /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9CBBE826286AC0930089994E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		9CBBE82B286AC0930089994E /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9CBBE826286AC0930089994E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9CBBE80D286ABEF80089994E /* Project object */;
 }
