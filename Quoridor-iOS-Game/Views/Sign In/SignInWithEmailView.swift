@@ -140,7 +140,7 @@ struct SignInWithEmailView: View {
     
     func signIn() {
         showProgressView = true
-        playerViewModel.isNewPlayer(email: email) { result in
+        playerViewModel.isNewPlayer(email: email.lowercased()) { result in
             switch result {
             case true:
                 authViewModel.signUpWithEmail(email: email, password: password) { result in

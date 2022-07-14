@@ -188,11 +188,11 @@ struct ConnectsView: View {
                                 
                                 Button {
                                     showProgressView = true
-                                    if authViewModel.providers.count == 1 {
-                                        alertMessage = "You must connect to at least one account or you can't login to Quoridor."
-                                        showAlert = true
-                                    } else {
-                                        if authViewModel.providers.contains(connectMethod.provider) {
+                                    if authViewModel.providers.contains(connectMethod.provider) {
+                                        if authViewModel.providers.count == 1 {
+                                            alertMessage = "You must connect to at least one account or you can't login to Quoridor."
+                                            showAlert = true
+                                        } else {
                                             authViewModel.disconnect(provider: connectMethod.provider) { result in
                                                 switch result {
                                                 case .success():
@@ -202,37 +202,37 @@ struct ConnectsView: View {
                                                     showAlert = true
                                                 }
                                             }
-                                        } else {
-                                            switch connectMethod {
-                                            case .Facebook:
-                                                authViewModel.connectToFacebook { result in
-                                                    switch result {
-                                                    case .success():
-                                                        showProgressView = false
-                                                    case .failure(let error):
-                                                        alertMessage = error.localizedDescription
-                                                        showAlert = true
-                                                    }
+                                        }
+                                    } else {
+                                        switch connectMethod {
+                                        case .Facebook:
+                                            authViewModel.connectToFacebook { result in
+                                                switch result {
+                                                case .success():
+                                                    showProgressView = false
+                                                case .failure(let error):
+                                                    alertMessage = error.localizedDescription
+                                                    showAlert = true
                                                 }
-                                            case .Google:
-                                                authViewModel.connectToGoogle { result in
-                                                    switch result {
-                                                    case .success():
-                                                        showProgressView = false
-                                                    case .failure(let error):
-                                                        alertMessage = error.localizedDescription
-                                                        showAlert = true
-                                                    }
+                                            }
+                                        case .Google:
+                                            authViewModel.connectToGoogle { result in
+                                                switch result {
+                                                case .success():
+                                                    showProgressView = false
+                                                case .failure(let error):
+                                                    alertMessage = error.localizedDescription
+                                                    showAlert = true
                                                 }
-                                            case .Twitter:
-                                                authViewModel.connectToTwitter { result in
-                                                    switch result {
-                                                    case .success():
-                                                        showProgressView = false
-                                                    case .failure(let error):
-                                                        alertMessage = error.localizedDescription
-                                                        showAlert = true
-                                                    }
+                                            }
+                                        case .Twitter:
+                                            authViewModel.connectToTwitter { result in
+                                                switch result {
+                                                case .success():
+                                                    showProgressView = false
+                                                case .failure(let error):
+                                                    alertMessage = error.localizedDescription
+                                                    showAlert = true
                                                 }
                                             }
                                         }

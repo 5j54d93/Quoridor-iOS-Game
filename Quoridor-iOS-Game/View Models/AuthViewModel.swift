@@ -200,16 +200,25 @@ class AuthViewModel: ObservableObject {
     }
     
     func connectToFacebook(completion: @escaping (Result<Void, Error>) -> Void) {
-        let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
-        currentUser?.link(with: credential) { authResult, error in
-            guard let error = error else {
-                withAnimation {
-                    self.providers.append("facebook.com")
+        LoginManager().logIn(permissions: [.email, .publicProfile]) { result in
+            switch result {
+            case .success(granted: _, declined: _, token: let token):
+                let credential = FacebookAuthProvider.credential(withAccessToken: token!.tokenString)
+                self.currentUser?.link(with: credential) { authResult, error in
+                    guard let error = error else {
+                        withAnimation {
+                            self.providers.append("facebook.com")
+                        }
+                        completion(.success(()))
+                        return
+                    }
+                    completion(.failure(error))
                 }
-                completion(.success(()))
-                return
+            case .failed(let error):
+                completion(.failure(error))
+            case .cancelled:
+                break
             }
-            completion(.failure(error))
         }
     }
     
@@ -241,7 +250,7 @@ class AuthViewModel: ObservableObject {
     
     func connectToTwitter(completion: @escaping (Result<Void, Error>) -> Void) {
         twitterProvider.getCredentialWith(nil) { credential, error in
-            guard error != nil else {
+            guard let error = error else {
                 guard let credential = credential else { return }
                 self.currentUser?.link(with: credential) { authResult, error in
                     guard let error = error else {
@@ -255,6 +264,7 @@ class AuthViewModel: ObservableObject {
                 }
                 return
             }
+            completion(.failure(error))
         }
     }
     
