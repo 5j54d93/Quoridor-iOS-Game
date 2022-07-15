@@ -162,7 +162,10 @@ struct SignInWithEmailView: View {
                 }
             case false:
                 authViewModel.signInWithEmail(email: email, password: password) { result in
-                    if case .failure(let error) = result {
+                    switch result {
+                    case .success():
+                        currentPassword = password
+                    case .failure(let error):
                         alertMessage = error.localizedDescription
                         showAlert = true
                     }
