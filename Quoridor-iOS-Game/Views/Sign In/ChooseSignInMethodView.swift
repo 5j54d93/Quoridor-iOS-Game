@@ -14,9 +14,9 @@ struct ChooseSignInMethodView: View {
     
     @Binding var playerType: SignInContentView.PlayerType
     @Binding var isSignInWithEmail: Bool
-    @Binding var showProgressView: Bool
-    @Binding var alertMessage: String
-    @Binding var showAlert: Bool
+    @Binding var isLoading: Bool
+    @Binding var errorMessage: String
+    @Binding var isErrorOccured: Bool
     
     let geometry: GeometryProxy
     
@@ -25,7 +25,7 @@ struct ChooseSignInMethodView: View {
             Spacer()
                 
             Button {
-                showProgressView = true
+                isLoading = true
                 authViewModel.signInWithFacebook() { result in
                     if result == "success" {
                         if let user = authViewModel.currentUser {
@@ -33,16 +33,16 @@ struct ChooseSignInMethodView: View {
                                 if case true = result {
                                     playerViewModel.addPlayer(id: user.uid, email: user.providerData[0].email, name: user.providerData[0].displayName, avatar: user.providerData[0].photoURL) { result in
                                         if case .failure(let error) = result {
-                                            alertMessage = error.localizedDescription
-                                            showAlert = true
+                                            errorMessage = error.localizedDescription
+                                            isErrorOccured = true
                                         }
                                     }
                                 }
                             }
                         }
                     } else {
-                        alertMessage = result
-                        showAlert = true
+                        errorMessage = result
+                        isErrorOccured = true
                     }
                 }
             } label: {
@@ -53,7 +53,7 @@ struct ChooseSignInMethodView: View {
                         .padding(.leading, 6)
                         .padding(.vertical, 6)
                     
-                    Text(playerType.description + " with Facebook")
+                    Text(LocalizedStringKey(playerType.description + " with Facebook"))
                         .font(.title3.bold())
                         .foregroundColor(.roseGold)
                     
@@ -67,7 +67,7 @@ struct ChooseSignInMethodView: View {
             }
             
             Button {
-                showProgressView = true
+                isLoading = true
                 authViewModel.signInWithGoogle() { result in
                     switch result {
                     case .success():
@@ -76,16 +76,16 @@ struct ChooseSignInMethodView: View {
                                 if case true = result {
                                     playerViewModel.addPlayer(id: user.uid, email: user.providerData[0].email, name: user.providerData[0].displayName, avatar: user.providerData[0].photoURL) { result in
                                         if case .failure(let error) = result {
-                                            alertMessage = error.localizedDescription
-                                            showAlert = true
+                                            errorMessage = error.localizedDescription
+                                            isErrorOccured = true
                                         }
                                     }
                                 }
                             }
                         }
                     case .failure(let error):
-                        alertMessage = error.localizedDescription
-                        showAlert = true
+                        errorMessage = error.localizedDescription
+                        isErrorOccured = true
                     }
                 }
             } label: {
@@ -100,7 +100,7 @@ struct ChooseSignInMethodView: View {
                                 .padding(.leading, 6)
                                 .padding(.vertical, 6)
                             
-                            Text(playerType.description + " with Google")
+                            Text(LocalizedStringKey(playerType.description + " with Google"))
                                 .font(.title3.bold())
                                 .foregroundColor(.roseGold)
                             
@@ -110,7 +110,7 @@ struct ChooseSignInMethodView: View {
             }
             
             Button {
-                showProgressView = true
+                isLoading = true
                 authViewModel.signInWithTwitter() { result in
                     switch result {
                     case .success():
@@ -119,16 +119,16 @@ struct ChooseSignInMethodView: View {
                                 if case true = result {
                                     playerViewModel.addPlayer(id: user.uid, email: user.providerData[0].email, name: user.providerData[0].displayName, avatar: user.providerData[0].photoURL) { result in
                                         if case .failure(let error) = result {
-                                            alertMessage = error.localizedDescription
-                                            showAlert = true
+                                            errorMessage = error.localizedDescription
+                                            isErrorOccured = true
                                         }
                                     }
                                 }
                             }
                         }
                     case .failure(let error):
-                        alertMessage = error.localizedDescription
-                        showAlert = true
+                        errorMessage = error.localizedDescription
+                        isErrorOccured = true
                     }
                 }
             } label: {
@@ -143,7 +143,7 @@ struct ChooseSignInMethodView: View {
                                 .padding(.leading, 6)
                                 .padding(.vertical, 6)
                             
-                            Text(playerType.description + " with Twitter")
+                            Text(LocalizedStringKey(playerType.description + " with Twitter"))
                                 .font(.title3.bold())
                                 .foregroundColor(.roseGold)
                             
@@ -153,7 +153,7 @@ struct ChooseSignInMethodView: View {
             }
             
             Button {
-                withAnimation(.spring()) {
+                withAnimation {
                     isSignInWithEmail = true
                 }
             } label: {
@@ -161,7 +161,7 @@ struct ChooseSignInMethodView: View {
                     .frame(width: geometry.size.width*0.7, height: 52)
                     .foregroundColor(.roseGold)
                     .overlay {
-                        Text(playerType.description + " with Email")
+                        Text(LocalizedStringKey(playerType.description + " with Email"))
                             .font(.title3.bold())
                             .foregroundColor(.white)
                     }

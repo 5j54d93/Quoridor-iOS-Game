@@ -109,20 +109,15 @@ struct DeleteAccountView: View {
                     
                     if !isDeletingAccount {
                         if !isShowDeleteAccountAlert {
-                            VStack {
+                            VStack(spacing: 20) {
                                 Text("Delete your Quoridor account?")
                                     .multilineTextAlignment(.center)
+                                    .foregroundColor(.roseGold)
                                     .font(.title2.bold())
-                                    .padding(.horizontal)
-                                    .padding(.vertical, 5)
                                 
                                 Text("You're requesting to delete your account")
                                     .multilineTextAlignment(.center)
-                                    .padding(.horizontal)
-                                
-                                Divider()
-                                    .frame(height: 0.5)
-                                    .overlay(Color.earthyGold)
+                                    .foregroundColor(.roseGold)
                                 
                                 Button {
                                     isDeletingAccount = true
@@ -144,29 +139,35 @@ struct DeleteAccountView: View {
                                     }
                                 } label: {
                                     Text("Continue deleting account")
-                                        .font(.title2.bold())
-                                        .foregroundColor(.red)
+                                        .font(.title3.bold())
+                                        .foregroundColor(.white)
+                                        .frame(height: 50)
                                         .frame(maxWidth: .infinity)
+                                        .background {
+                                            Capsule()
+                                                .foregroundColor(.roseGold)
+                                        }
                                 }
-                                
-                                Divider()
-                                    .frame(height: 0.5)
-                                    .overlay(Color.earthyGold)
                                 
                                 Button {
                                     isShowAlert = false
                                 } label: {
                                     Text("Cancel")
-                                        .font(.title2)
+                                        .font(.title3.bold())
+                                        .foregroundColor(.roseGold)
+                                        .frame(height: 50)
                                         .frame(maxWidth: .infinity)
+                                        .background {
+                                            Capsule()
+                                                .stroke(Color.roseGold, lineWidth: 2.5)
+                                        }
                                 }
                             }
-                            .padding(.vertical, 10)
-                            .foregroundColor(.backgroundColor)
+                            .padding(20)
+                            .frame(width: geometry.size.width*0.85)
                             .background {
                                 RoundedRectangle(cornerRadius: 10)
                             }
-                            .frame(width: geometry.size.width*0.85)
                         } else {
                             VStack(spacing: 20) {
                                 Text(alertMessage)

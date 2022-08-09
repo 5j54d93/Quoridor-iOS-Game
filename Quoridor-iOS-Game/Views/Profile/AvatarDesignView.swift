@@ -19,9 +19,9 @@ struct AvatarDesignView: View {
     
     @State private var uiImage: UIImage?
     @State private var tempAvatarSet = [0, 0, 0, 0, 0, 0] // body, eye, mouth, arm, accesory, leg
-    @State private var showAlert = false
-    @State private var alertMessage = ""
-    @State private var showProgressView = false
+    @State private var isLoading = false
+    @State private var errorMessage = ""
+    @State private var isErrorOccured = false
     
     enum BodyPart: Int, CaseIterable {
         case body, eye, mouth, arm, accesory, leg
@@ -68,12 +68,13 @@ struct AvatarDesignView: View {
                     } label: {
                         Text("Cancel")
                             .font(.title3)
+                            .opacity(0.85)
                     }
                     
                     Spacer()
                     
                     Button {
-                        showProgressView = true
+                        isLoading = true
                         uiImage = AvatarView(tempAvatarSet: tempAvatarSet).snapshot()
                         if let uiImage = uiImage {
                             let currentPlayer = playerViewModel.currentPlayer
@@ -83,25 +84,25 @@ struct AvatarDesignView: View {
                                     avatarSet = tempAvatarSet
                                     authViewModel.updateUser(name: currentPlayer.name, email: currentPlayer.email, avatar: avatarUrl) { result in
                                         if case .failure(let error) = result {
-                                            alertMessage = error.localizedDescription
-                                            showAlert = true
+                                            errorMessage = error.localizedDescription
+                                            isErrorOccured = true
                                         }
                                     }
                                     playerViewModel.updatePlayer(name: currentPlayer.name, email: currentPlayer.email, zodiacSign: currentPlayer.zodiacSign, age: currentPlayer.age, avatar: avatarUrl) { result in
                                         if case .failure(let error) = result {
-                                            alertMessage = error.localizedDescription
-                                            showAlert = true
+                                            errorMessage = error.localizedDescription
+                                            isErrorOccured = true
                                         }
                                     }
                                     isDesignAvatar = false
                                 case .failure(let error):
-                                    alertMessage = error.localizedDescription
-                                    showAlert = true
+                                    errorMessage = error.localizedDescription
+                                    isErrorOccured = true
                                 }
                             }
                         } else {
-                            alertMessage = "Can't generate avatar successfully."
-                            showAlert = true
+                            errorMessage = "Can't generate avatar successfully."
+                            isErrorOccured = true
                         }
                     } label: {
                         Text("Done")
@@ -122,10 +123,6 @@ struct AvatarDesignView: View {
                 
                 VStack {
                     AvatarView(tempAvatarSet: tempAvatarSet)
-                        .background {
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(Color.earthyGold, lineWidth: 1.3)
-                        }
                         .overlay(alignment: .bottomTrailing) {
                             ColorPicker("", selection: $avartarBackgroundColor)
                                 .shadow(radius: 10)
@@ -230,44 +227,7 @@ struct AvatarDesignView: View {
                 tempAvatarSet = avatarSet
             }
             .overlay {
-                if showProgressView {
-                    Color.white
-                        .ignoresSafeArea()
-                        .frame(maxWidth: .infinity)
-                        .opacity(0.7)
-                    
-                    if !showAlert {
-                        ProgressView()
-                            .scaleEffect(3)
-                            .progressViewStyle(CircularProgressViewStyle(tint: .roseGold))
-                    } else {
-                        VStack(spacing: 20) {
-                            Text(alertMessage)
-                                .foregroundColor(.roseGold)
-                            
-                            Button {
-                                showProgressView = false
-                                showAlert = false
-                            } label: {
-                                Text("OK")
-                                    .font(.title3.bold())
-                                    .foregroundColor(.white)
-                                    .frame(height: 50)
-                                    .frame(maxWidth: .infinity)
-                                    .background {
-                                        Capsule()
-                                            .foregroundColor(.roseGold)
-                                    }
-                            }
-                        }
-                        .padding(20)
-                        .frame(width: geometry.size.width*0.8)
-                        .background {
-                            RoundedRectangle(cornerRadius: 5)
-                                .foregroundColor(.white)
-                        }
-                    }
-                }
+                LoadingView(isLoading: $isLoading, errorMessage: $errorMessage, isErrorOccured: $isErrorOccured, geometry: geometry)
             }
         }
     }

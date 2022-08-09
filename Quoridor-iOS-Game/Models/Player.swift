@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestoreSwift
 
-struct Player: Codable, Identifiable {
+struct Player: Codable, Identifiable, Hashable {
     
     @DocumentID var id: String?
     
@@ -45,6 +45,8 @@ struct Player: Codable, Identifiable {
     var played: Int
     var win: Int
     var winRate: Double
+    var haveGottenReward: Bool
+    var lastAdPlayed: Date?
     
     let joined: Date
 }

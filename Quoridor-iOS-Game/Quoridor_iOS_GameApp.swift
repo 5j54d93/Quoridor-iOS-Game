@@ -6,16 +6,24 @@
 //
 
 import SwiftUI
+import AVFoundation
 import Firebase
 import FacebookCore
 import GoogleSignIn
+import GoogleMobileAds
 
 @main
 struct Quoridor_iOS_GameApp: App {
     
+    @AppStorage("backgroundMusicVolume") var backgroundMusicVolume = 0.5
+    
     init() {
         FirebaseApp.configure()
         ApplicationDelegate.shared.application(UIApplication.shared)
+        GADMobileAds.sharedInstance().start()
+        AVPlayer.setupBgMusic()
+        AVPlayer.bgQueuePlayer.volume = Float(backgroundMusicVolume)
+        AVPlayer.bgQueuePlayer.play()
     }
     
     var body: some Scene {

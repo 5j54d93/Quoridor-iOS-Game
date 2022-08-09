@@ -27,6 +27,8 @@
 	<string>8d55af9f17f4d7cf93bbe7cfe611a121</string>
 	<key>FacebookDisplayName</key>
 	<string>Quoridor-iOS-Game</string>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-3516976046728779~1324915066</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>

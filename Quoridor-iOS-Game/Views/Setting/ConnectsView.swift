@@ -14,6 +14,10 @@ struct ConnectsView: View {
     @ObservedObject var authViewModel: AuthViewModel
     @ObservedObject var playerViewModel: PlayerViewModel
     
+    @Binding var appState: ContentView.AppStateType
+    @Binding var alertTitle: String
+    @Binding var alertMessage: String
+    
     enum ConnectMethod: CaseIterable {
         case Facebook, Google, Twitter
         
@@ -43,9 +47,6 @@ struct ConnectsView: View {
     @State private var isExpandEmail = false
     @State private var email = ""
     @State private var password = ""
-    @State private var showAlert = false
-    @State private var alertMessage = ""
-    @State private var showProgressView = false
     
     enum Field: Hashable { case email, password }
     
@@ -187,19 +188,21 @@ struct ConnectsView: View {
                                 Spacer()
                                 
                                 Button {
-                                    showProgressView = true
+                                    appState = .loading
                                     if authViewModel.providers.contains(connectMethod.provider) {
                                         if authViewModel.providers.count == 1 {
+                                            alertTitle = "ERROR"
                                             alertMessage = "You must connect to at least one account or you can't login to Quoridor."
-                                            showAlert = true
+                                            appState = .alert
                                         } else {
                                             authViewModel.disconnect(provider: connectMethod.provider) { result in
                                                 switch result {
                                                 case .success():
-                                                    showProgressView = false
+                                                    appState = .null
                                                 case .failure(let error):
+                                                    alertTitle = "ERROR"
                                                     alertMessage = error.localizedDescription
-                                                    showAlert = true
+                                                    appState = .alert
                                                 }
                                             }
                                         }
@@ -209,30 +212,33 @@ struct ConnectsView: View {
                                             authViewModel.connectToFacebook { result in
                                                 switch result {
                                                 case .success():
-                                                    showProgressView = false
+                                                    appState = .null
                                                 case .failure(let error):
+                                                    alertTitle = "ERROR"
                                                     alertMessage = error.localizedDescription
-                                                    showAlert = true
+                                                    appState = .alert
                                                 }
                                             }
                                         case .Google:
                                             authViewModel.connectToGoogle { result in
                                                 switch result {
                                                 case .success():
-                                                    showProgressView = false
+                                                    appState = .null
                                                 case .failure(let error):
+                                                    alertTitle = "ERROR"
                                                     alertMessage = error.localizedDescription
-                                                    showAlert = true
+                                                    appState = .alert
                                                 }
                                             }
                                         case .Twitter:
                                             authViewModel.connectToTwitter { result in
                                                 switch result {
                                                 case .success():
-                                                    showProgressView = false
+                                                    appState = .null
                                                 case .failure(let error):
+                                                    alertTitle = "ERROR"
                                                     alertMessage = error.localizedDescription
-                                                    showAlert = true
+                                                    appState = .alert
                                                 }
                                             }
                                         }
@@ -266,46 +272,6 @@ struct ConnectsView: View {
                     .padding(.horizontal)
                 }
             }
-            .overlay {
-                if showProgressView {
-                    Color.white
-                        .ignoresSafeArea()
-                        .frame(maxWidth: .infinity)
-                        .opacity(0.7)
-                    
-                    if !showAlert {
-                        ProgressView()
-                            .scaleEffect(3)
-                            .progressViewStyle(CircularProgressViewStyle(tint: .roseGold))
-                    } else {
-                        VStack(spacing: 20) {
-                            Text(alertMessage)
-                                .foregroundColor(.roseGold)
-                            
-                            Button {
-                                showProgressView = false
-                                showAlert = false
-                            } label: {
-                                Text("OK")
-                                    .font(.title3.bold())
-                                    .foregroundColor(.white)
-                                    .frame(height: 50)
-                                    .frame(maxWidth: .infinity)
-                                    .background {
-                                        Capsule()
-                                            .foregroundColor(.roseGold)
-                                    }
-                            }
-                        }
-                        .padding(20)
-                        .frame(width: geometry.size.width*0.8)
-                        .background {
-                            RoundedRectangle(cornerRadius: 5)
-                                .foregroundColor(.white)
-                        }
-                    }
-                }
-            }
         }
         .navigationBarHidden(true)
         .foregroundColor(.white)
@@ -313,19 +279,21 @@ struct ConnectsView: View {
     }
     
     func handleEmailConnection() {
-        showProgressView = true
+        appState = .loading
         if authViewModel.providers.contains("password") {
             if authViewModel.providers.count == 1 {
+                alertTitle = "ERROR"
                 alertMessage = "You must connect to at least one account or you can't login to Quoridor."
-                showAlert = true
+                appState = .alert
             } else {
                 authViewModel.disconnect(provider: "password") { result in
                     switch result {
                     case .success():
-                        showProgressView = false
+                        appState = .null
                     case .failure(let error):
+                        alertTitle = "ERROR"
                         alertMessage = error.localizedDescription
-                        showAlert = true
+                        appState = .alert
                     }
                 }
             }
@@ -336,15 +304,17 @@ struct ConnectsView: View {
                     playerViewModel.updatePlayer(name: playerViewModel.currentPlayer.name, email: email, zodiacSign: playerViewModel.currentPlayer.zodiacSign, age: playerViewModel.currentPlayer.age, avatar: nil) { result in
                         switch result {
                         case .success():
-                            showProgressView = false
+                            appState = .null
                         case .failure(let error):
+                            alertTitle = "ERROR"
                             alertMessage = error.localizedDescription
-                            showAlert = true
+                            appState = .alert
                         }
                     }
                 case .failure(let error):
+                    alertTitle = "ERROR"
                     alertMessage = error.localizedDescription
-                    showAlert = true
+                    appState = .alert
                 }
             }
         }

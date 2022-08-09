@@ -13,7 +13,8 @@ import FirebaseStorage
 
 class PlayerViewModel: ObservableObject {
     
-    @Published var currentPlayer = Player(email: "loading", name: "loading", zodiacSign: .notSet, money: 2000, star: 0, maxStar: 0, age: 18, played: 0, win: 0, winRate: 0, joined: Date.now)
+    @Published var currentPlayer = Player(email: "loading", name: "loading", zodiacSign: .notSet, money: 2000, star: 0, maxStar: 0, age: 18, played: 0, win: 0, winRate: 0, haveGottenReward: false, joined: Date.now)
+    @Published var sortedPlayers: [Player] = []
     
     let db = Firestore.firestore()
     
@@ -37,7 +38,7 @@ class PlayerViewModel: ObservableObject {
     }
     
     func addPlayer(id: String, email: String?, name: String?, avatar: URL?, completion: @escaping (Result<Void, Error>) -> Void) {
-        let data = Player(id: id, email: email ?? "not set", name: name ?? "not set", avatar: avatar ?? URL(string:  "https://firebasestorage.googleapis.com/v0/b/quoridor-ios-game.appspot.com/o/default.png?alt=media&token=d56342e8-76c0-4083-9a99-8c3f96d238b6"), zodiacSign: .notSet, money: 2000, star: 0, maxStar: 0, age: 18, played: 0, win: 0, winRate: 0, joined: Date.now)
+        let data = Player(id: id, email: email ?? "not set", name: name ?? "not set", avatar: avatar ?? URL(string:  "https://firebasestorage.googleapis.com/v0/b/quoridor-ios-game.appspot.com/o/default.png?alt=media&token=d56342e8-76c0-4083-9a99-8c3f96d238b6"), zodiacSign: .notSet, money: 2000, star: 0, maxStar: 0, age: 18, played: 0, win: 0, winRate: 0, haveGottenReward: false, joined: Date.now)
         
         do {
             try db.collection("players").document(id).setData(from: data)
@@ -102,5 +103,126 @@ class PlayerViewModel: ObservableObject {
         guard let id = currentPlayer.id else { return }
         let documentReference = db.collection("players").document(id)
         documentReference.delete()
+    }
+    
+    func getReward(haveGottenReward: Bool, completion: @escaping (Result<Int, Error>) -> Void) {
+        var reward = 0
+        guard let id = currentPlayer.id else { return }
+        let documentReference = db.collection("players").document(id)
+        documentReference.getDocument { document, error in
+            guard let document = document, document.exists, var player = try? document.data(as: Player.self) else { return }
+            player.haveGottenReward = haveGottenReward
+            if haveGottenReward {
+                reward = (1...200).randomElement()!
+                player.money += reward
+            }
+            do {
+                try documentReference.setData(from: player)
+            } catch {
+                completion(.failure(error))
+            }
+            completion(.success((reward)))
+        }
+    }
+    
+    func get200(completion: @escaping (Result<Void, Error>) -> Void) {
+        guard let id = currentPlayer.id else { return }
+        let documentReference = db.collection("players").document(id)
+        documentReference.getDocument { document, error in
+            guard let document = document, document.exists, var player = try? document.data(as: Player.self) else { return }
+            player.money += 200
+            player.lastAdPlayed = Date()
+            do {
+                try documentReference.setData(from: player)
+                completion(.success(()))
+            } catch {
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func pay200(player: Player, completion: @escaping (Result<Void, Error>) -> Void) {
+        db.collection("players").getDocuments { snapshot, error in
+            guard let snapshot = snapshot else { return }
+            let players = snapshot.documents.compactMap { snapshot in
+                try? snapshot.data(as: Player.self)
+            }
+            var targetPlayer: Player?
+            for index in 0..<players.count {
+                if players[index].email == player.email {
+                    targetPlayer = players[index]
+                }
+            }
+            targetPlayer?.money -= 200
+            let documentReference = self.db.collection("players").document(targetPlayer?.id ?? "")
+            do {
+                try documentReference.setData(from: targetPlayer)
+            } catch {
+                completion(.failure(error))
+            }
+            completion(.success(()))
+        }
+    }
+    
+    func updateGameDataForRank(isWin: Bool, completion: @escaping (Result<Void, Error>) -> Void) {
+        guard let id = currentPlayer.id else { return }
+        let documentReference = db.collection("players").document(id)
+        documentReference.getDocument { document, error in
+            guard let document = document, document.exists, var player = try? document.data(as: Player.self) else { return }
+            if isWin {
+                player.money += 400
+                player.played += 1
+                player.star += 1
+                if player.star > player.maxStar {
+                    player.maxStar = player.star
+                }
+                player.win += 1
+                player.winRate = Double(player.win) / Double(player.played) * 100
+            } else {
+                player.played += 1
+                if player.star > 0 {
+                    player.star -= 1
+                }
+                player.winRate = Double(player.win) / Double(player.played) * 100
+            }
+            do {
+                try documentReference.setData(from: player)
+            } catch {
+                completion(.failure(error))
+            }
+            completion(.success(()))
+        }
+    }
+    
+    func updateGameDataForCasual(isWin: Bool, completion: @escaping (Result<Void, Error>) -> Void) {
+        guard let id = currentPlayer.id else { return }
+        let documentReference = db.collection("players").document(id)
+        documentReference.getDocument { document, error in
+            guard let document = document, document.exists, var player = try? document.data(as: Player.self) else { return }
+            if isWin {
+                player.played += 1
+                player.win += 1
+                player.winRate = Double(player.win) / Double(player.played) * 100
+            } else {
+                player.played += 1
+                player.winRate = Double(player.win) / Double(player.played) * 100
+            }
+            do {
+                try documentReference.setData(from: player)
+            } catch {
+                completion(.failure(error))
+            }
+            completion(.success(()))
+        }
+    }
+    
+    func fetchPlayers(sortType: String) {
+        db.collection("players").order(by: sortType, descending: true).getDocuments { snapshot, error in
+            guard let snapshot = snapshot else { return }
+            let players = snapshot.documents.compactMap { snapshot in
+                try? snapshot.data(as: Player.self)
+            }
+            self.sortedPlayers = players
+        }
     }
 }

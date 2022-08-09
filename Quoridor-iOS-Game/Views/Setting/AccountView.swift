@@ -15,6 +15,9 @@ struct AccountView: View {
     @ObservedObject var playerViewModel: PlayerViewModel
     
     @Binding var isShowSettings: Bool
+    @Binding var appState: ContentView.AppStateType
+    @Binding var alertTitle: String
+    @Binding var alertMessage: String
     
     var body: some View {
         VStack {
@@ -42,35 +45,7 @@ struct AccountView: View {
                 VStack(alignment: .leading) {
                     Group {
                         NavigationLink {
-                            
-                        } label: {
-                            HStack(spacing: 10) {
-                                Text("Personal information")
-                                    .font(.title2)
-                                
-                                Spacer()
-                                
-                                Text(Image(systemName: "chevron.forward"))
-                                    .foregroundColor(.earthyGold)
-                            }
-                        }
-                        
-                        NavigationLink {
-                            
-                        } label: {
-                            HStack(spacing: 10) {
-                                Text("Avatar")
-                                    .font(.title2)
-                                
-                                Spacer()
-                                
-                                Text(Image(systemName: "chevron.forward"))
-                                    .foregroundColor(.earthyGold)
-                            }
-                        }
-                        
-                        NavigationLink {
-                            ConnectsView(authViewModel: authViewModel, playerViewModel: playerViewModel)
+                            ConnectsView(authViewModel: authViewModel, playerViewModel: playerViewModel, appState: $appState, alertTitle: $alertTitle, alertMessage: $alertMessage)
                         } label: {
                             HStack(spacing: 10) {
                                 Text("Connects")

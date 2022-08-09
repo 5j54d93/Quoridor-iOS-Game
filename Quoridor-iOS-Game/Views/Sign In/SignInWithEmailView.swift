@@ -16,9 +16,9 @@ struct SignInWithEmailView: View {
     
     @Binding var playerType: SignInContentView.PlayerType
     @Binding var isSignInWithEmail: Bool
-    @Binding var showProgressView: Bool
-    @Binding var alertMessage: String
-    @Binding var showAlert: Bool
+    @Binding var isLoading: Bool
+    @Binding var errorMessage: String
+    @Binding var isErrorOccured: Bool
     
     @State private var email = ""
     @State private var password = ""
@@ -37,7 +37,7 @@ struct SignInWithEmailView: View {
             Spacer()
             
             if !isPorgotPassword {
-                Text(playerType.description.uppercased() + " WITH EMAIL")
+                Text(LocalizedStringKey(playerType.description.uppercased() + " WITH EMAIL"))
                     .font(.title3.bold())
                     .padding(.bottom, 5)
             } else {
@@ -92,7 +92,7 @@ struct SignInWithEmailView: View {
                     .foregroundColor(.roseGold)
                     .overlay {
                         if !isPorgotPassword {
-                            Text(playerType.description.uppercased())
+                            Text(LocalizedStringKey(playerType.description.uppercased()))
                                 .font(.title3.bold())
                         } else {
                             Text("Reset password")
@@ -139,7 +139,7 @@ struct SignInWithEmailView: View {
     }
     
     func signIn() {
-        showProgressView = true
+        isLoading = true
         playerViewModel.isNewPlayer(email: email.lowercased()) { result in
             switch result {
             case true:
@@ -150,21 +150,24 @@ struct SignInWithEmailView: View {
                             currentPassword = password
                             playerViewModel.addPlayer(id: user.uid, email: user.email, name: nil, avatar: nil) { result in
                                 if case .failure(let error) = result {
-                                    alertMessage = error.localizedDescription
-                                    showAlert = true
+                                    errorMessage = error.localizedDescription
+                                    isErrorOccured = true
                                 }
                             }
                         }
                     case .failure(let error):
-                        alertMessage = error.localizedDescription
-                        showAlert = true
+                        errorMessage = error.localizedDescription
+                        isErrorOccured = true
                     }
                 }
             case false:
                 authViewModel.signInWithEmail(email: email, password: password) { result in
-                    if case .failure(let error) = result {
-                        alertMessage = error.localizedDescription
-                        showAlert = true
+                    switch result {
+                    case .success():
+                        currentPassword = password
+                    case .failure(let error):
+                        errorMessage = error.localizedDescription
+                        isErrorOccured = true
                     }
                 }
             }
@@ -172,15 +175,15 @@ struct SignInWithEmailView: View {
     }
     
     func resetPassword() {
-        showProgressView = true
+        isLoading = true
         authViewModel.sendPasswordResetEmail(email: email) { result in
             switch result {
             case .success():
-                alertMessage = "We've sent a email to \(email). Don't forget to reset your password via link"
-                showAlert = true
+                errorMessage = "We've sent a email to \(email). Don't forget to reset your password via link"
+                isErrorOccured = true
             case .failure(let error):
-                alertMessage = error.localizedDescription
-                showAlert = true
+                errorMessage = error.localizedDescription
+                isErrorOccured = true
             }
         }
     }

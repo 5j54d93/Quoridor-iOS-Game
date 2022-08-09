@@ -1,0 +1,393 @@
+/* No comment provided by engineer. */
+" Room ID %@" = " 房號 %@";
+
+/* No comment provided by engineer. */
+" Wall %lld" = " 牆板 %lld";
+
+/* No comment provided by engineer. */
+"%lld Wall " = "%lld 牆板 ";
+
+/* No comment provided by engineer. */
+"%lld years old" = "%lld 歲";
+
+/* No comment provided by engineer. */
+"You get $%lld money." = "獲得 $%lld 金幣";
+
+/* No comment provided by engineer. */
+"About" = "關於";
+
+/* No comment provided by engineer. */
+"About You" = "基本資料";
+
+/* No comment provided by engineer. */
+"Account" = "帳號";
+
+/* No comment provided by engineer. */
+"Age" = "年齡";
+
+/* No comment provided by engineer. */
+"Already to play" = "準備好";
+
+/* No comment provided by engineer. */
+"Aquarius" = "水瓶";
+
+/* No comment provided by engineer. */
+"Aries" = "牡羊";
+
+/* No comment provided by engineer. */
+"Back" = "返回";
+
+/* No comment provided by engineer. */
+"Background Music" = "背景音樂";
+
+/* No comment provided by engineer. */
+"Build Wall" = "建牆";
+
+/* No comment provided by engineer. */
+"By Room ID" = "透過房號";
+
+/* No comment provided by engineer. */
+"Cancel" = "取消";
+
+/* No comment provided by engineer. */
+"CANCEL" = "取消";
+
+/* No comment provided by engineer. */
+"Cancer" = "巨蟹";
+
+/* No comment provided by engineer. */
+"Capricorn" = "摩羯";
+
+/* No comment provided by engineer. */
+"Casual" = "休閒";
+
+/* No comment provided by engineer. */
+"Change password" = "修改密碼";
+
+/* No comment provided by engineer. */
+"Change profile photo" = "更換頭像";
+
+/* No comment provided by engineer. */
+"Choose from library" = "從相簿選擇";
+
+/* No comment provided by engineer. */
+"Congratulation!" = "恭喜！";
+
+/* No comment provided by engineer. */
+"connect" = "連結";
+
+/* No comment provided by engineer. */
+"Connects" = "連結";
+
+/* No comment provided by engineer. */
+"Continue deleting account" = "繼續刪除帳號";
+
+/* No comment provided by engineer. */
+"Cost : $200" = "花費：$200";
+
+/* No comment provided by engineer. */
+"Cost Free" = "花費：免費";
+
+/* No comment provided by engineer. */
+"Create a Game" = "建立遊戲";
+
+/* No comment provided by engineer. */
+"Create avatar" = "創建頭像";
+
+/* No comment provided by engineer. */
+"Current password" = "目前密碼";
+
+/* No comment provided by engineer. */
+"Delete account" = "刪除帳號";
+
+/* No comment provided by engineer. */
+"Delete your Quoridor account?" = "刪除你的 Quoridor 帳號？";
+
+/* No comment provided by engineer. */
+"Deleting your account ?" = "刪除帳號？";
+
+/* No comment provided by engineer. */
+"Deleting your account is permanent" = "刪除帳號是永久無法復原的";
+
+/* No comment provided by engineer. */
+"Design Avatar" = "設計頭像";
+
+/* No comment provided by engineer. */
+"disconnect" = "取消連結";
+
+/* No comment provided by engineer. */
+"Done" = "完成";
+
+/* No comment provided by engineer. */
+"Edit Profile" = "編輯個人檔案";
+
+/* No comment provided by engineer. */
+"Email" = "信箱";
+
+/* No comment provided by engineer. */
+"Enter" = "進入";
+
+/* No comment provided by engineer. */
+"ERROR" = "錯誤";
+
+/* No comment provided by engineer. */
+"FORGOT PASSWORD" = "忘記密碼";
+
+/* No comment provided by engineer. */
+"Forgot your password ?" = "忘記密碼？";
+
+/* No comment provided by engineer. */
+"Game" = "遊戲";
+
+/* No comment provided by engineer. */
+"Game Reward" = "遊戲獎勵";
+
+/* No comment provided by engineer. */
+"Game Settings" = "遊戲設定";
+
+/* No comment provided by engineer. */
+"Gemini" = "雙子";
+
+/* No comment provided by engineer. */
+"Get : $200" = "獲得：$200";
+
+/* No comment provided by engineer. */
+"Give Up" = "投降";
+
+/* No comment provided by engineer. */
+"Give Up?" = "投降？";
+
+/* No comment provided by engineer. */
+"High" = "高";
+
+/* No comment provided by engineer. */
+"Hint" = "提示";
+
+/* No comment provided by engineer. */
+"Invite your friend to join" = "邀請你的朋友加入";
+
+/* No comment provided by engineer. */
+"Join a Game" = "加入遊戲";
+
+/* No comment provided by engineer. */
+"Join a game may need to cost $200 if it's created for rank, and if your money is less than $200, we couldn't let you in." = "如果加入的是排位遊戲，會需要花費 $200，所以如果您的金幣少於 $200，我們將無法讓您加入。";
+
+/* No comment provided by engineer. */
+"Joined %@" = "加入 %@";
+
+/* No comment provided by engineer. */
+"Just wait for room owner to start the game." = "等待房主開始遊戲。";
+
+/* No comment provided by engineer. */
+"Let your friend join this game by room ID, or just start the game, we'll match a player for you." = "讓好友透過房號加入遊戲，所直接開始遊戲自動配對。";
+
+/* No comment provided by engineer. */
+"Leo" = "獅子";
+
+/* No comment provided by engineer. */
+"Libra" = "天秤";
+
+/* No comment provided by engineer. */
+"Log out" = "登出";
+
+/* No comment provided by engineer. */
+"Login security" = "登入安全";
+
+/* No comment provided by engineer. */
+"Logins" = "登入";
+
+/* No comment provided by engineer. */
+"Low" = "低";
+
+/* No comment provided by engineer. */
+"Max Star" = "最高星星";
+
+/* No comment provided by engineer. */
+"Money" = "金幣";
+
+/* No comment provided by engineer. */
+"Music" = "音樂";
+
+/* No comment provided by engineer. */
+"Name" = "名字";
+
+/* No comment provided by engineer. */
+"New password" = "新密碼";
+
+/* No comment provided by engineer. */
+"New password, again" = "再次輸入新密碼";
+
+/* No comment provided by engineer. */
+"NEW PLAYER" = "新玩家";
+
+/* No comment provided by engineer. */
+"not set" = "尚未設定";
+
+/* No comment provided by engineer. */
+"password" = "密碼";
+
+/* No comment provided by engineer. */
+"Password" = "密碼";
+
+/* No comment provided by engineer. */
+"Passwords doesn't match" = "輸入「目前密碼」錯誤";
+
+/* No comment provided by engineer. */
+"Pisces" = "雙魚";
+
+/* No comment provided by engineer. */
+"Played" = "場次";
+
+/* No comment provided by engineer. */
+"Preparing..." = "準備中⋯";
+
+/* No comment provided by engineer. */
+"Rank" = "排位";
+
+/* No comment provided by engineer. */
+"Ready to Play" = "準備好開始遊戲";
+
+/* No comment provided by engineer. */
+"Remove current photo" = "移除目前頭像";
+
+/* No comment provided by engineer. */
+"Reset password" = "重設密碼";
+
+/* No comment provided by engineer. */
+"RETURING PLAYER" = "回鍋玩家";
+
+/* No comment provided by engineer. */
+"Room ID" = "房號";
+
+/* No comment provided by engineer. */
+"Room Owner" = "房主";
+
+/* No comment provided by engineer. */
+"Sagittarius" = "射手";
+
+/* No comment provided by engineer. */
+"Save" = "儲存";
+
+/* No comment provided by engineer. */
+"Scorpio" = "天蠍";
+
+/* No comment provided by engineer. */
+"Security" = "安全";
+
+/* No comment provided by engineer. */
+"Settings" = "設定";
+
+/* No comment provided by engineer. */
+"SIGN IN" = "登入";
+
+/* No comment provided by engineer. */
+"Sign in with Facebook" = "Facebook 登入";
+
+/* No comment provided by engineer. */
+"Sign in with Google" = "Google 登入";
+
+/* No comment provided by engineer. */
+"Sign in with Twitter" = "Twitter 登入";
+
+/* No comment provided by engineer. */
+"Sign in with Email" = "Email 登入";
+
+/* No comment provided by engineer. */
+"SIGN IN WITH EMAIL" = "EMAIL 登入";
+
+/* No comment provided by engineer. */
+"SIGN UP" = "註冊";
+
+/* No comment provided by engineer. */
+"Sign up with Facebook" = "Facebook 註冊";
+
+/* No comment provided by engineer. */
+"Sign up with Google" = "Google 註冊";
+
+/* No comment provided by engineer. */
+"Sign up with Twitter" = "Twitter 註冊";
+
+/* No comment provided by engineer. */
+"Sign up with Email" = "Email 註冊";
+
+/* No comment provided by engineer. */
+"SIGN UP WITH EMAIL" = "EMAIL 註冊";
+
+/* No comment provided by engineer. */
+"Sound Effect" = "音效";
+
+/* No comment provided by engineer. */
+"Source code" = "原始碼";
+
+/* No comment provided by engineer. */
+"Star" = "星星";
+
+/* No comment provided by engineer. */
+"Star %lld" = "星星 %lld";
+
+/* No comment provided by engineer. */
+"Start the Game" = "開始遊戲";
+
+/* No comment provided by engineer. */
+"Taurus" = "金牛";
+
+/* No comment provided by engineer. */
+"Virgo" = "處女";
+
+/* No comment provided by engineer. */
+"Vibrate" = "震動";
+
+/* No comment provided by engineer. */
+"volume" = "音量";
+
+/* No comment provided by engineer. */
+"Waiting" = "等待中";
+
+/* No comment provided by engineer. */
+"Watch Video" = "觀看影片";
+
+/* No comment provided by engineer. */
+"We're matching a player for you now, please wait..." = "我們正在幫您配對玩家，請稍候⋯";
+
+/* No comment provided by engineer. */
+"When you've got ready, press \"Ready to Play\" so that room owner could start the game." = "當您準備好了，就可以按下「準備好開始遊戲」，並等待房主開始遊戲。";
+
+/* No comment provided by engineer. */
+"Win Rate" = "勝率";
+
+/* No comment provided by engineer. */
+"Win Rate %.1f %%" = "勝率 %.1f %%";
+
+/* No comment provided by engineer. */
+"YES" = "是的";
+
+/* No comment provided by engineer. */
+"You can get random money from $1 to $200 every 4 games." = "每 4 場遊戲，你可以獲得 $1 到 $200 之間的隨機金幣。";
+
+/* No comment provided by engineer. */
+"You can sign in to Quoridor using accounts that you have connected." = "你可以透過已連結的帳號來登入 Quoridor。";
+
+/* No comment provided by engineer. */
+"You could start the game when another player has got ready." = "當對手準備好了，你就可以開始遊戲。";
+
+/* No comment provided by engineer. */
+"YOU LOSE" = "你輸了";
+
+/* No comment provided by engineer. */
+"YOU WIN" = "你贏了";
+
+/* No comment provided by engineer. */
+"You're going to give up this game" = "您將投降這場遊戲";
+
+/* No comment provided by engineer. */
+"You're requesting to delete your account" = "您正在刪除帳號";
+
+/* No comment provided by engineer. */
+"Your password must be at least 6 characters and should include a combination of numbers and letters." = "你的密碼必須至少有 6 個字元，並包含數字與英文字母。";
+
+/* No comment provided by engineer. */
+"Your profile, money, star, game data will be permanently deleted." = "您的個人檔案、金幣、星星數、遊戲資料，將被永久刪除。";
+
+/* No comment provided by engineer. */
+"Zodiac Sign" = "星座";
+

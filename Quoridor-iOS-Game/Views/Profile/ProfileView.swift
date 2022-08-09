@@ -78,7 +78,7 @@ struct ProfileView: View {
                     }
                     
                     VStack(spacing: 5) {
-                        Text("\(playerViewModel.currentPlayer.star)")
+                        Text("\(playerViewModel.currentPlayer.maxStar)")
                             .font(.title2.bold())
                         
                         Text("Max Star")
@@ -126,7 +126,7 @@ struct ProfileView: View {
                         
                         Spacer()
                         
-                        Text(playerViewModel.currentPlayer.zodiacSign.description)
+                        Text(LocalizedStringKey(playerViewModel.currentPlayer.zodiacSign.description))
                     }
                     
                     Divider()

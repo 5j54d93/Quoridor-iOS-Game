@@ -11,12 +11,12 @@ struct SettingView: View {
     
     @ObservedObject var authViewModel: AuthViewModel
     @ObservedObject var playerViewModel: PlayerViewModel
+    @ObservedObject var gameViewModel: GameViewModel
     
     @Binding var isShowSettings: Bool
-    
-    @State private var showAlert = false
-    @State private var alertMessage = ""
-    @State private var showProgressView = false
+    @Binding var appState: ContentView.AppStateType
+    @Binding var alertTitle: String
+    @Binding var alertMessage: String
     
     var body: some View {
         NavigationView {
@@ -24,7 +24,9 @@ struct SettingView: View {
                 VStack {
                     HStack {
                         Button {
-                            isShowSettings = false
+                            withAnimation {
+                                isShowSettings = false
+                            }
                         } label: {
                             Text(Image(systemName: "chevron.backward"))
                                 .font(.title3.bold())
@@ -67,7 +69,7 @@ struct SettingView: View {
                                 }
                                 
                                 NavigationLink {
-                                    AccountView(authViewModel: authViewModel, playerViewModel: playerViewModel, isShowSettings: $isShowSettings)
+                                    AccountView(authViewModel: authViewModel, playerViewModel: playerViewModel, isShowSettings: $isShowSettings, appState: $appState, alertTitle: $alertTitle, alertMessage: $alertMessage)
                                 } label: {
                                     HStack(spacing: 10) {
                                         Image(systemName: "person.crop.circle")
@@ -76,6 +78,25 @@ struct SettingView: View {
                                             .frame(width: 28, height: 28)
                                         
                                         Text("Account")
+                                            .font(.title2)
+                                        
+                                        Spacer()
+                                        
+                                        Text(Image(systemName: "chevron.forward"))
+                                            .foregroundColor(.earthyGold)
+                                    }
+                                }
+                                
+                                NavigationLink {
+                                    GameSettingsView(gameViewModel: gameViewModel)
+                                } label: {
+                                    HStack(spacing: 10) {
+                                        Image(systemName: "gamecontroller.fill")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 28, height: 28)
+                                        
+                                        Text("Game")
                                             .font(.title2)
                                         
                                         Spacer()
@@ -116,14 +137,15 @@ struct SettingView: View {
                                     .font(.title2.bold())
                                 
                                 Button("Log out") {
-                                    showProgressView = true
+                                    appState = .loading
                                     authViewModel.signOut() { result in
                                         switch result {
                                         case .success():
-                                            isShowSettings = false
+                                            appState = .null
                                         case .failure(let error):
+                                            alertTitle = "ERROR"
                                             alertMessage = error.localizedDescription
-                                            showAlert = true
+                                            appState = .alert
                                         }
                                     }
                                 }
@@ -141,50 +163,9 @@ struct SettingView: View {
                 }
                 .navigationBarHidden(true)
                 .foregroundColor(.white)
-                .overlay {
-                    if showProgressView {
-                        Color.white
-                            .ignoresSafeArea()
-                            .frame(maxWidth: .infinity)
-                            .opacity(0.7)
-                        
-                        if !showAlert {
-                            ProgressView()
-                                .scaleEffect(3)
-                                .progressViewStyle(CircularProgressViewStyle(tint: .roseGold))
-                        } else {
-                            VStack(spacing: 20) {
-                                Text(alertMessage)
-                                    .foregroundColor(.roseGold)
-                                
-                                Button {
-                                    showProgressView = false
-                                    showAlert = false
-                                } label: {
-                                    Text("OK")
-                                        .font(.title3.bold())
-                                        .foregroundColor(.white)
-                                        .frame(height: 50)
-                                        .frame(maxWidth: .infinity)
-                                        .background {
-                                            Capsule()
-                                                .foregroundColor(.roseGold)
-                                        }
-                                }
-                            }
-                            .padding(20)
-                            .frame(width: geometry.size.width*0.8)
-                            .background {
-                                RoundedRectangle(cornerRadius: 5)
-                                    .foregroundColor(.white)
-                            }
-                        }
-                    }
-                }
                 .background(Color.backgroundColor)
             }
         }
         .transition(.move(edge: .trailing))
-        .animation(.default, value: isShowSettings)
     }
 }
