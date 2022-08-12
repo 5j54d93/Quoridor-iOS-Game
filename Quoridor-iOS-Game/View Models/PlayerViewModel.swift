@@ -141,26 +141,17 @@ class PlayerViewModel: ObservableObject {
         }
     }
     
-    func pay200(player: Player, completion: @escaping (Result<Void, Error>) -> Void) {
-        db.collection("players").getDocuments { snapshot, error in
-            guard let snapshot = snapshot else { return }
-            let players = snapshot.documents.compactMap { snapshot in
-                try? snapshot.data(as: Player.self)
-            }
-            var targetPlayer: Player?
-            for index in 0..<players.count {
-                if players[index].email == player.email {
-                    targetPlayer = players[index]
-                }
-            }
-            targetPlayer?.money -= 200
-            let documentReference = self.db.collection("players").document(targetPlayer?.id ?? "")
+    func pay200(id: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        let documentReference = db.collection("players").document(id)
+        documentReference.getDocument { document, error in
+            guard let document = document, document.exists, var player = try? document.data(as: Player.self) else { return }
+            player.money -= 200
             do {
-                try documentReference.setData(from: targetPlayer)
+                try documentReference.setData(from: player)
+                completion(.success(()))
             } catch {
                 completion(.failure(error))
             }
-            completion(.success(()))
         }
     }
     

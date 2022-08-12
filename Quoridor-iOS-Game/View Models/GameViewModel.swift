@@ -57,7 +57,7 @@ class GameViewModel: ObservableObject {
             }
             completion(error.localizedDescription)
         }
-        let data = Game(id: String(randomId), gameType: gameType, gameState: .waiting, roomOwner: player)
+        let data = Game(id: String(randomId), gameType: gameType, gameState: .waiting, roomOwner: GamingPlayer(id: player.id!, name: player.name, star: player.star, chessmanIndex: 348, winRate: player.winRate, avatar: player.avatar!))
         
         do {
             try db.collection("games").document(String(randomId)).setData(from: data)
@@ -68,7 +68,7 @@ class GameViewModel: ObservableObject {
         }
     }
     
-    func exitRoom(player: Player, completion: @escaping (Result<Void, Error>) -> Void) {
+    func exitRoom(id: String, completion: @escaping (Result<Void, Error>) -> Void) {
         guard let roomId = game.id else { return }
         let documentReference = db.collection("games").document(roomId)
         documentReference.getDocument { document, error in
@@ -77,12 +77,11 @@ class GameViewModel: ObservableObject {
                 if game.joinedPlayer == nil {
                     documentReference.delete()
                 } else {
-                    if game.roomOwner?.email == player.email {
+                    if game.roomOwner?.id == id {
                         game.roomOwner = game.joinedPlayer
-                        game.joinedPlayer = nil
-                    } else {
-                        game.joinedPlayer = nil
+                        game.roomOwner?.chessmanIndex = 348
                     }
+                    game.joinedPlayer = nil
                     do {
                         try documentReference.setData(from: game)
                     } catch {
@@ -116,7 +115,7 @@ class GameViewModel: ObservableObject {
                     completion("This room is for rank and your money is less than $200, we couldn't let you in.")
                     return
                 }
-                game.joinedPlayer = player
+                game.joinedPlayer = GamingPlayer(id: player.id!, name: player.name, star: player.star, chessmanIndex: 8, winRate: player.winRate, avatar: player.avatar!)
                 game.gameState = .waiting
                 do {
                     try documentReference.setData(from: game)
@@ -155,7 +154,7 @@ class GameViewModel: ObservableObject {
         documentReference.getDocument { document, error in
             guard let error = error else {
                 guard let document = document, document.exists, var game = try? document.data(as: Game.self) else { return }
-                game.turn = [game.roomOwner, game.joinedPlayer].randomElement()!
+                game.turn = [game.roomOwner?.id, game.joinedPlayer?.id].randomElement()!
                 game.gameState = .playing
                 do {
                     try documentReference.setData(from: game)
@@ -169,13 +168,17 @@ class GameViewModel: ObservableObject {
         }
     }
     
-    func changeGameStateToMatch(completion: @escaping (Result<Void, Error>) -> Void) {
+    func toggleMatchingGameState(completion: @escaping (Result<Void, Error>) -> Void) {
         guard let roomId = game.id else { return }
         let documentReference = db.collection("games").document(roomId)
         documentReference.getDocument { document, error in
             guard let error = error else {
                 guard let document = document, document.exists, var game = try? document.data(as: Game.self) else { return }
-                game.gameState = .matching
+                if game.gameState == .matching {
+                    game.gameState = .waiting
+                } else {
+                    game.gameState = .matching
+                }
                 do {
                     try documentReference.setData(from: game)
                     completion(.success(()))
@@ -222,8 +225,8 @@ class GameViewModel: ObservableObject {
                     completion("some error occured")
                     return
                 }
-                game.joinedPlayer = player
-                game.turn = [game.roomOwner, game.joinedPlayer].randomElement()!
+                game.joinedPlayer = GamingPlayer(id: player.id!, name: player.name, star: player.star, chessmanIndex: 8, winRate: player.winRate, avatar: player.avatar!)
+                game.turn = [game.roomOwner?.id, game.joinedPlayer?.id].randomElement()!
                 game.gameState = .playing
                 do {
                     try documentReference.setData(from: game)
@@ -237,25 +240,6 @@ class GameViewModel: ObservableObject {
         }
     }
     
-    func cancelMatching(completion: @escaping (Result<Void, Error>) -> Void) {
-        guard let roomId = game.id else { return }
-        let documentReference = db.collection("games").document(roomId)
-        documentReference.getDocument { document, error in
-            guard let error = error else {
-                guard let document = document, document.exists, var game = try? document.data(as: Game.self) else { return }
-                game.gameState = .waiting
-                do {
-                    try documentReference.setData(from: game)
-                    completion(.success(()))
-                } catch {
-                    completion(.failure(error))
-                }
-                return
-            }
-            completion(.failure(error))
-        }
-    }
-    
     func buildWall(indexes: [Int], completion: @escaping (Result<Void, Error>) -> Void) {
         guard let roomId = game.id else { return }
         let documentReference = db.collection("games").document(roomId)
@@ -263,12 +247,12 @@ class GameViewModel: ObservableObject {
             guard let error = error else {
                 guard let document = document, document.exists, var game = try? document.data(as: Game.self) else { return }
                 game.wall += indexes
-                if game.turn?.email == game.roomOwner?.email {
-                    game.roomOwnerWall -= 1
-                    game.turn = game.joinedPlayer
+                if game.turn == game.roomOwner?.id {
+                    game.roomOwner?.lastWall -= 1
+                    game.turn = game.joinedPlayer?.id
                 } else {
-                    game.joinedPlayerWall -= 1
-                    game.turn = game.roomOwner
+                    game.joinedPlayer?.lastWall -= 1
+                    game.turn = game.roomOwner?.id
                 }
                 do {
                     try documentReference.setData(from: game)
@@ -289,23 +273,20 @@ class GameViewModel: ObservableObject {
         documentReference.getDocument { document, error in
             guard let error = error else {
                 guard let document = document, document.exists, var game = try? document.data(as: Game.self) else { return }
-                if game.roomOwnerChessmanIndex == currentIndex {
-                    game.roomOwnerChessmanIndex = nextIndex
+                if game.roomOwner?.chessmanIndex == currentIndex {
+                    game.roomOwner?.chessmanIndex = nextIndex
+                    game.turn = game.joinedPlayer?.id
                     if stride(from: 0, through: 16, by: 2).contains(nextIndex) {
-                        game.winner = game.roomOwner
+                        game.winner = game.roomOwner?.id
                         game.gameState = .end
                     }
                 } else {
-                    game.joinedPlayerChessmanIndex = nextIndex
+                    game.joinedPlayer?.chessmanIndex = nextIndex
+                    game.turn = game.roomOwner?.id
                     if stride(from: 340, through: 356, by: 2).contains(nextIndex) {
-                        game.winner = game.joinedPlayer
+                        game.winner = game.joinedPlayer?.id
                         game.gameState = .end
                     }
-                }
-                if game.turn?.email == game.roomOwner?.email {
-                    game.turn = game.joinedPlayer
-                } else {
-                    game.turn = game.roomOwner
                 }
                 do {
                     try documentReference.setData(from: game)
@@ -320,7 +301,7 @@ class GameViewModel: ObservableObject {
         }
     }
     
-    func exitGame(player: Player, completion: @escaping (Result<Void, Error>) -> Void) {
+    func exitGame(completion: @escaping (Result<Void, Error>) -> Void) {
         guard let roomId = game.id else { return }
         let documentReference = db.collection("games").document(roomId)
         documentReference.getDocument { document, error in
@@ -354,13 +335,12 @@ class GameViewModel: ObservableObject {
         documentReference.getDocument { document, error in
             guard let error = error else {
                 guard let document = document, document.exists, var game = try? document.data(as: Game.self) else { return }
-                if game.roomOwner?.email == player.email {
-                    game.winner = game.joinedPlayer
-                    game.gameState = .end
+                if game.roomOwner?.id == player.id {
+                    game.winner = game.joinedPlayer?.id
                 } else {
-                    game.winner = game.roomOwner
-                    game.gameState = .end
+                    game.winner = game.roomOwner?.id
                 }
+                game.gameState = .end
                 do {
                     try documentReference.setData(from: game)
                     completion(.success(()))

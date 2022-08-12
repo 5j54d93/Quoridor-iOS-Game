@@ -28,7 +28,9 @@ struct GameView: View {
         VStack {
             HStack {
                 Button {
-                    appState = .gameSetting
+                    withAnimation {
+                        appState = .gameSetting
+                    }
                 } label: {
                     Image(systemName: "gearshape.circle")
                         .resizable()
@@ -43,16 +45,16 @@ struct GameView: View {
                 
                 HStack {
                     VStack(alignment: .trailing) {
-                        Text(gameViewModel.game.roomOwner?.email == playerViewModel.currentPlayer.email ? gameViewModel.game.joinedPlayer?.name ?? "" : gameViewModel.game.roomOwner?.name ?? "")
+                        Text(gameViewModel.game.roomOwner?.id == playerViewModel.currentPlayer.id ? gameViewModel.game.joinedPlayer?.name ?? "" : gameViewModel.game.roomOwner?.name ?? "")
                             .font(.title2.bold())
                         
-                        (Text(gameViewModel.game.roomOwner?.email == playerViewModel.currentPlayer.email ? "\(gameViewModel.game.joinedPlayerWall) Wall " : "\(gameViewModel.game.roomOwnerWall) Wall ")
-                         +
-                         Text(Image(systemName: "circle.fill"))
-                            .foregroundColor(gameViewModel.game.roomOwner?.email == playerViewModel.currentPlayer.email ? .red : .blue))
+                        Text(gameViewModel.game.roomOwner?.id == playerViewModel.currentPlayer.id ? "\(gameViewModel.game.joinedPlayer?.lastWall ?? 0) Wall " : "\(gameViewModel.game.roomOwner?.lastWall ?? 0) Wall ")
+                        +
+                        Text(Image(systemName: "circle.fill"))
+                            .foregroundColor(gameViewModel.game.roomOwner?.id == playerViewModel.currentPlayer.id ? .red : .blue)
                     }
                     
-                    AsyncImage(url: gameViewModel.game.roomOwner?.email == playerViewModel.currentPlayer.email ? gameViewModel.game.joinedPlayer?.avatar : gameViewModel.game.roomOwner?.avatar) { image in
+                    AsyncImage(url: gameViewModel.game.roomOwner?.id == playerViewModel.currentPlayer.id ? gameViewModel.game.joinedPlayer?.avatar : gameViewModel.game.roomOwner?.avatar) { image in
                         image
                             .resizable()
                             .scaledToFit()
@@ -75,11 +77,11 @@ struct GameView: View {
                         .overlay {
                             Capsule()
                                 .stroke(
-                                    gameViewModel.game.roomOwner?.email == playerViewModel.currentPlayer.email
-                                    ? gameViewModel.game.turn?.email == gameViewModel.game.joinedPlayer?.email
+                                    gameViewModel.game.roomOwner?.id == playerViewModel.currentPlayer.id
+                                    ? gameViewModel.game.turn == gameViewModel.game.joinedPlayer?.id
                                     ? Color.red
                                     : Color.clear
-                                    : gameViewModel.game.turn?.email == gameViewModel.game.roomOwner?.email
+                                    : gameViewModel.game.turn == gameViewModel.game.roomOwner?.id
                                     ? Color.blue
                                     : Color.clear
                                     , lineWidth: 3)
@@ -112,21 +114,20 @@ struct GameView: View {
                                                         }
                                                         .animation(.easeInOut.repeatForever(autoreverses: true), value: opacity)
                                                 }
-                                                if [gameViewModel.game.roomOwnerChessmanIndex, gameViewModel.game.joinedPlayerChessmanIndex].contains(index) {
+                                                if [gameViewModel.game.roomOwner?.chessmanIndex, gameViewModel.game.joinedPlayer?.chessmanIndex].contains(index) {
                                                     Circle()
                                                         .strokeBorder(.white, lineWidth: isMovingChessman && currentIndex == index ? 2 : 0)
-                                                        .background(Circle().foregroundColor(gameViewModel.game.roomOwnerChessmanIndex == index ? .blue : .red)
-                                                            )
+                                                        .background(Circle().foregroundColor(gameViewModel.game.roomOwner?.chessmanIndex == index ? .blue : .red) )
                                                         .onTapGesture {
                                                             wallIndexes = []
                                                             isBuildingWall = false
                                                             if !isMovingChessman {
-                                                                if gameViewModel.game.roomOwner?.email == playerViewModel.currentPlayer.email && gameViewModel.game.roomOwnerChessmanIndex == index || gameViewModel.game.joinedPlayer?.email == playerViewModel.currentPlayer.email && gameViewModel.game.joinedPlayerChessmanIndex == index {
+                                                                if gameViewModel.game.roomOwner?.id == playerViewModel.currentPlayer.id && gameViewModel.game.roomOwner?.chessmanIndex == index || gameViewModel.game.joinedPlayer?.id == playerViewModel.currentPlayer.id && gameViewModel.game.joinedPlayer?.chessmanIndex == index {
                                                                     currentIndex = index
                                                                     nextMoves = []
                                                                     if index == 0 {
                                                                         nextMoves.append(2)
-                                                                        if [gameViewModel.game.roomOwnerChessmanIndex, gameViewModel.game.joinedPlayerChessmanIndex].contains(34) {
+                                                                        if [gameViewModel.game.roomOwner?.chessmanIndex, gameViewModel.game.joinedPlayer?.chessmanIndex].contains(34) {
                                                                             if !gameViewModel.game.wall.contains(35) {
                                                                                 nextMoves.append(36)
                                                                             }
@@ -138,7 +139,7 @@ struct GameView: View {
                                                                         }
                                                                     } else if index == 16 {
                                                                         nextMoves.append(14)
-                                                                        if [gameViewModel.game.roomOwnerChessmanIndex, gameViewModel.game.joinedPlayerChessmanIndex].contains(50) {
+                                                                        if [gameViewModel.game.roomOwner?.chessmanIndex, gameViewModel.game.joinedPlayer?.chessmanIndex].contains(50) {
                                                                             if !gameViewModel.game.wall.contains(49) {
                                                                                 nextMoves.append(48)
                                                                             }
@@ -150,7 +151,7 @@ struct GameView: View {
                                                                         }
                                                                     } else if index == 340 {
                                                                         nextMoves.append(342)
-                                                                        if [gameViewModel.game.roomOwnerChessmanIndex, gameViewModel.game.joinedPlayerChessmanIndex].contains(306) {
+                                                                        if [gameViewModel.game.roomOwner?.chessmanIndex, gameViewModel.game.joinedPlayer?.chessmanIndex].contains(306) {
                                                                             if !gameViewModel.game.wall.contains(289) {
                                                                                 nextMoves.append(272)
                                                                             }
@@ -158,11 +159,11 @@ struct GameView: View {
                                                                                 nextMoves.append(308)
                                                                             }
                                                                         } else {
-                                                                            nextMoves.append(50)
+                                                                            nextMoves.append(306)
                                                                         }
                                                                     } else if index == 356 {
                                                                         nextMoves.append(354)
-                                                                        if [gameViewModel.game.roomOwnerChessmanIndex, gameViewModel.game.joinedPlayerChessmanIndex].contains(322) {
+                                                                        if [gameViewModel.game.roomOwner?.chessmanIndex, gameViewModel.game.joinedPlayer?.chessmanIndex].contains(322) {
                                                                             if !gameViewModel.game.wall.contains(321) {
                                                                                 nextMoves.append(320)
                                                                             }
@@ -170,11 +171,11 @@ struct GameView: View {
                                                                                 nextMoves.append(288)
                                                                             }
                                                                         } else {
-                                                                            nextMoves.append(50)
+                                                                            nextMoves.append(322)
                                                                         }
                                                                     } else if stride(from: 2, through: 14, by: 2).contains(index) {
                                                                         nextMoves = [index-2, index+2]
-                                                                        if [gameViewModel.game.roomOwnerChessmanIndex, gameViewModel.game.joinedPlayerChessmanIndex].contains(index+34) {
+                                                                        if [gameViewModel.game.roomOwner?.chessmanIndex, gameViewModel.game.joinedPlayer?.chessmanIndex].contains(index+34) {
                                                                             if !gameViewModel.game.wall.contains(index+33) {
                                                                                 nextMoves.append(index+32)
                                                                             }
@@ -189,7 +190,7 @@ struct GameView: View {
                                                                         }
                                                                     } else if stride(from: 34, through: 306, by: 34).contains(index) {
                                                                         if !gameViewModel.game.wall.contains(index-17) {
-                                                                            if [gameViewModel.game.roomOwnerChessmanIndex, gameViewModel.game.joinedPlayerChessmanIndex].contains(index-34) {
+                                                                            if [gameViewModel.game.roomOwner?.chessmanIndex, gameViewModel.game.joinedPlayer?.chessmanIndex].contains(index-34) {
                                                                                 if !gameViewModel.game.wall.contains(index-51) {
                                                                                     nextMoves.append(index-68)
                                                                                 }
@@ -201,7 +202,7 @@ struct GameView: View {
                                                                             }
                                                                         }
                                                                         if !gameViewModel.game.wall.contains(index+17) {
-                                                                            if [gameViewModel.game.roomOwnerChessmanIndex, gameViewModel.game.joinedPlayerChessmanIndex].contains(index+34) {
+                                                                            if [gameViewModel.game.roomOwner?.chessmanIndex, gameViewModel.game.joinedPlayer?.chessmanIndex].contains(index+34) {
                                                                                 if !gameViewModel.game.wall.contains(index+35) {
                                                                                     nextMoves.append(index+36)
                                                                                 }
@@ -213,7 +214,7 @@ struct GameView: View {
                                                                             }
                                                                         }
                                                                         if !gameViewModel.game.wall.contains(index+1) {
-                                                                            if [gameViewModel.game.roomOwnerChessmanIndex, gameViewModel.game.joinedPlayerChessmanIndex].contains(index+2) {
+                                                                            if [gameViewModel.game.roomOwner?.chessmanIndex, gameViewModel.game.joinedPlayer?.chessmanIndex].contains(index+2) {
                                                                                 if !gameViewModel.game.wall.contains(index-15) {
                                                                                     nextMoves.append(index-32)
                                                                                 }
@@ -229,7 +230,7 @@ struct GameView: View {
                                                                         }
                                                                     } else if stride(from: 50, through: 322, by: 34).contains(index) {
                                                                         if !gameViewModel.game.wall.contains(index-17) {
-                                                                            if [gameViewModel.game.roomOwnerChessmanIndex, gameViewModel.game.joinedPlayerChessmanIndex].contains(index-34) {
+                                                                            if [gameViewModel.game.roomOwner?.chessmanIndex, gameViewModel.game.joinedPlayer?.chessmanIndex].contains(index-34) {
                                                                                 if !gameViewModel.game.wall.contains(index-51) {
                                                                                     nextMoves.append(index-68)
                                                                                 }
@@ -241,7 +242,7 @@ struct GameView: View {
                                                                             }
                                                                         }
                                                                         if !gameViewModel.game.wall.contains(index+17) {
-                                                                            if [gameViewModel.game.roomOwnerChessmanIndex, gameViewModel.game.joinedPlayerChessmanIndex].contains(index+34) {
+                                                                            if [gameViewModel.game.roomOwner?.chessmanIndex, gameViewModel.game.joinedPlayer?.chessmanIndex].contains(index+34) {
                                                                                 if !gameViewModel.game.wall.contains(index+33) {
                                                                                     nextMoves.append(index+32)
                                                                                 }
@@ -253,7 +254,7 @@ struct GameView: View {
                                                                             }
                                                                         }
                                                                         if !gameViewModel.game.wall.contains(index-1) {
-                                                                            if [gameViewModel.game.roomOwnerChessmanIndex, gameViewModel.game.joinedPlayerChessmanIndex].contains(index-2) {
+                                                                            if [gameViewModel.game.roomOwner?.chessmanIndex, gameViewModel.game.joinedPlayer?.chessmanIndex].contains(index-2) {
                                                                                 if !gameViewModel.game.wall.contains(index-19) {
                                                                                     nextMoves.append(index-36)
                                                                                 }
@@ -269,7 +270,7 @@ struct GameView: View {
                                                                         }
                                                                     } else if stride(from: 342, through: 354, by: 2).contains(index) {
                                                                         nextMoves = [index-2, index+2]
-                                                                        if [gameViewModel.game.roomOwnerChessmanIndex, gameViewModel.game.joinedPlayerChessmanIndex].contains(index-34) {
+                                                                        if [gameViewModel.game.roomOwner?.chessmanIndex, gameViewModel.game.joinedPlayer?.chessmanIndex].contains(index-34) {
                                                                             if !gameViewModel.game.wall.contains(index-35) {
                                                                                 nextMoves.append(index-36)
                                                                             }
@@ -284,7 +285,7 @@ struct GameView: View {
                                                                         }
                                                                     } else {
                                                                         if !gameViewModel.game.wall.contains(index-17) {
-                                                                            if [gameViewModel.game.roomOwnerChessmanIndex, gameViewModel.game.joinedPlayerChessmanIndex].contains(index-34) {
+                                                                            if [gameViewModel.game.roomOwner?.chessmanIndex, gameViewModel.game.joinedPlayer?.chessmanIndex].contains(index-34) {
                                                                                 if !gameViewModel.game.wall.contains(index-35) {
                                                                                     nextMoves.append(index-36)
                                                                                 }
@@ -299,7 +300,7 @@ struct GameView: View {
                                                                             }
                                                                         }
                                                                         if !gameViewModel.game.wall.contains(index+17) {
-                                                                            if [gameViewModel.game.roomOwnerChessmanIndex, gameViewModel.game.joinedPlayerChessmanIndex].contains(index+34) {
+                                                                            if [gameViewModel.game.roomOwner?.chessmanIndex, gameViewModel.game.joinedPlayer?.chessmanIndex].contains(index+34) {
                                                                                 if !gameViewModel.game.wall.contains(index+33) {
                                                                                     nextMoves.append(index+32)
                                                                                 }
@@ -314,7 +315,7 @@ struct GameView: View {
                                                                             }
                                                                         }
                                                                         if !gameViewModel.game.wall.contains(index-1) {
-                                                                            if [gameViewModel.game.roomOwnerChessmanIndex, gameViewModel.game.joinedPlayerChessmanIndex].contains(index-2) {
+                                                                            if [gameViewModel.game.roomOwner?.chessmanIndex, gameViewModel.game.joinedPlayer?.chessmanIndex].contains(index-2) {
                                                                                 if !gameViewModel.game.wall.contains(index-19) {
                                                                                     nextMoves.append(index-36)
                                                                                 }
@@ -329,7 +330,7 @@ struct GameView: View {
                                                                             }
                                                                         }
                                                                         if !gameViewModel.game.wall.contains(index+1) {
-                                                                            if [gameViewModel.game.roomOwnerChessmanIndex, gameViewModel.game.joinedPlayerChessmanIndex].contains(index+2) {
+                                                                            if [gameViewModel.game.roomOwner?.chessmanIndex, gameViewModel.game.joinedPlayer?.chessmanIndex].contains(index+2) {
                                                                                 if !gameViewModel.game.wall.contains(index-15) {
                                                                                     nextMoves.append(index-32)
                                                                                 }
@@ -387,7 +388,7 @@ struct GameView: View {
                                                 nextMoves = []
                                                 isMovingChessman = false
                                                 if ![0, 20].contains(row) {
-                                                    if playerViewModel.currentPlayer.email == gameViewModel.game.roomOwner?.email && gameViewModel.game.roomOwnerWall > 0 || playerViewModel.currentPlayer.email == gameViewModel.game.joinedPlayer?.email && gameViewModel.game.joinedPlayerWall > 0 {
+                                                    if playerViewModel.currentPlayer.id == gameViewModel.game.roomOwner?.id && gameViewModel.game.roomOwner!.lastWall > 0 || playerViewModel.currentPlayer.id == gameViewModel.game.joinedPlayer?.id && gameViewModel.game.joinedPlayer!.lastWall > 0 {
                                                         if stride(from: 35, through: 49, by: 2).contains(index) {
                                                             if !gameViewModel.game.wall.contains(index) && !gameViewModel.game.wall.contains(index+17) && !gameViewModel.game.wall.contains(index+34) {
                                                                 isBuildingWall = true
@@ -444,7 +445,7 @@ struct GameView: View {
                                                     currentIndex = -1
                                                     nextMoves = []
                                                     isMovingChessman = false
-                                                    if playerViewModel.currentPlayer.email == gameViewModel.game.roomOwner?.email && gameViewModel.game.roomOwnerWall > 0 || playerViewModel.currentPlayer.email == gameViewModel.game.joinedPlayer?.email && gameViewModel.game.joinedPlayerWall > 0 {
+                                                    if playerViewModel.currentPlayer.id == gameViewModel.game.roomOwner?.id && gameViewModel.game.roomOwner!.lastWall > 0 || playerViewModel.currentPlayer.id == gameViewModel.game.joinedPlayer?.id && gameViewModel.game.joinedPlayer!.lastWall > 0 {
                                                         if stride(from: 51, through: 289, by: 34).contains(index) {
                                                             if !gameViewModel.game.wall.contains(index) && !gameViewModel.game.wall.contains(index+1) && !gameViewModel.game.wall.contains(index+2) {
                                                                 isBuildingWall = true
@@ -481,7 +482,7 @@ struct GameView: View {
                                                 currentIndex = -1
                                                 nextMoves = []
                                                 isMovingChessman = false
-                                                if playerViewModel.currentPlayer.email == gameViewModel.game.roomOwner?.email && gameViewModel.game.roomOwnerWall > 0 || playerViewModel.currentPlayer.email == gameViewModel.game.joinedPlayer?.email && gameViewModel.game.joinedPlayerWall > 0 {
+                                                if playerViewModel.currentPlayer.id == gameViewModel.game.roomOwner?.id && gameViewModel.game.roomOwner!.lastWall > 0 || playerViewModel.currentPlayer.id == gameViewModel.game.joinedPlayer?.id && gameViewModel.game.joinedPlayer!.lastWall > 0 {
                                                     if wallIndexes.contains(index) {
                                                         if wallIndexes.contains(index-1) {
                                                             if !gameViewModel.game.wall.contains(index-17) && !gameViewModel.game.wall.contains(index) && !gameViewModel.game.wall.contains(index+17) {
@@ -509,8 +510,8 @@ struct GameView: View {
                     }
                 }
             }
-            .rotationEffect(.degrees(gameViewModel.game.roomOwner?.email == playerViewModel.currentPlayer.email ? 0 : 180))
-            .disabled(gameViewModel.game.turn?.email != playerViewModel.currentPlayer.email)
+            .rotationEffect(.degrees(gameViewModel.game.roomOwner?.id == playerViewModel.currentPlayer.id ? 0 : 180))
+            .disabled(gameViewModel.game.turn != playerViewModel.currentPlayer.id)
             
             Spacer()
             
@@ -534,9 +535,9 @@ struct GameView: View {
                             .font(.title2.bold())
                         
                         (Text(Image(systemName: "circle.fill"))
-                            .foregroundColor(gameViewModel.game.roomOwner?.email == playerViewModel.currentPlayer.email ? .blue : .red)
+                            .foregroundColor(gameViewModel.game.roomOwner?.id == playerViewModel.currentPlayer.id ? .blue : .red)
                          +
-                         Text(gameViewModel.game.roomOwner?.email == playerViewModel.currentPlayer.email ? " Wall \(gameViewModel.game.roomOwnerWall)" : " Wall \(gameViewModel.game.joinedPlayerWall)"))
+                         Text(gameViewModel.game.roomOwner?.id == playerViewModel.currentPlayer.id ? " Wall \(gameViewModel.game.roomOwner?.lastWall ?? 0)" : " Wall \(gameViewModel.game.joinedPlayer?.lastWall ?? 0)"))
                     }
                 }
                 .padding(.leading, 6)
@@ -548,11 +549,11 @@ struct GameView: View {
                         .overlay {
                             Capsule()
                                 .stroke(
-                                    gameViewModel.game.roomOwner?.email == playerViewModel.currentPlayer.email
-                                    ? gameViewModel.game.turn?.email == gameViewModel.game.roomOwner?.email
+                                    gameViewModel.game.roomOwner?.id == playerViewModel.currentPlayer.id
+                                    ? gameViewModel.game.turn == gameViewModel.game.roomOwner?.id
                                     ? Color.blue
                                     : Color.clear
-                                    : gameViewModel.game.turn?.email == gameViewModel.game.joinedPlayer?.email
+                                    : gameViewModel.game.turn == gameViewModel.game.joinedPlayer?.id
                                     ? Color.red
                                     : Color.clear
                                 , lineWidth: 3)

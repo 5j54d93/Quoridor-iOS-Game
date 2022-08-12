@@ -42,15 +42,11 @@ struct Game: Codable {
     
     var gameType: GameType = .null
     var gameState: GameState = .unCreate
-    var roomOwner: Player?
-    var joinedPlayer: Player?
-    var turn: Player?
-    var winner: Player?
     var isReadyToPlay = false
-    var roomOwnerWall = 10
-    var joinedPlayerWall = 10
     var wall: [Int] = []
-    var roomOwnerChessmanIndex = 348
-    var joinedPlayerChessmanIndex = 8
     var exit = 0
+    var roomOwner: GamingPlayer?
+    var joinedPlayer: GamingPlayer?
+    var turn: String?
+    var winner: String?
 }

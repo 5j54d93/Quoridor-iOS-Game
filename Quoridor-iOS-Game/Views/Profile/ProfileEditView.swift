@@ -13,6 +13,9 @@ struct ProfileEditView: View {
     @ObservedObject var playerViewModel: PlayerViewModel
     
     @Binding var isEditProfile: Bool
+    @Binding var appState: ContentView.AppStateType
+    @Binding var alertTitle: String
+    @Binding var alertMessage: String
     
     @State private var name = "Loading..."
     @State private var email = "Loading..."
@@ -20,9 +23,6 @@ struct ProfileEditView: View {
     @State private var age: Double = 18
     @State private var isConfirming = false
     @State private var isDesignAvatar = false
-    @State private var isLoading = false
-    @State private var errorMessage = ""
-    @State private var isErrorOccured = false
     
     var body: some View {
         GeometryReader { geometry in
@@ -39,23 +39,25 @@ struct ProfileEditView: View {
                     Spacer()
                     
                     Button {
-                        isLoading = true
+                        appState = .loading
                         authViewModel.updateUser(name: name, email: email, avatar: nil) { result in
                             switch result {
                             case .success():
                                 playerViewModel.updatePlayer(name: name, email: email, zodiacSign: zodiacSign, age: Int(age), avatar: nil) { result in
                                     switch result {
                                     case .success():
-                                        isLoading = false
+                                        appState = .null
                                         isEditProfile = false
                                     case .failure(let error):
-                                        errorMessage = error.localizedDescription
-                                        isErrorOccured = true
+                                        alertTitle = "ERROR"
+                                        alertMessage = error.localizedDescription
+                                        appState = .alert
                                     }
                                 }
                             case .failure(let error):
-                                errorMessage = error.localizedDescription
-                                isErrorOccured = true
+                                alertTitle = "ERROR"
+                                alertMessage = error.localizedDescription
+                                appState = .alert
                             }
                         }
                     } label: {
@@ -211,27 +213,30 @@ struct ProfileEditView: View {
                 age = Double(playerViewModel.currentPlayer.age)
             }
             .sheet(isPresented: $isDesignAvatar) {
-                AvatarDesignView(authViewModel: authViewModel, playerViewModel: playerViewModel, isDesignAvatar: $isDesignAvatar)
+                AvatarDesignView(authViewModel: authViewModel, playerViewModel: playerViewModel, isDesignAvatar: $isDesignAvatar, appState: $appState, alertTitle: $alertTitle, alertMessage: $alertMessage)
             }
             .confirmationDialog("Change profile photo", isPresented: $isConfirming) {
                 Button("Remove current photo") {
                     let currentPlayer = playerViewModel.currentPlayer
                     authViewModel.updateUser(name: currentPlayer.name, email: currentPlayer.email, avatar: URL(string: "https://firebasestorage.googleapis.com/v0/b/quoridor-ios-game.appspot.com/o/default.png?alt=media&token=d56342e8-76c0-4083-9a99-8c3f96d238b6")) { result in
                         if case .failure(let error) = result {
-                            errorMessage = error.localizedDescription
-                            isErrorOccured = true
+                            alertTitle = "ERROR"
+                            alertMessage = error.localizedDescription
+                            appState = .alert
                         }
                     }
                     playerViewModel.updatePlayer(name: currentPlayer.name, email: currentPlayer.email, zodiacSign: currentPlayer.zodiacSign, age: currentPlayer.age, avatar: URL(string: "https://firebasestorage.googleapis.com/v0/b/quoridor-ios-game.appspot.com/o/default.png?alt=media&token=d56342e8-76c0-4083-9a99-8c3f96d238b6")) { result in
                         if case .failure(let error) = result {
-                            errorMessage = error.localizedDescription
-                            isErrorOccured = true
+                            alertTitle = "ERROR"
+                            alertMessage = error.localizedDescription
+                            appState = .alert
                         }
                     }
                     playerViewModel.deleteAvatar() { result in
                         if case .failure(let error) = result {
-                            errorMessage = error.localizedDescription
-                            isErrorOccured = true
+                            alertTitle = "ERROR"
+                            alertMessage = error.localizedDescription
+                            appState = .alert
                         }
                     }
                 }
@@ -243,9 +248,6 @@ struct ProfileEditView: View {
                 Button("Create avatar") {
                     isDesignAvatar = true
                 }
-            }
-            .overlay {
-                LoadingView(isLoading: $isLoading, errorMessage: $errorMessage, isErrorOccured: $isErrorOccured, geometry: geometry)
             }
         }
     }

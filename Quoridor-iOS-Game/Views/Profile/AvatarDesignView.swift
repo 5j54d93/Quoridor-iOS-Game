@@ -13,15 +13,15 @@ struct AvatarDesignView: View {
     @ObservedObject var playerViewModel: PlayerViewModel
     
     @Binding var isDesignAvatar: Bool
+    @Binding var appState: ContentView.AppStateType
+    @Binding var alertTitle: String
+    @Binding var alertMessage: String
     
     @AppStorage("avartarBackgroundColor") var avartarBackgroundColor = Color.obsidianGrey
     @AppStorage("avatarSet") var avatarSet = [0, 0, 0, 0, 0, 0] // body, eye, mouth, arm, accesory, leg
     
     @State private var uiImage: UIImage?
     @State private var tempAvatarSet = [0, 0, 0, 0, 0, 0] // body, eye, mouth, arm, accesory, leg
-    @State private var isLoading = false
-    @State private var errorMessage = ""
-    @State private var isErrorOccured = false
     
     enum BodyPart: Int, CaseIterable {
         case body, eye, mouth, arm, accesory, leg
@@ -74,7 +74,7 @@ struct AvatarDesignView: View {
                     Spacer()
                     
                     Button {
-                        isLoading = true
+                        appState = .loading
                         uiImage = AvatarView(tempAvatarSet: tempAvatarSet).snapshot()
                         if let uiImage = uiImage {
                             let currentPlayer = playerViewModel.currentPlayer
@@ -84,25 +84,29 @@ struct AvatarDesignView: View {
                                     avatarSet = tempAvatarSet
                                     authViewModel.updateUser(name: currentPlayer.name, email: currentPlayer.email, avatar: avatarUrl) { result in
                                         if case .failure(let error) = result {
-                                            errorMessage = error.localizedDescription
-                                            isErrorOccured = true
+                                            alertTitle = "ERROR"
+                                            alertMessage = error.localizedDescription
+                                            appState = .alert
                                         }
                                     }
                                     playerViewModel.updatePlayer(name: currentPlayer.name, email: currentPlayer.email, zodiacSign: currentPlayer.zodiacSign, age: currentPlayer.age, avatar: avatarUrl) { result in
                                         if case .failure(let error) = result {
-                                            errorMessage = error.localizedDescription
-                                            isErrorOccured = true
+                                            alertTitle = "ERROR"
+                                            alertMessage = error.localizedDescription
+                                            appState = .alert
                                         }
                                     }
                                     isDesignAvatar = false
                                 case .failure(let error):
-                                    errorMessage = error.localizedDescription
-                                    isErrorOccured = true
+                                    alertTitle = "ERROR"
+                                    alertMessage = error.localizedDescription
+                                    appState = .alert
                                 }
                             }
                         } else {
-                            errorMessage = "Can't generate avatar successfully."
-                            isErrorOccured = true
+                            alertTitle = "ERROR"
+                            alertMessage = "Can't generate avatar successfully."
+                            appState = .alert
                         }
                     } label: {
                         Text("Done")
@@ -225,9 +229,6 @@ struct AvatarDesignView: View {
             .background(Color.backgroundColor)
             .onAppear {
                 tempAvatarSet = avatarSet
-            }
-            .overlay {
-                LoadingView(isLoading: $isLoading, errorMessage: $errorMessage, isErrorOccured: $isErrorOccured, geometry: geometry)
             }
         }
     }

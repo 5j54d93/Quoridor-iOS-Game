@@ -12,6 +12,10 @@ struct SignInContentView: View {
     @ObservedObject var authViewModel: AuthViewModel
     @ObservedObject var playerViewModel: PlayerViewModel
     
+    @Binding var appState: ContentView.AppStateType
+    @Binding var alertTitle: String
+    @Binding var alertMessage: String
+    
     enum PlayerType {
         case null, returning, new
         
@@ -26,9 +30,6 @@ struct SignInContentView: View {
     
     @State private var playerType: PlayerType = .null
     @State private var isSignInWithEmail = false
-    @State private var isLoading = false
-    @State private var errorMessage = ""
-    @State private var isErrorOccured = false
     
     var body: some View {
         GeometryReader { geometry in
@@ -41,17 +42,14 @@ struct SignInContentView: View {
                     ChoosePlayerTypeView(playerType: $playerType, geometry: geometry)
                 } else {
                     if isSignInWithEmail {
-                        SignInWithEmailView(authViewModel: authViewModel, playerViewModel: playerViewModel, playerType: $playerType, isSignInWithEmail: $isSignInWithEmail, isLoading: $isLoading, errorMessage: $errorMessage, isErrorOccured: $isErrorOccured, geometry: geometry)
+                        SignInWithEmailView(authViewModel: authViewModel, playerViewModel: playerViewModel, playerType: $playerType, isSignInWithEmail: $isSignInWithEmail, appState: $appState, alertTitle: $alertTitle, alertMessage: $alertMessage, geometry: geometry)
                     } else {
-                        ChooseSignInMethodView(authViewModel: authViewModel, playerViewModel: playerViewModel, playerType: $playerType, isSignInWithEmail: $isSignInWithEmail, isLoading: $isLoading, errorMessage: $errorMessage, isErrorOccured: $isErrorOccured, geometry: geometry)
+                        ChooseSignInMethodView(authViewModel: authViewModel, playerViewModel: playerViewModel, playerType: $playerType, isSignInWithEmail: $isSignInWithEmail, appState: $appState, alertTitle: $alertTitle, alertMessage: $alertMessage, geometry: geometry)
                     }
                 }
             }
             .frame(maxWidth: .infinity)
             .background(Color.backgroundColor)
-            .overlay {
-                LoadingView(isLoading: $isLoading, errorMessage: $errorMessage, isErrorOccured: $isErrorOccured, geometry: geometry)
-            }
         }
     }
 }

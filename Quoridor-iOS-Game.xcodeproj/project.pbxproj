@@ -12,6 +12,7 @@
 		9C1548962872F71B003E55A0 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1548952872F71B003E55A0 /* ChangePasswordView.swift */; };
 		9C36B73C286AE28F0042CE50 /* ChoosePlayerTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C36B73B286AE28F0042CE50 /* ChoosePlayerTypeView.swift */; };
 		9C36B745286AF69D0042CE50 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C36B744286AF69D0042CE50 /* View.swift */; };
+		9C432E1328A4FAE3001646CF /* GamingPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C432E1228A4FAE3001646CF /* GamingPlayer.swift */; };
 		9C5494CD28A0EAB800BEFF1E /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9C5494CC28A0EAB800BEFF1E /* FirebaseCrashlytics */; };
 		9C5494D328A0F6EC00BEFF1E /* Build Wall.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9C5494D128A0F6EC00BEFF1E /* Build Wall.mp3 */; };
 		9C5494D428A0F6EC00BEFF1E /* Move Chessman.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9C5494D228A0F6EC00BEFF1E /* Move Chessman.mp3 */; };
@@ -19,7 +20,6 @@
 		9C5494D828A1707900BEFF1E /* At Home.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C5494D728A1707900BEFF1E /* At Home.m4a */; };
 		9C5494DA28A1746C00BEFF1E /* GameSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5494D928A1746C00BEFF1E /* GameSettingsView.swift */; };
 		9C5CAA2A287AFC3A00ADABEA /* ConnectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5CAA29287AFC3900ADABEA /* ConnectsView.swift */; };
-		9C7E9BC2288BC65200C0D66A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E9BC1288BC65200C0D66A /* LoadingView.swift */; };
 		9C839C2528742F77002E88F1 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C839C2428742F77002E88F1 /* AccountView.swift */; };
 		9C839C272874303D002E88F1 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C839C262874303D002E88F1 /* AboutView.swift */; };
 		9C8B009D286B358C002AC70A /* ChooseSignInMethodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B009C286B358B002AC70A /* ChooseSignInMethodView.swift */; };
@@ -29,6 +29,7 @@
 		9C8D3374288994C600294D98 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8D3373288994C600294D98 /* GameView.swift */; };
 		9C9007202871CFED00E66A74 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C90071F2871CFED00E66A74 /* Array.swift */; };
 		9CB54122287583F300109E8A /* SignInContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB54121287583F300109E8A /* SignInContentView.swift */; };
+		9CB7975D28A3804A007EB98C /* StarterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7975C28A3804A007EB98C /* StarterView.swift */; };
 		9CBA2779286B5B820083A55D /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 9CBA2778286B5B820083A55D /* GoogleSignIn */; };
 		9CBBE819286ABEF80089994E /* Quoridor_iOS_GameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBE818286ABEF80089994E /* Quoridor_iOS_GameApp.swift */; };
 		9CBBE81B286ABEF80089994E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBE81A286ABEF80089994E /* ContentView.swift */; };
@@ -63,13 +64,13 @@
 		9C1548952872F71B003E55A0 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
 		9C36B73B286AE28F0042CE50 /* ChoosePlayerTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePlayerTypeView.swift; sourceTree = "<group>"; };
 		9C36B744286AF69D0042CE50 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		9C432E1228A4FAE3001646CF /* GamingPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamingPlayer.swift; sourceTree = "<group>"; };
 		9C5494D128A0F6EC00BEFF1E /* Build Wall.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Build Wall.mp3"; sourceTree = "<group>"; };
 		9C5494D228A0F6EC00BEFF1E /* Move Chessman.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Move Chessman.mp3"; sourceTree = "<group>"; };
 		9C5494D528A0F6FD00BEFF1E /* AVPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayer.swift; sourceTree = "<group>"; };
 		9C5494D728A1707900BEFF1E /* At Home.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "At Home.m4a"; sourceTree = "<group>"; };
 		9C5494D928A1746C00BEFF1E /* GameSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettingsView.swift; sourceTree = "<group>"; };
 		9C5CAA29287AFC3900ADABEA /* ConnectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectsView.swift; sourceTree = "<group>"; };
-		9C7E9BC1288BC65200C0D66A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		9C839C2428742F77002E88F1 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		9C839C262874303D002E88F1 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		9C8B009C286B358B002AC70A /* ChooseSignInMethodView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSignInMethodView.swift; sourceTree = "<group>"; };
@@ -80,6 +81,7 @@
 		9C8D3373288994C600294D98 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		9C90071F2871CFED00E66A74 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		9CB54121287583F300109E8A /* SignInContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInContentView.swift; sourceTree = "<group>"; };
+		9CB7975C28A3804A007EB98C /* StarterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterView.swift; sourceTree = "<group>"; };
 		9CBBE815286ABEF80089994E /* Quoridor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quoridor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CBBE818286ABEF80089994E /* Quoridor_iOS_GameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quoridor_iOS_GameApp.swift; sourceTree = "<group>"; };
 		9CBBE81A286ABEF80089994E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			children = (
 				9CE5F4D0286DC339000E8351 /* Player.swift */,
 				9CDBADF228829AC6006F3C7A /* Game.swift */,
+				9C432E1228A4FAE3001646CF /* GamingPlayer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -151,9 +154,9 @@
 			isa = PBXGroup;
 			children = (
 				9CBBE81A286ABEF80089994E /* ContentView.swift */,
+				9CB7975C28A3804A007EB98C /* StarterView.swift */,
 				9CECED81289F9F53008DF7A2 /* LeaderBoardView.swift */,
 				9CECED7F289E5EC9008DF7A2 /* FullScreenCoverView.swift */,
-				9C7E9BC1288BC65200C0D66A /* LoadingView.swift */,
 				9C157ACF286AD51700B09F45 /* Sign In */,
 				9CEF095828813EA200F5C5F6 /* Game */,
 				9CE5F4D5286EA04E000E8351 /* Profile */,
@@ -397,8 +400,8 @@
 				9C8B009D286B358C002AC70A /* ChooseSignInMethodView.swift in Sources */,
 				9CECED82289F9F53008DF7A2 /* LeaderBoardView.swift in Sources */,
 				9CDBADF52882A397006F3C7A /* GameViewModel.swift in Sources */,
-				9C7E9BC2288BC65200C0D66A /* LoadingView.swift in Sources */,
 				9CE5F4D3286DCF25000E8351 /* PlayerViewModel.swift in Sources */,
+				9C432E1328A4FAE3001646CF /* GamingPlayer.swift in Sources */,
 				9C1548942872F230003E55A0 /* SecurityView.swift in Sources */,
 				9C36B73C286AE28F0042CE50 /* ChoosePlayerTypeView.swift in Sources */,
 				9CC824ED28780BC10048B097 /* DeleteAccountView.swift in Sources */,
@@ -409,6 +412,7 @@
 				9C36B745286AF69D0042CE50 /* View.swift in Sources */,
 				9C8D3374288994C600294D98 /* GameView.swift in Sources */,
 				9C1548902872B5D7003E55A0 /* SettingView.swift in Sources */,
+				9CB7975D28A3804A007EB98C /* StarterView.swift in Sources */,
 				9CBBE81B286ABEF80089994E /* ContentView.swift in Sources */,
 				9CEF095A28813EB900F5C5F6 /* GameLobbyView.swift in Sources */,
 				9C9007202871CFED00E66A74 /* Array.swift in Sources */,

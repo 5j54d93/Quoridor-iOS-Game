@@ -22,7 +22,7 @@ struct PrepareGameView: View {
                 HStack {
                     Button {
                         appState = .loading
-                        gameViewModel.exitRoom(player: playerViewModel.currentPlayer) { result in
+                        gameViewModel.exitRoom(id: playerViewModel.currentPlayer.id!) { result in
                             switch result {
                             case .success():
                                 appState = .null
@@ -171,7 +171,7 @@ struct PrepareGameView: View {
                     }
                 }
                 
-                Text(gameViewModel.game.joinedPlayer == nil ? "Let your friend join this game by room ID, or just start the game, we'll match a player for you." : gameViewModel.game.roomOwner?.email == playerViewModel.currentPlayer.email ? "You could start the game when another player has got ready." : gameViewModel.game.isReadyToPlay ? "Just wait for room owner to start the game." : "When you've got ready, press \"Ready to Play\" so that room owner could start the game.")
+                Text(gameViewModel.game.joinedPlayer == nil ? "Let your friend join this game by room ID, or just start the game, we'll match a player for you." : gameViewModel.game.roomOwner?.id == playerViewModel.currentPlayer.id ? "You could start the game when another player has got ready." : gameViewModel.game.isReadyToPlay ? "Just wait for room owner to start the game." : "When you've got ready, press \"Ready to Play\" so that room owner could start the game.")
                     .font(.title3)
                     .foregroundColor(.white)
                     .padding(20)
@@ -181,11 +181,11 @@ struct PrepareGameView: View {
                             .foregroundColor(gameViewModel.game.gameType.foregroundColor.opacity(0.5))
                     }
                 
-                if gameViewModel.game.roomOwner?.email == playerViewModel.currentPlayer.email {
+                if gameViewModel.game.roomOwner?.id == playerViewModel.currentPlayer.id {
                     Button {
                         if gameViewModel.game.joinedPlayer == nil {
                             appState = .matchGame
-                            gameViewModel.changeGameStateToMatch() { result in
+                            gameViewModel.toggleMatchingGameState { result in
                                 switch result {
                                 case .success():
                                     gameViewModel.findMatchGame { result in
@@ -193,10 +193,10 @@ struct PrepareGameView: View {
                                             gameViewModel.joinMatchedRoom(player: playerViewModel.currentPlayer) { result in
                                                 if result == "success" {
                                                     if gameViewModel.game.gameType == .rank {
-                                                        playerViewModel.pay200(player: gameViewModel.game.roomOwner!) { result in
+                                                        playerViewModel.pay200(id: gameViewModel.game.roomOwner!.id) { result in
                                                             switch result {
                                                             case .success():
-                                                                playerViewModel.pay200(player: gameViewModel.game.joinedPlayer!) { result in
+                                                                playerViewModel.pay200(id: gameViewModel.game.joinedPlayer!.id) { result in
                                                                     switch result {
                                                                     case .success():
                                                                         appState = .null
@@ -240,10 +240,10 @@ struct PrepareGameView: View {
                                     switch result {
                                     case .success():
                                         if gameViewModel.game.gameType == .rank {
-                                            playerViewModel.pay200(player: gameViewModel.game.roomOwner!) { result in
+                                            playerViewModel.pay200(id: gameViewModel.game.roomOwner!.id) { result in
                                                 switch result {
                                                 case .success():
-                                                    playerViewModel.pay200(player: gameViewModel.game.joinedPlayer!) { result in
+                                                    playerViewModel.pay200(id: gameViewModel.game.joinedPlayer!.id) { result in
                                                         switch result {
                                                         case .success():
                                                             appState = .null

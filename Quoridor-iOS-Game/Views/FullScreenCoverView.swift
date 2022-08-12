@@ -65,38 +65,41 @@ struct FullScreenCoverView: View {
     
     var body: some View {
         if appState != .null {
-                Color.white
-                    .opacity(0.7)
-                    .ignoresSafeArea()
-                    .onTapGesture {
-                        if [.alert, .joinGame, .gameSetting, .giveUpGame].contains(appState) {
+            Color.white
+                .opacity(0.7)
+                .ignoresSafeArea()
+                .onTapGesture {
+                    if [.alert, .joinGame, .gameSetting, .giveUpGame].contains(appState) {
+                        withAnimation {
                             appState = .null
                         }
                     }
-                
-                switch appState {
-                case .loading:
-                    VStack(spacing: 20) {
-                        ProgressView()
-                            .scaleEffect(3)
-                            .progressViewStyle(CircularProgressViewStyle(tint: .roseGold))
-                        
-                        Text("Loading...")
-                            .font(.title3)
-                            .padding(.top, 15)
-                            .foregroundColor(.roseGold)
-                    }
-                case .alert, .giveUpGame:
-                    VStack(spacing: 20) {
-                        Text(LocalizedStringKey(alertTitle))
-                            .font(.title.bold())
-                            .foregroundColor(.roseGold)
-                        
-                        Text(LocalizedStringKey(alertMessage))
-                            .foregroundColor(.roseGold)
-                            .multilineTextAlignment(.center)
-                        
-                        Button {
+                }
+            
+            switch appState {
+            case .loading:
+                VStack(spacing: 20) {
+                    ProgressView()
+                        .scaleEffect(3)
+                        .progressViewStyle(CircularProgressViewStyle(tint: .roseGold))
+                    
+                    Text("Loading...")
+                        .font(.title3)
+                        .padding(.top, 15)
+                        .foregroundColor(.roseGold)
+                }
+            case .alert, .giveUpGame:
+                VStack(spacing: 20) {
+                    Text(LocalizedStringKey(alertTitle))
+                        .font(.title.bold())
+                        .foregroundColor(.roseGold)
+                    
+                    Text(LocalizedStringKey(alertMessage))
+                        .foregroundColor(.roseGold)
+                        .multilineTextAlignment(.center)
+                    
+                    Button {
+                        withAnimation {
                             if appState == .alert {
                                 appState = .null
                             } else {
@@ -108,40 +111,42 @@ struct FullScreenCoverView: View {
                                     }
                                 }
                             }
-                        } label: {
-                            Text(appState == .alert ? "OK" : "YES")
-                                .font(.title3.bold())
-                                .foregroundColor(.white)
-                                .frame(height: 50)
-                                .frame(maxWidth: .infinity)
-                                .background {
-                                    Capsule()
-                                        .foregroundColor(.roseGold)
-                                }
                         }
-                    }
-                    .padding(20)
-                    .frame(width: geometry.size.width*0.8)
-                    .background {
-                        RoundedRectangle(cornerRadius: 5)
+                    } label: {
+                        Text(appState == .alert ? "OK" : "YES")
+                            .font(.title3.bold())
                             .foregroundColor(.white)
-                    }
-                case .joinGame:
-                    VStack(spacing: 20) {
-                        Text(LocalizedStringKey(roomId.isEmpty ? "Room ID" : roomId))
-                            .font(roomId.isEmpty ? .title : .title.bold())
-                            .foregroundColor(roomId.isEmpty ? .gray : .darkBrown)
+                            .frame(height: 50)
                             .frame(maxWidth: .infinity)
-                            .frame(height: 45)
                             .background {
-                                RoundedRectangle(cornerRadius: 5)
-                                    .stroke(Color.roseGold, lineWidth: 2)
+                                Capsule()
+                                    .foregroundColor(.roseGold)
                             }
-                        
-                        LazyVGrid(columns: Array(repeating: GridItem(spacing: 10), count: 3), spacing: 10) {
-                            ForEach(KeyboardType.allCases, id: \.self) { key in
-                                GeometryReader { geo in
-                                    Button {
+                    }
+                }
+                .padding(20)
+                .frame(width: geometry.size.width*0.8)
+                .background {
+                    RoundedRectangle(cornerRadius: 5)
+                        .foregroundColor(.white)
+                }
+            case .joinGame:
+                VStack(spacing: 20) {
+                    Text(LocalizedStringKey(roomId.isEmpty ? "Room ID" : roomId))
+                        .font(roomId.isEmpty ? .title : .title.bold())
+                        .foregroundColor(roomId.isEmpty ? .gray : .darkBrown)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 45)
+                        .background {
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(Color.roseGold, lineWidth: 2)
+                        }
+                    
+                    LazyVGrid(columns: Array(repeating: GridItem(spacing: 10), count: 3), spacing: 10) {
+                        ForEach(KeyboardType.allCases, id: \.self) { key in
+                            GeometryReader { geo in
+                                Button {
+                                    withAnimation {
                                         switch key {
                                         case .delete:
                                             roomId = roomId.dropLast().description
@@ -160,42 +165,44 @@ struct FullScreenCoverView: View {
                                         default:
                                             roomId += key.description
                                         }
-                                    } label: {
-                                        key.TextView
-                                            .font(.title.bold())
-                                            .foregroundColor(.white)
-                                            .frame(maxWidth: .infinity)
-                                            .frame(height: geo.size.width)
-                                            .background {
-                                                RoundedRectangle(cornerRadius: 5)
-                                                    .foregroundColor(.roseGold)
-                                            }
                                     }
+                                } label: {
+                                    key.TextView
+                                        .font(.title.bold())
+                                        .foregroundColor(.white)
+                                        .frame(maxWidth: .infinity)
+                                        .frame(height: geo.size.width)
+                                        .background {
+                                            RoundedRectangle(cornerRadius: 5)
+                                                .foregroundColor(.roseGold)
+                                        }
                                 }
-                                .aspectRatio(contentMode: .fit)
                             }
+                            .aspectRatio(contentMode: .fit)
                         }
                     }
-                    .padding(20)
-                    .frame(width: geometry.size.width*0.8)
-                    .background {
-                        RoundedRectangle(cornerRadius: 5)
-                            .foregroundColor(.white)
-                    }
-                case .matchGame:
-                    VStack(spacing: 20) {
-                        ProgressView()
-                            .scaleEffect(3)
-                            .progressViewStyle(CircularProgressViewStyle(tint: .roseGold))
-                        
-                        Text("We're matching a player for you now, please wait...")
-                            .foregroundColor(.roseGold)
-                            .frame(width: geometry.size.width*0.8)
-                            .multilineTextAlignment(.center)
-                            .padding(.top, 15)
-                        
-                        Button {
-                            gameViewModel.cancelMatching { result in
+                }
+                .padding(20)
+                .frame(width: geometry.size.width*0.8)
+                .background {
+                    RoundedRectangle(cornerRadius: 5)
+                        .foregroundColor(.white)
+                }
+            case .matchGame:
+                VStack(spacing: 20) {
+                    ProgressView()
+                        .scaleEffect(3)
+                        .progressViewStyle(CircularProgressViewStyle(tint: .roseGold))
+                    
+                    Text("We're matching a player for you now, please wait...")
+                        .foregroundColor(.roseGold)
+                        .frame(width: geometry.size.width*0.8)
+                        .multilineTextAlignment(.center)
+                        .padding(.top, 15)
+                    
+                    Button {
+                        withAnimation {
+                            gameViewModel.toggleMatchingGameState { result in
                                 switch result {
                                 case .success():
                                     appState = .null
@@ -205,186 +212,101 @@ struct FullScreenCoverView: View {
                                     appState = .alert
                                 }
                             }
-                        } label: {
-                            Text("CANCEL")
+                        }
+                    } label: {
+                        Text("CANCEL")
+                            .font(.title3.bold())
+                            .foregroundColor(.roseGold)
+                            .padding(.vertical, 5)
+                            .padding(.horizontal, 10)
+                            .background {
+                                Capsule()
+                                    .stroke(Color.roseGold, lineWidth: 1.5)
+                            }
+                    }
+                }
+                .onChange(of: gameViewModel.game.gameState) { gameState in
+                    if gameState == .playing {
+                        appState = .null
+                    }
+                }
+            case .gameSetting :
+                VStack(spacing: 0) {
+                    Text("Game Settings")
+                        .font(.title.bold())
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 8)
+                        .background(Color.roseGold)
+                    
+                    VStack(spacing: 20) {
+                        Toggle(isOn: $vibration) {
+                            Text("Vibrate")
                                 .font(.title3.bold())
                                 .foregroundColor(.roseGold)
-                                .padding(.vertical, 5)
-                                .padding(.horizontal, 10)
-                                .background {
-                                    Capsule()
-                                        .stroke(Color.roseGold, lineWidth: 1.5)
-                                }
                         }
-                    }
-                    .onChange(of: gameViewModel.game.gameState) { gameState in
-                        if gameState == .playing {
-                            appState = .null
-                        }
-                    }
-                case .gameSetting :
-                    VStack(spacing: 0) {
-                        Text("Game Settings")
-                            .font(.title.bold())
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 8)
-                            .background(Color.roseGold)
+                        .tint(.lightBrown)
                         
-                        VStack(spacing: 20) {
-                            Toggle(isOn: $vibration) {
-                                Text("Vibrate")
+                        VStack(spacing: 6) {
+                            HStack {
+                                Text("Background Music")
                                     .font(.title3.bold())
-                                    .foregroundColor(.roseGold)
+                                
+                                Spacer()
+                                
+                                Text(Image(systemName: backgroundMusicVolume == 0 ? "speaker.slash" : backgroundMusicVolume < 0.3 ? "speaker" : backgroundMusicVolume < 0.6 ? "speaker.wave.1" : backgroundMusicVolume < 1 ? "speaker.wave.2" : "speaker.wave.3"))
+                                    .font(.title2)
+                            }
+                            .foregroundColor(.roseGold)
+                            
+                            Slider(value: $backgroundMusicVolume, in: 0...1, step: 0.1) {
+                                Text("volume")
+                            } minimumValueLabel: {
+                                Text("Low")
+                            } maximumValueLabel: {
+                                Text("High")
                             }
                             .tint(.lightBrown)
-                            
-                            VStack(spacing: 6) {
-                                HStack {
-                                    Text("Background Music")
-                                        .font(.title3.bold())
-                                    
-                                    Spacer()
-                                    
-                                    Text(Image(systemName: backgroundMusicVolume == 0 ? "speaker.slash" : backgroundMusicVolume < 0.3 ? "speaker" : backgroundMusicVolume < 0.6 ? "speaker.wave.1" : backgroundMusicVolume < 1 ? "speaker.wave.2" : "speaker.wave.3"))
-                                        .font(.title2)
-                                }
-                                .foregroundColor(.roseGold)
-                                
-                                Slider(value: $backgroundMusicVolume, in: 0...1, step: 0.1) {
-                                    Text("volume")
-                                } minimumValueLabel: {
-                                    Text("Low")
-                                } maximumValueLabel: {
-                                    Text("High")
-                                }
-                                .tint(.lightBrown)
-                                .foregroundColor(.roseGold)
-                                .onChange(of: backgroundMusicVolume) { newVolume in
-                                    AVPlayer.bgQueuePlayer.volume = Float(newVolume)
-                                }
+                            .foregroundColor(.roseGold)
+                            .onChange(of: backgroundMusicVolume) { newVolume in
+                                AVPlayer.bgQueuePlayer.volume = Float(newVolume)
                             }
-                            
-                            VStack(spacing: 6) {
-                                HStack {
-                                    Text("Sound Effect")
-                                        .font(.title3.bold())
+                        }
+                        
+                        VStack(spacing: 6) {
+                            HStack {
+                                Text("Sound Effect")
+                                    .font(.title3.bold())
                                 
-                                    Spacer()
-                                    
-                                    Text(Image(systemName: soundEffectVolume == 0 ? "speaker.slash" : soundEffectVolume < 0.3 ? "speaker" : soundEffectVolume < 0.6 ? "speaker.wave.1" : soundEffectVolume < 1 ? "speaker.wave.2" : "speaker.wave.3"))
-                                        .font(.title2)
-                                }
-                                .foregroundColor(.roseGold)
+                                Spacer()
                                 
-                                Slider(value: $soundEffectVolume, in: 0...1, step: 0.1) {
-                                    Text("volume")
-                                } minimumValueLabel: {
-                                    Text("Low")
-                                } maximumValueLabel: {
-                                    Text("High")
-                                }
-                                .tint(.lightBrown)
-                                .foregroundColor(.roseGold)
-                                .onChange(of: soundEffectVolume) { newVolume in
-                                    gameViewModel.setVolume(volume: Float(newVolume))
-                                }
+                                Text(Image(systemName: soundEffectVolume == 0 ? "speaker.slash" : soundEffectVolume < 0.3 ? "speaker" : soundEffectVolume < 0.6 ? "speaker.wave.1" : soundEffectVolume < 1 ? "speaker.wave.2" : "speaker.wave.3"))
+                                    .font(.title2)
                             }
+                            .foregroundColor(.roseGold)
                             
-                            Button {
+                            Slider(value: $soundEffectVolume, in: 0...1, step: 0.1) {
+                                Text("volume")
+                            } minimumValueLabel: {
+                                Text("Low")
+                            } maximumValueLabel: {
+                                Text("High")
+                            }
+                            .tint(.lightBrown)
+                            .foregroundColor(.roseGold)
+                            .onChange(of: soundEffectVolume) { newVolume in
+                                gameViewModel.setVolume(volume: Float(newVolume))
+                            }
+                        }
+                        
+                        Button {
+                            withAnimation {
                                 alertTitle = "Give Up?"
                                 alertMessage = "You're going to give up this game"
                                 appState = .giveUpGame
-                            } label: {
-                                Text("Give Up")
-                                    .font(.title3.bold())
-                                    .foregroundColor(.white)
-                                    .frame(height: 50)
-                                    .frame(maxWidth: .infinity)
-                                    .background {
-                                        Capsule()
-                                            .foregroundColor(.roseGold)
-                                    }
-                            }
-                        }
-                        .padding(20)
-                    }
-                    .frame(width: geometry.size.width*0.8)
-                    .clipShape(RoundedRectangle(cornerRadius: 5))
-                    .background {
-                        RoundedRectangle(cornerRadius: 5)
-                            .foregroundColor(.white)
-                    }
-                case .endGame:
-                    VStack(spacing: 20) {
-                        Text(gameViewModel.game.winner?.email == playerViewModel.currentPlayer.email ? "YOU WIN" : "YOU LOSE")
-                            .font(.title.bold())
-                            .foregroundColor(.roseGold)
-                        
-                        if gameViewModel.game.gameType == .rank {
-                            VStack(spacing: 10) {
-                                HStack(spacing: 6) {
-                                    Image(systemName: "dollarsign.circle.fill")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 18, height: 18)
-                                        .background(Color.white.clipShape(Circle()))
-                                    
-                                    Text("\(gameViewModel.game.winner?.email == playerViewModel.currentPlayer.email ? playerViewModel.currentPlayer.money - 200 : playerViewModel.currentPlayer.money + 200)")
-                                    
-                                    Text(Image(systemName: "line.diagonal.arrow"))
-                                        .rotationEffect(.degrees(45))
-                                        .padding(.horizontal, 6)
-                                    
-                                    Image(systemName: "dollarsign.circle.fill")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 18, height: 18)
-                                        .background(Color.white.clipShape(Circle()))
-                                    
-                                    Text("\(playerViewModel.currentPlayer.money)")
-                                }
-                                .foregroundColor(.roseGold)
-                                
-                                HStack(spacing: 6) {
-                                    Image(systemName: "star.circle.fill")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 18, height: 18)
-                                        .background(Color.white.clipShape(Circle()))
-                                    
-                                    Text("\(playerViewModel.currentPlayer.star == 0 ? 0 : gameViewModel.game.winner?.email == playerViewModel.currentPlayer.email ? playerViewModel.currentPlayer.star - 1 : playerViewModel.currentPlayer.star + 1)")
-                                    
-                                    Text(Image(systemName: "line.diagonal.arrow"))
-                                        .rotationEffect(.degrees(45))
-                                        .padding(.horizontal, 6)
-                                    
-                                    Image(systemName: "star.circle.fill")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 18, height: 18)
-                                        .background(Color.white.clipShape(Circle()))
-                                    
-                                    Text("\(playerViewModel.currentPlayer.star)")
-                                }
-                                .foregroundColor(.roseGold)
-                            }
-                        }
-                        
-                        Button {
-                            appState = .loading
-                            gameViewModel.exitGame(player: playerViewModel.currentPlayer) { result in
-                                switch result {
-                                case .success():
-                                    appState = .null
-                                case .failure(let error):
-                                    alertTitle = "ERROR"
-                                    alertMessage = error.localizedDescription
-                                    appState = .alert
-                                }
                             }
                         } label: {
-                            Text("OK")
+                            Text("Give Up")
                                 .font(.title3.bold())
                                 .foregroundColor(.white)
                                 .frame(height: 50)
@@ -396,20 +318,110 @@ struct FullScreenCoverView: View {
                         }
                     }
                     .padding(20)
-                    .frame(width: geometry.size.width*0.8)
-                    .background {
-                        RoundedRectangle(cornerRadius: 5)
-                            .foregroundColor(.white)
-                    }
-                    .onAppear {
-                        if vibration {
-                            let generator = UINotificationFeedbackGenerator()
-                            generator.notificationOccurred(gameViewModel.game.winner?.email == playerViewModel.currentPlayer.email ? .success : .error)
+                }
+                .frame(width: geometry.size.width*0.8)
+                .clipShape(RoundedRectangle(cornerRadius: 5))
+                .background {
+                    RoundedRectangle(cornerRadius: 5)
+                        .foregroundColor(.white)
+                }
+            case .endGame:
+                VStack(spacing: 20) {
+                    Text(gameViewModel.game.winner == playerViewModel.currentPlayer.id ? "YOU WIN" : "YOU LOSE")
+                        .font(.title.bold())
+                        .foregroundColor(.roseGold)
+                    
+                    if gameViewModel.game.gameType == .rank {
+                        VStack(spacing: 10) {
+                            HStack(spacing: 6) {
+                                Image(systemName: "dollarsign.circle.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 18, height: 18)
+                                    .background(Color.white.clipShape(Circle()))
+                                
+                                Text("\(gameViewModel.game.winner == playerViewModel.currentPlayer.id ? playerViewModel.currentPlayer.money - 200 : playerViewModel.currentPlayer.money + 200)")
+                                
+                                Text(Image(systemName: "line.diagonal.arrow"))
+                                    .rotationEffect(.degrees(45))
+                                    .padding(.horizontal, 6)
+                                
+                                Image(systemName: "dollarsign.circle.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 18, height: 18)
+                                    .background(Color.white.clipShape(Circle()))
+                                
+                                Text("\(playerViewModel.currentPlayer.money)")
+                            }
+                            .foregroundColor(.roseGold)
+                            
+                            HStack(spacing: 6) {
+                                Image(systemName: "star.circle.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 18, height: 18)
+                                    .background(Color.white.clipShape(Circle()))
+                                
+                                Text("\(playerViewModel.currentPlayer.star == 0 ? 0 : gameViewModel.game.winner == playerViewModel.currentPlayer.id ? playerViewModel.currentPlayer.star - 1 : playerViewModel.currentPlayer.star + 1)")
+                                
+                                Text(Image(systemName: "line.diagonal.arrow"))
+                                    .rotationEffect(.degrees(45))
+                                    .padding(.horizontal, 6)
+                                
+                                Image(systemName: "star.circle.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 18, height: 18)
+                                    .background(Color.white.clipShape(Circle()))
+                                
+                                Text("\(playerViewModel.currentPlayer.star)")
+                            }
+                            .foregroundColor(.roseGold)
                         }
                     }
-                default:
-                    EmptyView()
+                    
+                    Button {
+                        withAnimation {
+                            appState = .loading
+                            gameViewModel.exitGame { result in
+                                switch result {
+                                case .success():
+                                    appState = .null
+                                case .failure(let error):
+                                    alertTitle = "ERROR"
+                                    alertMessage = error.localizedDescription
+                                    appState = .alert
+                                }
+                            }
+                        }
+                    } label: {
+                        Text("OK")
+                            .font(.title3.bold())
+                            .foregroundColor(.white)
+                            .frame(height: 50)
+                            .frame(maxWidth: .infinity)
+                            .background {
+                                Capsule()
+                                    .foregroundColor(.roseGold)
+                            }
+                    }
                 }
+                .padding(20)
+                .frame(width: geometry.size.width*0.8)
+                .background {
+                    RoundedRectangle(cornerRadius: 5)
+                        .foregroundColor(.white)
+                }
+                .onAppear {
+                    if vibration {
+                        let generator = UINotificationFeedbackGenerator()
+                        generator.notificationOccurred(gameViewModel.game.winner == playerViewModel.currentPlayer.id ? .success : .error)
+                    }
+                }
+            default:
+                EmptyView()
+            }
         }
     }
 }

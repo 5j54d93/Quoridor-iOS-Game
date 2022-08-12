@@ -12,6 +12,10 @@ struct ProfileView: View {
     @ObservedObject var authViewModel: AuthViewModel
     @ObservedObject var playerViewModel: PlayerViewModel
     
+    @Binding var appState: ContentView.AppStateType
+    @Binding var alertTitle: String
+    @Binding var alertMessage: String
+    
     @State private var isEditProfile = false
     
     let geometry: GeometryProxy
@@ -153,7 +157,7 @@ struct ProfileView: View {
         }
         .padding(.vertical)
         .sheet(isPresented: $isEditProfile) {
-            ProfileEditView(authViewModel: authViewModel, playerViewModel: playerViewModel, isEditProfile: $isEditProfile)
+            ProfileEditView(authViewModel: authViewModel, playerViewModel: playerViewModel, isEditProfile: $isEditProfile, appState: $appState, alertTitle: $alertTitle, alertMessage: $alertMessage)
         }
     }
 }

@@ -14,9 +14,9 @@ struct ChooseSignInMethodView: View {
     
     @Binding var playerType: SignInContentView.PlayerType
     @Binding var isSignInWithEmail: Bool
-    @Binding var isLoading: Bool
-    @Binding var errorMessage: String
-    @Binding var isErrorOccured: Bool
+    @Binding var appState: ContentView.AppStateType
+    @Binding var alertTitle: String
+    @Binding var alertMessage: String
     
     let geometry: GeometryProxy
     
@@ -25,7 +25,7 @@ struct ChooseSignInMethodView: View {
             Spacer()
                 
             Button {
-                isLoading = true
+                appState = .loading
                 authViewModel.signInWithFacebook() { result in
                     if result == "success" {
                         if let user = authViewModel.currentUser {
@@ -33,16 +33,18 @@ struct ChooseSignInMethodView: View {
                                 if case true = result {
                                     playerViewModel.addPlayer(id: user.uid, email: user.providerData[0].email, name: user.providerData[0].displayName, avatar: user.providerData[0].photoURL) { result in
                                         if case .failure(let error) = result {
-                                            errorMessage = error.localizedDescription
-                                            isErrorOccured = true
+                                            alertTitle = "ERROR"
+                                            alertMessage = error.localizedDescription
+                                            appState = .alert
                                         }
                                     }
                                 }
                             }
                         }
                     } else {
-                        errorMessage = result
-                        isErrorOccured = true
+                        alertTitle = "ERROR"
+                        alertMessage = result
+                        appState = .alert
                     }
                 }
             } label: {
@@ -67,7 +69,7 @@ struct ChooseSignInMethodView: View {
             }
             
             Button {
-                isLoading = true
+                appState = .loading
                 authViewModel.signInWithGoogle() { result in
                     switch result {
                     case .success():
@@ -76,16 +78,18 @@ struct ChooseSignInMethodView: View {
                                 if case true = result {
                                     playerViewModel.addPlayer(id: user.uid, email: user.providerData[0].email, name: user.providerData[0].displayName, avatar: user.providerData[0].photoURL) { result in
                                         if case .failure(let error) = result {
-                                            errorMessage = error.localizedDescription
-                                            isErrorOccured = true
+                                            alertTitle = "ERROR"
+                                            alertMessage = error.localizedDescription
+                                            appState = .alert
                                         }
                                     }
                                 }
                             }
                         }
                     case .failure(let error):
-                        errorMessage = error.localizedDescription
-                        isErrorOccured = true
+                        alertTitle = "ERROR"
+                        alertMessage = error.localizedDescription
+                        appState = .alert
                     }
                 }
             } label: {
@@ -110,7 +114,7 @@ struct ChooseSignInMethodView: View {
             }
             
             Button {
-                isLoading = true
+                appState = .loading
                 authViewModel.signInWithTwitter() { result in
                     switch result {
                     case .success():
@@ -119,16 +123,18 @@ struct ChooseSignInMethodView: View {
                                 if case true = result {
                                     playerViewModel.addPlayer(id: user.uid, email: user.providerData[0].email, name: user.providerData[0].displayName, avatar: user.providerData[0].photoURL) { result in
                                         if case .failure(let error) = result {
-                                            errorMessage = error.localizedDescription
-                                            isErrorOccured = true
+                                            alertTitle = "ERROR"
+                                            alertMessage = error.localizedDescription
+                                            appState = .alert
                                         }
                                     }
                                 }
                             }
                         }
                     case .failure(let error):
-                        errorMessage = error.localizedDescription
-                        isErrorOccured = true
+                        alertTitle = "ERROR"
+                        alertMessage = error.localizedDescription
+                        appState = .alert
                     }
                 }
             } label: {

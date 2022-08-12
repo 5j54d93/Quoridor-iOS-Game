@@ -11,7 +11,7 @@
 "%lld years old" = "%lld 歲";
 
 /* No comment provided by engineer. */
-"You get $%lld money." = "獲得 $%lld 金幣";
+"Player : %@" = "玩家 : %@";
 
 /* No comment provided by engineer. */
 "About" = "關於";
@@ -330,6 +330,9 @@
 
 /* No comment provided by engineer. */
 "Taurus" = "金牛";
+
+/* No comment provided by engineer. */
+"Touch screen to start" = "點擊螢幕開始";
 
 /* No comment provided by engineer. */
 "Virgo" = "處女";
