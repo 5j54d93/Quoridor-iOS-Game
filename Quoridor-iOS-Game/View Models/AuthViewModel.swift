@@ -94,16 +94,6 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-    func sendEmailVerification(completion: @escaping (Result<Void, Error>) -> Void) {
-        Auth.auth().currentUser?.sendEmailVerification { error in
-            guard let error = error else {
-                completion(.success(()))
-                return
-            }
-            completion(.failure(error))
-        }
-    }
-    
     func signUpWithEmail(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             guard authResult?.user != nil, error == nil else {

@@ -24,9 +24,7 @@ struct ContentView: View {
             }
         }
     }
-    enum AppStateType {
-        case null, alert, loading, joinGame, matchGame, gameSetting, giveUpGame, endGame
-    }
+    enum AppStateType { case null, alert, loading, joinGame, matchGame, gameSetting, giveUpGame, endGame }
     
     @State private var appState: AppStateType = .null
     @State private var alertTitle = ""
@@ -38,7 +36,7 @@ struct ContentView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            Group {
+            ZStack {
                 if authViewModel.currentUser != nil {
                     if hadTouchedScreen {
                         VStack {
@@ -117,12 +115,6 @@ struct ContentView: View {
                                     
                                     HStack(spacing: 0) {
                                         ForEach(TabType.allCases, id: \.self) { tabType in
-                                            if tabType == .game {
-                                                Divider()
-                                                    .frame(width: 1.5)
-                                                    .overlay(Color.roseGold)
-                                            }
-                                            
                                             Text(Image(systemName: "\(tabType.systemName)\(selectTab == tabType ? ".fill" : "")"))
                                                 .font(selectTab == tabType ? .title.bold() : .title2)
                                                 .foregroundColor(selectTab == tabType ? .white : .roseGold)
@@ -131,21 +123,15 @@ struct ContentView: View {
                                                 .background {
                                                     Rectangle()
                                                         .foregroundColor(selectTab == tabType ? .roseGold : .backgroundColor)
+                                                        .border(width: tabType == .game ? 1 : 0, edges: [.leading, .trailing], color: .roseGold)
                                                 }
                                                 .onTapGesture {
                                                     withAnimation {
                                                         selectTab = tabType
                                                     }
                                                 }
-                                            
-                                            if tabType == .game {
-                                                Divider()
-                                                    .frame(width: 1.5)
-                                                    .overlay(Color.roseGold)
-                                            }
                                         }
                                     }
-                                    .frame(height: 48)
                                     .cornerRadius(5)
                                     .background {
                                         RoundedRectangle(cornerRadius: 5)
@@ -200,8 +186,7 @@ struct ContentView: View {
                 } else {
                     SignInContentView(authViewModel: authViewModel, playerViewModel: playerViewModel, appState: $appState, alertTitle: $alertTitle, alertMessage: $alertMessage)
                 }
-            }
-            .overlay {
+                
                 FullScreenCoverView(authViewModel: authViewModel, playerViewModel: playerViewModel, gameViewModel: gameViewModel, appState: $appState, alertTitle: $alertTitle, alertMessage: $alertMessage, geometry: geometry)
             }
         }

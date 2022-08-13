@@ -22,7 +22,6 @@ struct StarterView: View {
         VStack {
             Text("Quoridor")
                 .font(.largeTitle.bold())
-                .foregroundColor(.white)
             
             Spacer()
                 .frame(height: geometry.size.height*0.33)
@@ -37,7 +36,6 @@ struct StarterView: View {
             
             Text("Player : \(authViewModel.currentUser?.displayName ?? "")")
                 .font(.title2.bold())
-                .foregroundColor(.white)
             
             Divider()
                 .frame(width: geometry.size.width*0.45, height: 1)
@@ -67,8 +65,8 @@ struct StarterView: View {
                     .frame(width: geometry.size.width*0.15)
             }
             .font(.caption2)
-            .foregroundColor(.white)
         }
+        .foregroundColor(.white)
         .background(Color.darkBrown)
         .onTapGesture {
             if let currentPlayer = authViewModel.currentUser {

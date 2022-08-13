@@ -512,6 +512,36 @@ struct GameView: View {
             }
             .rotationEffect(.degrees(gameViewModel.game.roomOwner?.id == playerViewModel.currentPlayer.id ? 0 : 180))
             .disabled(gameViewModel.game.turn != playerViewModel.currentPlayer.id)
+            .overlay(alignment: .bottomTrailing) {
+                if isBuildingWall {
+                    Button {
+                        appState = .loading
+                        gameViewModel.buildWall(indexes: wallIndexes) { result in
+                            switch result {
+                            case .success():
+                                appState = .null
+                                wallIndexes = []
+                                isBuildingWall = false
+                            case .failure(let error):
+                                alertTitle = "ERROR"
+                                alertMessage = error.localizedDescription
+                                appState = .alert
+                            }
+                        }
+                    } label: {
+                        Text("Build Wall")
+                            .font(.title3.bold())
+                            .foregroundColor(.lightBrown)
+                            .padding(.vertical, 4)
+                            .padding(.horizontal, 15)
+                            .background {
+                                Capsule()
+                                    .stroke(Color.lightBrown, lineWidth: 3)
+                            }
+                    }
+                    .offset(y: 45)
+                }
+            }
             
             Spacer()
             
@@ -559,38 +589,52 @@ struct GameView: View {
                                 , lineWidth: 3)
                         }
                 }
+                .frame(height: 45)
                 
                 Spacer()
                 
-                if isBuildingWall {
-                    Button {
-                        appState = .loading
-                        gameViewModel.buildWall(indexes: wallIndexes) { result in
-                            switch result {
-                            case .success():
-                                appState = .null
-                                wallIndexes = []
-                                isBuildingWall = false
-                            case .failure(let error):
-                                alertTitle = "ERROR"
-                                alertMessage = error.localizedDescription
-                                appState = .alert
+                Text(gameViewModel.game.turn == playerViewModel.currentPlayer.id ? "Your Turn : \(gameViewModel.gameTimeLast)" : "Opponent's Turn")
+                    .font(.title3)
+                    .onAppear {
+                        if gameViewModel.game.turn == playerViewModel.currentPlayer.id {
+                            gameViewModel.timerStart { result in
+                                if case .failure(let error) = result {
+                                    alertTitle = "ERROR"
+                                    alertMessage = error.localizedDescription
+                                    appState = .alert
+                                }
                             }
                         }
-                    } label: {
-                        Text("Build Wall")
-                            .font(.title3.bold())
-                            .foregroundColor(.lightBrown)
-                            .padding(.vertical, 4)
-                            .padding(.horizontal, 15)
-                            .background {
-                                Capsule()
-                                    .stroke(Color.lightBrown, lineWidth: 3)
-                            }
                     }
-                }
+                    .onChange(of: gameViewModel.game.turn) { id in
+                        if id == playerViewModel.currentPlayer.id {
+                            gameViewModel.timerStart { result in
+                                if case .failure(let error) = result {
+                                    alertTitle = "ERROR"
+                                    alertMessage = error.localizedDescription
+                                    appState = .alert
+                                }
+                            }
+                        } else {
+                            wallIndexes = []
+                            isBuildingWall = false
+                            currentIndex = -1
+                            nextMoves = []
+                            isMovingChessman = false
+                            gameViewModel.timerStop()
+                        }
+                    }
+                    .onChange(of: gameViewModel.game.gameState) { newGameState in
+                        if newGameState == .end {
+                            wallIndexes = []
+                            isBuildingWall = false
+                            currentIndex = -1
+                            nextMoves = []
+                            isMovingChessman = false
+                            gameViewModel.timerStop()
+                        }
+                    }
             }
-            .frame(height: 45)
         }
         .background {
             Color.backgroundColor

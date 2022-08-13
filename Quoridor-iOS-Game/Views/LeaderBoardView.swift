@@ -36,33 +36,19 @@ struct LeaderBoardView: View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
                 ForEach(LeaderBoardType.allCases, id: \.self) { leaderBoardType in
-                    if leaderBoardType == .winRate {
-                        Divider()
-                            .frame(height: 1.5)
-                            .overlay(Color.roseGold)
-                    }
-                    
-                    Button {
-                        withAnimation {
+                    Text(LocalizedStringKey(leaderBoardType.description))
+                        .font(selectLeaderBoardType == leaderBoardType ?  .title2.bold() : .title2)
+                        .padding(.vertical, 8)
+                        .frame(maxWidth: .infinity)
+                        .background {
+                            Rectangle()
+                                .foregroundColor(selectLeaderBoardType == leaderBoardType ? .roseGold : .earthyGold)
+                                .border(width: leaderBoardType == .winRate ? 1 : 0, edges: [.leading, .trailing], color: .backgroundColor)
+                        }
+                        .onTapGesture {
                             selectLeaderBoardType = leaderBoardType
                             playerViewModel.fetchPlayers(sortType: selectLeaderBoardType.variableName)
                         }
-                    } label: {
-                        Text(LocalizedStringKey(leaderBoardType.description))
-                            .font(.title2.bold())
-                            .padding(.vertical, 8)
-                            .frame(maxWidth: .infinity)
-                            .background {
-                                Rectangle()
-                                    .foregroundColor(selectLeaderBoardType == leaderBoardType ? .roseGold : .earthyGold)
-                            }
-                    }
-                    
-                    if leaderBoardType == .winRate {
-                        Divider()
-                            .frame(height: 1.5)
-                            .overlay(Color.roseGold)
-                    }
                 }
             }
             .cornerRadius(5)
@@ -116,9 +102,8 @@ struct LeaderBoardView: View {
                 }
             }
             .listStyle(.inset)
-            .padding(.horizontal, -25)
             .padding(.top, 10)
-            .background(Color.clear)
+            .padding(.horizontal, -25)
             .onAppear {
                 UITableView.appearance().backgroundColor = .clear
                 UIRefreshControl.appearance().tintColor = UIColor.white

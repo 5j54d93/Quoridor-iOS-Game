@@ -16,10 +16,13 @@ class GameViewModel: ObservableObject {
     @AppStorage("soundEffectVolume") var soundEffectVolume = 0.5
     
     @Published var game = Game()
+    @Published var gameTimeLast = 40
     
     var listener: ListenerRegistration?
     var buildWallPlayer: AVPlayer { AVPlayer.buildWallPlayer }
     var moveChessmanPlayer: AVPlayer { AVPlayer.moveChessmanPlayer }
+    
+    private var timer: Timer?
     
     let db = Firestore.firestore()
     
@@ -356,5 +359,41 @@ class GameViewModel: ObservableObject {
     func setVolume(volume: Float) {
         self.moveChessmanPlayer.volume = volume
         self.buildWallPlayer.volume = volume
+    }
+    
+    func timerStart(completion: @escaping (Result<Void, Error>) -> Void) {
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            self.gameTimeLast -= 1
+            if(self.gameTimeLast == 0) {
+                self.timer?.invalidate()
+                self.timer = nil
+                guard let roomId = self.game.id else { return }
+                let documentReference = self.db.collection("games").document(roomId)
+                documentReference.getDocument { document, error in
+                    guard let error = error else {
+                        guard let document = document, document.exists, var game = try? document.data(as: Game.self) else { return }
+                        if game.turn == game.roomOwner?.id {
+                            game.turn = game.joinedPlayer?.id
+                        } else {
+                            game.turn = game.roomOwner?.id
+                        }
+                        do {
+                            try documentReference.setData(from: game)
+                            completion(.success(()))
+                        } catch {
+                            completion(.failure(error))
+                        }
+                        return
+                    }
+                    completion(.failure(error))
+                }
+                self.gameTimeLast = 40
+            }
+        }
+    }
+    
+    func timerStop() {
+        timer?.invalidate()
+        gameTimeLast = 40
     }
 }

@@ -194,7 +194,7 @@ struct FullScreenCoverView: View {
                         .scaleEffect(3)
                         .progressViewStyle(CircularProgressViewStyle(tint: .roseGold))
                     
-                    Text("We're matching a player for you now, please wait...")
+                    Text("We're matching a player for you, please wait...")
                         .foregroundColor(.roseGold)
                         .frame(width: geometry.size.width*0.8)
                         .multilineTextAlignment(.center)
@@ -354,7 +354,6 @@ struct FullScreenCoverView: View {
                                 
                                 Text("\(playerViewModel.currentPlayer.money)")
                             }
-                            .foregroundColor(.roseGold)
                             
                             HStack(spacing: 6) {
                                 Image(systemName: "star.circle.fill")
@@ -377,8 +376,8 @@ struct FullScreenCoverView: View {
                                 
                                 Text("\(playerViewModel.currentPlayer.star)")
                             }
-                            .foregroundColor(.roseGold)
                         }
+                        .foregroundColor(.roseGold)
                     }
                     
                     Button {

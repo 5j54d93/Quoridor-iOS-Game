@@ -14,6 +14,12 @@
 "Player : %@" = "玩家 : %@";
 
 /* No comment provided by engineer. */
+"Your Turn : %lld" = "你的回合 : %lld";
+
+/* No comment provided by engineer. */
+"Opponent's Turn" = "輪到對手";
+
+/* No comment provided by engineer. */
 "About" = "關於";
 
 /* No comment provided by engineer. */
@@ -350,7 +356,7 @@
 "Watch Video" = "觀看影片";
 
 /* No comment provided by engineer. */
-"We're matching a player for you now, please wait..." = "我們正在幫您配對玩家，請稍候⋯";
+"We're matching a player for you, please wait..." = "我們正在幫您配對玩家，請稍候⋯";
 
 /* No comment provided by engineer. */
 "When you've got ready, press \"Ready to Play\" so that room owner could start the game." = "當您準備好了，就可以按下「準備好開始遊戲」，並等待房主開始遊戲。";

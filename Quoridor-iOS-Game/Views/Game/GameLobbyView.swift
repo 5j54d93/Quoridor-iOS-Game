@@ -39,19 +39,11 @@ struct GameLobbyView: View {
                     }
                 } label: {
                     HStack {
-                        if playerViewModel.currentPlayer.played != 0 && playerViewModel.currentPlayer.played % 4 == 0 && !playerViewModel.currentPlayer.haveGottenReward {
-                            Image(systemName: "gift.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 50, height: 50)
-                                .padding(.trailing, 25)
-                        } else {
-                            Image(systemName: "gift")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 50, height: 50)
-                                .padding(.trailing, 25)
-                        }
+                        Image(systemName: playerViewModel.currentPlayer.played != 0 && playerViewModel.currentPlayer.played % 4 == 0 && !playerViewModel.currentPlayer.haveGottenReward ? "gift.fill" : "gift")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 50, height: 50)
+                            .padding(.trailing, 25)
                         
                         VStack(alignment: .leading) {
                             Text("Game Reward")
@@ -73,7 +65,7 @@ struct GameLobbyView: View {
                             }
                             .frame(height: 8)
                         }
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .frame(maxWidth: .infinity)
                     }
                     .padding(20)
                     .background {
@@ -98,19 +90,17 @@ struct GameLobbyView: View {
                 }
                 .overlay(alignment: .topTrailing) {
                     Button {
-                        alertTitle = "Hint"
-                        alertMessage = "You can get random money from $1 to $200 every 4 games."
-                        appState = .alert
+                        withAnimation {
+                            alertTitle = "Hint"
+                            alertMessage = "You can get random money from $1 to $200 every 4 games."
+                            appState = .alert
+                        }
                     } label: {
                         Text(Image(systemName: "questionmark.circle"))
                             .font(.title2.bold())
-                            .padding(10)
+                            .padding([.top, .trailing], 10)
                     }
                 }
-                
-                Divider()
-                    .frame(height: 1)
-                    .overlay(Color.white.opacity(0.33))
                 
                 Button {
                     withAnimation {
@@ -154,12 +144,10 @@ struct GameLobbyView: View {
                     }
                     .padding(30)
                     .background {
-                        Rectangle()
+                        RoundedRectangle(cornerRadius: 5)
                             .foregroundColor(.roseGold)
-                            .cornerRadius(5, corners: [.topRight])
                     }
                 }
-                .cornerRadius(5)
                 
                 Button {
                     withAnimation {
@@ -203,16 +191,10 @@ struct GameLobbyView: View {
                     }
                     .padding(30)
                     .background {
-                        Rectangle()
+                        RoundedRectangle(cornerRadius: 5)
                             .foregroundColor(.earthyGold)
-                            .cornerRadius(5, corners: [.topRight])
                     }
                 }
-                .cornerRadius(5)
-                
-                Divider()
-                    .frame(height: 1)
-                    .overlay(Color.white.opacity(0.33))
                 
                 Button {
                     withAnimation {
@@ -223,7 +205,7 @@ struct GameLobbyView: View {
                         Image(systemName: "person.crop.circle.badge.plus")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 50, height: 50)
+                            .frame(width: 60, height: 60)
                             .padding(.trailing, 25)
                         
                         VStack(alignment: .leading, spacing: 5) {
@@ -234,7 +216,7 @@ struct GameLobbyView: View {
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    .padding(20)
+                    .padding(30)
                     .background {
                         RoundedRectangle(cornerRadius: 5)
                             .foregroundColor(.middleBrown)
@@ -248,7 +230,7 @@ struct GameLobbyView: View {
                     } label: {
                         Text(Image(systemName: "questionmark.circle"))
                             .font(.title2.bold())
-                            .padding(10)
+                            .padding([.top, .trailing], 10)
                     }
                 }
                 

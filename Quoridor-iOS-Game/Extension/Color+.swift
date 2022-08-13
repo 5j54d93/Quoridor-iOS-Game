@@ -1,5 +1,5 @@
 //
-//  Color.swift
+//  Color+.swift
 //  Quoridor-iOS-Game
 //
 //  Created by 莊智凱 on 2022/7/1.
