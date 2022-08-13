@@ -593,11 +593,11 @@ struct GameView: View {
                 
                 Spacer()
                 
-                Text(gameViewModel.game.turn == playerViewModel.currentPlayer.id ? "Your Turn : \(gameViewModel.gameTimeLast)" : "Opponent's Turn")
+                Text(gameViewModel.game.turn == playerViewModel.currentPlayer.id ? "Your Turn : \(gameViewModel.gameTimeLast) s" : "Opponent's Turn")
                     .font(.title3)
                     .onAppear {
                         if gameViewModel.game.turn == playerViewModel.currentPlayer.id {
-                            gameViewModel.timerStart { result in
+                            gameViewModel.timerStart(player: playerViewModel.currentPlayer) { result in
                                 if case .failure(let error) = result {
                                     alertTitle = "ERROR"
                                     alertMessage = error.localizedDescription
@@ -608,7 +608,7 @@ struct GameView: View {
                     }
                     .onChange(of: gameViewModel.game.turn) { id in
                         if id == playerViewModel.currentPlayer.id {
-                            gameViewModel.timerStart { result in
+                            gameViewModel.timerStart(player: playerViewModel.currentPlayer) { result in
                                 if case .failure(let error) = result {
                                     alertTitle = "ERROR"
                                     alertMessage = error.localizedDescription
@@ -621,7 +621,7 @@ struct GameView: View {
                             currentIndex = -1
                             nextMoves = []
                             isMovingChessman = false
-                            gameViewModel.timerStop()
+                            gameViewModel.timerReset()
                         }
                     }
                     .onChange(of: gameViewModel.game.gameState) { newGameState in
@@ -631,7 +631,7 @@ struct GameView: View {
                             currentIndex = -1
                             nextMoves = []
                             isMovingChessman = false
-                            gameViewModel.timerStop()
+                            gameViewModel.timerReset()
                         }
                     }
             }

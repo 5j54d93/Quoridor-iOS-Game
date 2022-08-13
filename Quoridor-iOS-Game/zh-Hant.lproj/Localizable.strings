@@ -14,7 +14,7 @@
 "Player : %@" = "玩家 : %@";
 
 /* No comment provided by engineer. */
-"Your Turn : %lld" = "你的回合 : %lld";
+"Your Turn : %lld s" = "你的回合 : %lld 秒";
 
 /* No comment provided by engineer. */
 "Opponent's Turn" = "輪到對手";
@@ -399,4 +399,3 @@
 
 /* No comment provided by engineer. */
 "Zodiac Sign" = "星座";
-
