@@ -14,6 +14,7 @@ struct SettingView: View {
     @ObservedObject var gameViewModel: GameViewModel
     
     @Binding var isShowSettings: Bool
+    @Binding var hadTouchedScreen: Bool
     @Binding var appState: ContentView.AppStateType
     @Binding var alertTitle: String
     @Binding var alertMessage: String
@@ -143,6 +144,7 @@ struct SettingView: View {
                                         case .success():
                                             appState = .null
                                             isShowSettings = false
+                                            hadTouchedScreen = false
                                         case .failure(let error):
                                             alertTitle = "ERROR"
                                             alertMessage = error.localizedDescription

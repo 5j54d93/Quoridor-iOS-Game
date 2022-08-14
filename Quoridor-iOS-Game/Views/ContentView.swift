@@ -177,7 +177,7 @@ struct ContentView: View {
                         .background(Color.backgroundColor)
                         .overlay {
                             if isShowSettings {
-                                SettingView(authViewModel: authViewModel, playerViewModel: playerViewModel, gameViewModel: gameViewModel, isShowSettings: $isShowSettings, appState: $appState, alertTitle: $alertTitle, alertMessage: $alertMessage)
+                                SettingView(authViewModel: authViewModel, playerViewModel: playerViewModel, gameViewModel: gameViewModel, isShowSettings: $isShowSettings, hadTouchedScreen: $hadTouchedScreen, appState: $appState, alertTitle: $alertTitle, alertMessage: $alertMessage)
                             }
                         }
                     } else {
