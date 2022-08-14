@@ -39,6 +39,7 @@ struct ChooseSignInMethodView: View {
                                         }
                                     }
                                 }
+                                appState = .null
                             }
                         }
                     } else {
@@ -73,6 +74,7 @@ struct ChooseSignInMethodView: View {
                 authViewModel.signInWithGoogle() { result in
                     switch result {
                     case .success():
+                        appState = .null
                         if let user = authViewModel.currentUser {
                             playerViewModel.isNewPlayer(email: user.providerData[0].email!) { result in
                                 if case true = result {
@@ -118,6 +120,7 @@ struct ChooseSignInMethodView: View {
                 authViewModel.signInWithTwitter() { result in
                     switch result {
                     case .success():
+                        appState = .null
                         if let user = authViewModel.currentUser {
                             playerViewModel.isNewPlayer(email: user.providerData[0].email!) { result in
                                 if case true = result {

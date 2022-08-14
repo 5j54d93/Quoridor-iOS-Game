@@ -145,6 +145,7 @@ struct SignInWithEmailView: View {
                 authViewModel.signUpWithEmail(email: email, password: password) { result in
                     switch result {
                     case .success():
+                        appState = .null
                         if let user = authViewModel.currentUser {
                             currentPassword = password
                             playerViewModel.addPlayer(id: user.uid, email: user.email, name: nil, avatar: nil) { result in
