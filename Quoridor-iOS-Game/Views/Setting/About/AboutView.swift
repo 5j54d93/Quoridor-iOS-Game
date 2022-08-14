@@ -37,7 +37,7 @@ struct AboutView: View {
                 VStack(alignment: .leading) {
                     Group {
                         NavigationLink {
-                            
+                            SourceCodeView()
                         } label: {
                             HStack(spacing: 10) {
                                 Text("Source code")
