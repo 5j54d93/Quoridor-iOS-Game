@@ -20,7 +20,7 @@ struct GameLobbyView: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 25) {
+            VStack(spacing: 20) {
                 Button {
                     if playerViewModel.currentPlayer.played != 0 && playerViewModel.currentPlayer.played % 4 == 0 && !playerViewModel.currentPlayer.haveGottenReward {
                         appState = .loading
@@ -142,7 +142,7 @@ struct GameLobbyView: View {
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    .padding(30)
+                    .padding(25)
                     .background {
                         RoundedRectangle(cornerRadius: 5)
                             .foregroundColor(.roseGold)
@@ -189,7 +189,7 @@ struct GameLobbyView: View {
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    .padding(30)
+                    .padding(25)
                     .background {
                         RoundedRectangle(cornerRadius: 5)
                             .foregroundColor(.earthyGold)
@@ -212,11 +212,13 @@ struct GameLobbyView: View {
                             Text("Join a Game")
                                 .font(.title.bold())
                             
-                            Text("By Room ID")
+                            HStack {
+                                Text("By Room ID")
+                            }
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    .padding(30)
+                    .padding(25)
                     .background {
                         RoundedRectangle(cornerRadius: 5)
                             .foregroundColor(.middleBrown)
@@ -281,7 +283,7 @@ struct GameLobbyView: View {
                         .foregroundColor(.lightBrown)
                         .background {
                             RoundedRectangle(cornerRadius: 5)
-                                .stroke(Color.lightBrown, lineWidth: 2.5)
+                                .strokeBorder(Color.lightBrown, lineWidth: 2.5)
                         }
                     }
                     .onAppear {
@@ -289,7 +291,7 @@ struct GameLobbyView: View {
                     }
                 }
             }
-            .padding(.top, 20)
+            .padding(.vertical, 15)
         }
     }
 }

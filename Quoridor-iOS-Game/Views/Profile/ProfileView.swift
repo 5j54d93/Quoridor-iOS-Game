@@ -93,7 +93,7 @@ struct ProfileView: View {
             }
             .background {
                 RoundedRectangle(cornerRadius: 5)
-                    .stroke(Color.roseGold, lineWidth: 2.5)
+                    .strokeBorder(Color.roseGold, lineWidth: 2.5)
             }
             .padding(.vertical)
             
@@ -150,9 +150,10 @@ struct ProfileView: View {
                 }
                 .padding(.horizontal)
             }
+            .clipShape(RoundedRectangle(cornerRadius: 5))
             .background {
                 RoundedRectangle(cornerRadius: 5)
-                    .stroke(Color.roseGold, lineWidth: 2.5)
+                    .strokeBorder(Color.roseGold, lineWidth: 2.5)
             }
         }
         .padding(.vertical)

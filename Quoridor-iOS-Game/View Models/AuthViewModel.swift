@@ -114,6 +114,7 @@ class AuthViewModel: ObservableObject {
                 }
                 return
             }
+            completion(.success(()))
         }
     }
     

@@ -24,7 +24,7 @@ struct StarterView: View {
                 .font(.largeTitle.bold())
             
             Spacer()
-                .frame(height: geometry.size.height*0.33)
+                .frame(height: geometry.size.height*0.3)
             
             Image("RoundAppIcon")
                 .resizable()
@@ -32,7 +32,6 @@ struct StarterView: View {
                 .frame(width: geometry.size.width*0.4, height: geometry.size.width*0.4)
             
             Spacer()
-                .frame(height: geometry.size.height*0.1)
             
             Text("Player : \(authViewModel.currentUser?.displayName ?? "")")
                 .font(.title2.bold())
@@ -50,6 +49,7 @@ struct StarterView: View {
                 .animation(.easeIn(duration: 1).repeatForever(autoreverses: true), value: opacity)
             
             Spacer()
+                .frame(height: geometry.size.height*0.15)
             
             HStack {
                 Spacer()
@@ -65,6 +65,7 @@ struct StarterView: View {
                     .frame(width: geometry.size.width*0.15)
             }
             .font(.caption2)
+            .padding(.bottom, 10)
         }
         .foregroundColor(.white)
         .background(Color.darkBrown)

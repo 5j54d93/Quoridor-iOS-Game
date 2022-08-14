@@ -175,7 +175,7 @@ struct AvatarDesignView: View {
                                                         .foregroundColor(.roseGold)
                                                 } else {
                                                     RoundedRectangle(cornerRadius: 10)
-                                                        .stroke(Color.roseGold, lineWidth: 2.5)
+                                                        .strokeBorder(Color.roseGold, lineWidth: 2.5)
                                                 }
                                             }
                                     }

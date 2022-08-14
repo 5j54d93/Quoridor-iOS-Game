@@ -53,68 +53,85 @@ struct LeaderBoardView: View {
             }
             .cornerRadius(5)
             
-            List {
-                ForEach(Array(playerViewModel.sortedPlayers.enumerated()), id: \.element) { index, player in
-                    HStack(spacing: 15) {
-                        Text("\(index+1)")
-                        
-                        AsyncImage(url: player.avatar) { image in
-                            image
-                                .resizable()
-                                .scaledToFit()
-                        } placeholder: {
-                            Color.gray
-                                .overlay {
-                                    ProgressView()
-                                        .progressViewStyle(CircularProgressViewStyle(tint: .lightBrown))
-                                }
-                        }
-                        .frame(width: 40, height: 40)
-                        .clipShape(Circle())
-                        
-                        Text(player.name)
-                            .font(.title3)
-                            .foregroundColor(.white)
-                        
-                        Spacer()
-                        
-                        switch selectLeaderBoardType {
-                        case .star:
-                            HStack(spacing: 5) {
-                                Text("\(player.star) ")
-                                
-                                Text(Image(systemName: "star.fill"))
-                                    .foregroundColor(.lightBrown)
+            if playerViewModel.sortedPlayers == [] {
+                VStack(spacing: 20) {
+                    Spacer()
+                    
+                    ProgressView()
+                        .scaleEffect(3)
+                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                    
+                    Text("Loading...")
+                        .font(.title3)
+                        .padding(.top, 15)
+                        .foregroundColor(.white)
+                    
+                    Spacer()
+                }
+                .onAppear {
+                    playerViewModel.fetchPlayers(sortType: selectLeaderBoardType.variableName)
+                }
+            } else {
+                List {
+                    ForEach(Array(playerViewModel.sortedPlayers.enumerated()), id: \.element) { index, player in
+                        HStack(spacing: 15) {
+                            Text("\(index+1)")
+                            
+                            AsyncImage(url: player.avatar) { image in
+                                image
+                                    .resizable()
+                                    .scaledToFit()
+                            } placeholder: {
+                                Color.gray
+                                    .overlay {
+                                        ProgressView()
+                                            .progressViewStyle(CircularProgressViewStyle(tint: .lightBrown))
+                                    }
                             }
-                        case .winRate:
-                            Text("\(player.winRate, specifier: "%.1f") %")
-                        case .money:
-                            Text("$ \(player.money)")
+                            .frame(width: 40, height: 40)
+                            .clipShape(Circle())
+                            
+                            Text(player.name)
+                                .font(.title3)
+                                .foregroundColor(.white)
+                            
+                            Spacer()
+                            
+                            switch selectLeaderBoardType {
+                            case .star:
+                                HStack(spacing: 5) {
+                                    Text("\(player.star) ")
+                                    
+                                    Text(Image(systemName: "star.fill"))
+                                        .foregroundColor(.lightBrown)
+                                }
+                            case .winRate:
+                                Text("\(player.winRate, specifier: "%.1f") %")
+                            case .money:
+                                Text("$ \(player.money)")
+                            }
                         }
-                    }
-                    .listRowSeparator(.hidden)
-                    .padding(.horizontal)
-                    .padding(.vertical, 10)
-                    .background {
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(Color.roseGold, lineWidth: 2.5)
+                        .listRowSeparator(.hidden)
+                        .padding(.horizontal)
+                        .padding(.vertical, 10)
+                        .background {
+                            RoundedRectangle(cornerRadius: 5)
+                                .strokeBorder(Color.roseGold, lineWidth: 2.5)
+                        }
                     }
                 }
-            }
-            .listStyle(.inset)
-            .padding(.top, 10)
-            .padding(.horizontal, -25)
-            .onAppear {
-                UITableView.appearance().backgroundColor = .clear
-                UIRefreshControl.appearance().tintColor = UIColor.white
-            }
-            .refreshable {
-                playerViewModel.fetchPlayers(sortType: selectLeaderBoardType.variableName)
+                .listStyle(.inset)
+                .padding(.top, 10)
+                .padding(.horizontal, -25)
+                .onAppear {
+                    UITableView.appearance().backgroundColor = .clear
+                    UIRefreshControl.appearance().tintColor = UIColor.white
+                }
+                .refreshable {
+                    playerViewModel.fetchPlayers(sortType: selectLeaderBoardType.variableName)
+                }
             }
         }
         .padding(.vertical)
-        .onAppear {
-            playerViewModel.fetchPlayers(sortType: selectLeaderBoardType.variableName)
-        }
     }
 }

@@ -58,10 +58,10 @@ struct ContentView: View {
                                                 .font(.title2)
                                                 .padding(.trailing, 12)
                                         }
-                                        .frame(width: geometry.size.width*0.45, height: 40)
+                                        .frame(width: geometry.size.width*0.45, height: 42)
                                         .background {
                                             Capsule()
-                                                .stroke(Color.roseGold, lineWidth: 2.5)
+                                                .strokeBorder(Color.roseGold, lineWidth: 2.5)
                                         }
                                         
                                         HStack {
@@ -78,10 +78,10 @@ struct ContentView: View {
                                                 .font(.title2)
                                                 .padding(.trailing, 12)
                                         }
-                                        .frame(width: geometry.size.width*0.25, height: 40)
+                                        .frame(width: geometry.size.width*0.25, height: 42)
                                         .background {
                                             Capsule()
-                                                .stroke(Color.roseGold, lineWidth: 2.5)
+                                                .strokeBorder(Color.roseGold, lineWidth: 2.5)
                                         }
                                         
                                         Spacer()

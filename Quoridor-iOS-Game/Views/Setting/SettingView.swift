@@ -142,6 +142,7 @@ struct SettingView: View {
                                         switch result {
                                         case .success():
                                             appState = .null
+                                            isShowSettings = false
                                         case .failure(let error):
                                             alertTitle = "ERROR"
                                             alertMessage = error.localizedDescription
