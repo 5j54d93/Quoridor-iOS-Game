@@ -13,16 +13,18 @@ struct ProfileEditView: View {
     @ObservedObject var playerViewModel: PlayerViewModel
     
     @Binding var isEditProfile: Bool
-    @Binding var appState: ContentView.AppStateType
-    @Binding var alertTitle: String
-    @Binding var alertMessage: String
-    
+
     @State private var name = "Loading..."
     @State private var email = "Loading..."
     @State private var zodiacSign = Player.zodiacSignType.notSet
     @State private var age: Double = 18
     @State private var isConfirming = false
     @State private var isDesignAvatar = false
+    
+    @State private var isLoading = false
+    @State private var isAlert = false
+    @State private var alertTitle = ""
+    @State private var alertMessage = ""
     
     var body: some View {
         GeometryReader { geometry in
@@ -39,25 +41,25 @@ struct ProfileEditView: View {
                     Spacer()
                     
                     Button {
-                        appState = .loading
+                        isLoading = true
                         authViewModel.updateUser(name: name, email: email, avatar: nil) { result in
                             switch result {
                             case .success():
                                 playerViewModel.updatePlayer(name: name, email: email, zodiacSign: zodiacSign, age: Int(age), avatar: nil) { result in
                                     switch result {
                                     case .success():
-                                        appState = .null
+                                        isLoading = false
                                         isEditProfile = false
                                     case .failure(let error):
                                         alertTitle = "ERROR"
                                         alertMessage = error.localizedDescription
-                                        appState = .alert
+                                        isAlert = true
                                     }
                                 }
                             case .failure(let error):
                                 alertTitle = "ERROR"
                                 alertMessage = error.localizedDescription
-                                appState = .alert
+                                isAlert = true
                             }
                         }
                     } label: {
@@ -213,30 +215,38 @@ struct ProfileEditView: View {
                 age = Double(playerViewModel.currentPlayer.age)
             }
             .sheet(isPresented: $isDesignAvatar) {
-                AvatarDesignView(authViewModel: authViewModel, playerViewModel: playerViewModel, isDesignAvatar: $isDesignAvatar, appState: $appState, alertTitle: $alertTitle, alertMessage: $alertMessage)
+                AvatarDesignView(authViewModel: authViewModel, playerViewModel: playerViewModel, isDesignAvatar: $isDesignAvatar)
             }
             .confirmationDialog("Change profile photo", isPresented: $isConfirming) {
                 Button("Remove current photo") {
+                    isLoading = true
                     let currentPlayer = playerViewModel.currentPlayer
                     authViewModel.updateUser(name: currentPlayer.name, email: currentPlayer.email, avatar: URL(string: "https://firebasestorage.googleapis.com/v0/b/quoridor-ios-game.appspot.com/o/default.png?alt=media&token=d56342e8-76c0-4083-9a99-8c3f96d238b6")) { result in
-                        if case .failure(let error) = result {
+                        switch result {
+                        case .success():
+                            playerViewModel.updatePlayer(name: currentPlayer.name, email: currentPlayer.email, zodiacSign: currentPlayer.zodiacSign, age: currentPlayer.age, avatar: URL(string: "https://firebasestorage.googleapis.com/v0/b/quoridor-ios-game.appspot.com/o/default.png?alt=media&token=d56342e8-76c0-4083-9a99-8c3f96d238b6")) { result in
+                                switch result {
+                                case .success():
+                                    playerViewModel.deleteAvatar() { result in
+                                        switch result {
+                                        case .success():
+                                            isLoading = false
+                                        case .failure(let error):
+                                            alertTitle = "ERROR"
+                                            alertMessage = error.localizedDescription
+                                            isAlert = true
+                                        }
+                                    }
+                                case .failure(let error):
+                                    alertTitle = "ERROR"
+                                    alertMessage = error.localizedDescription
+                                    isAlert = true
+                                }
+                            }
+                        case .failure(let error):
                             alertTitle = "ERROR"
                             alertMessage = error.localizedDescription
-                            appState = .alert
-                        }
-                    }
-                    playerViewModel.updatePlayer(name: currentPlayer.name, email: currentPlayer.email, zodiacSign: currentPlayer.zodiacSign, age: currentPlayer.age, avatar: URL(string: "https://firebasestorage.googleapis.com/v0/b/quoridor-ios-game.appspot.com/o/default.png?alt=media&token=d56342e8-76c0-4083-9a99-8c3f96d238b6")) { result in
-                        if case .failure(let error) = result {
-                            alertTitle = "ERROR"
-                            alertMessage = error.localizedDescription
-                            appState = .alert
-                        }
-                    }
-                    playerViewModel.deleteAvatar() { result in
-                        if case .failure(let error) = result {
-                            alertTitle = "ERROR"
-                            alertMessage = error.localizedDescription
-                            appState = .alert
+                            isAlert = true
                         }
                     }
                 }
@@ -247,6 +257,57 @@ struct ProfileEditView: View {
                 
                 Button("Create avatar") {
                     isDesignAvatar = true
+                }
+            }
+            .overlay {
+                if isLoading {
+                    Color.white
+                        .opacity(0.7)
+                        .ignoresSafeArea()
+                    
+                    if isAlert {
+                        VStack(spacing: 20) {
+                            Text(LocalizedStringKey(alertTitle))
+                                .font(.title.bold())
+                                .foregroundColor(.roseGold)
+                            
+                            Text(LocalizedStringKey(alertMessage))
+                                .foregroundColor(.roseGold)
+                                .multilineTextAlignment(.center)
+                            
+                            Button {
+                                isLoading = false
+                                isAlert = false
+                            } label: {
+                                Text("OK")
+                                    .font(.title3.bold())
+                                    .foregroundColor(.white)
+                                    .frame(height: 50)
+                                    .frame(maxWidth: .infinity)
+                                    .background {
+                                        Capsule()
+                                            .foregroundColor(.roseGold)
+                                    }
+                            }
+                        }
+                        .padding(20)
+                        .frame(width: geometry.size.width*0.8)
+                        .background {
+                            RoundedRectangle(cornerRadius: 5)
+                                .foregroundColor(.white)
+                        }
+                    } else {
+                        VStack(spacing: 20) {
+                            ProgressView()
+                                .scaleEffect(3)
+                                .progressViewStyle(CircularProgressViewStyle(tint: .roseGold))
+                            
+                            Text("Loading...")
+                                .font(.title3)
+                                .padding(.top, 15)
+                                .foregroundColor(.roseGold)
+                        }
+                    }
                 }
             }
         }

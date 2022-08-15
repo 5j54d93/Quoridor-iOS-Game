@@ -13,9 +13,6 @@ struct AvatarDesignView: View {
     @ObservedObject var playerViewModel: PlayerViewModel
     
     @Binding var isDesignAvatar: Bool
-    @Binding var appState: ContentView.AppStateType
-    @Binding var alertTitle: String
-    @Binding var alertMessage: String
     
     @AppStorage("avartarBackgroundColor") var avartarBackgroundColor = Color.obsidianGrey
     @AppStorage("avatarSet") var avatarSet = [0, 0, 0, 0, 0, 0] // body, eye, mouth, arm, accesory, leg
@@ -58,6 +55,10 @@ struct AvatarDesignView: View {
         }
     }
     @State private var selectBodyPart: BodyPart = .body
+    @State private var isLoading = false
+    @State private var isAlert = false
+    @State private var alertTitle = ""
+    @State private var alertMessage = ""
     
     var body: some View {
         GeometryReader { geometry in
@@ -74,7 +75,7 @@ struct AvatarDesignView: View {
                     Spacer()
                     
                     Button {
-                        appState = .loading
+                        isLoading = true
                         uiImage = AvatarView(tempAvatarSet: tempAvatarSet).snapshot()
                         if let uiImage = uiImage {
                             let currentPlayer = playerViewModel.currentPlayer
@@ -86,27 +87,27 @@ struct AvatarDesignView: View {
                                         if case .failure(let error) = result {
                                             alertTitle = "ERROR"
                                             alertMessage = error.localizedDescription
-                                            appState = .alert
+                                            isAlert = true
                                         }
                                     }
                                     playerViewModel.updatePlayer(name: currentPlayer.name, email: currentPlayer.email, zodiacSign: currentPlayer.zodiacSign, age: currentPlayer.age, avatar: avatarUrl) { result in
                                         if case .failure(let error) = result {
                                             alertTitle = "ERROR"
                                             alertMessage = error.localizedDescription
-                                            appState = .alert
+                                            isAlert = true
                                         }
                                     }
                                     isDesignAvatar = false
                                 case .failure(let error):
                                     alertTitle = "ERROR"
                                     alertMessage = error.localizedDescription
-                                    appState = .alert
+                                    isAlert = true
                                 }
                             }
                         } else {
                             alertTitle = "ERROR"
                             alertMessage = "Can't generate avatar successfully."
-                            appState = .alert
+                            isAlert = true
                         }
                     } label: {
                         Text("Done")
@@ -229,6 +230,57 @@ struct AvatarDesignView: View {
             .background(Color.backgroundColor)
             .onAppear {
                 tempAvatarSet = avatarSet
+            }
+            .overlay {
+                if isLoading {
+                    Color.white
+                        .opacity(0.7)
+                        .ignoresSafeArea()
+                    
+                    if isAlert {
+                        VStack(spacing: 20) {
+                            Text(LocalizedStringKey(alertTitle))
+                                .font(.title.bold())
+                                .foregroundColor(.roseGold)
+                            
+                            Text(LocalizedStringKey(alertMessage))
+                                .foregroundColor(.roseGold)
+                                .multilineTextAlignment(.center)
+                            
+                            Button {
+                                isLoading = false
+                                isAlert = false
+                            } label: {
+                                Text("OK")
+                                    .font(.title3.bold())
+                                    .foregroundColor(.white)
+                                    .frame(height: 50)
+                                    .frame(maxWidth: .infinity)
+                                    .background {
+                                        Capsule()
+                                            .foregroundColor(.roseGold)
+                                    }
+                            }
+                        }
+                        .padding(20)
+                        .frame(width: geometry.size.width*0.8)
+                        .background {
+                            RoundedRectangle(cornerRadius: 5)
+                                .foregroundColor(.white)
+                        }
+                    } else {
+                        VStack(spacing: 20) {
+                            ProgressView()
+                                .scaleEffect(3)
+                                .progressViewStyle(CircularProgressViewStyle(tint: .roseGold))
+                            
+                            Text("Loading...")
+                                .font(.title3)
+                                .padding(.top, 15)
+                                .foregroundColor(.roseGold)
+                        }
+                    }
+                }
             }
         }
     }

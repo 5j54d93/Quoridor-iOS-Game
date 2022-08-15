@@ -83,7 +83,7 @@ class PlayerViewModel: ObservableObject {
         }
     }
     
-    func deleteAvatar(completion: @escaping (Result<URL, Error>) -> Void) {
+    func deleteAvatar(completion: @escaping (Result<Void, Error>) -> Void) {
         guard let id = currentPlayer.id else { return }
         let fileReference = Storage.storage().reference().child(id + ".jpg")
         fileReference.delete { error in
@@ -96,6 +96,7 @@ class PlayerViewModel: ObservableObject {
                 }
                 return
             }
+            completion(.success(()))
         }
     }
     

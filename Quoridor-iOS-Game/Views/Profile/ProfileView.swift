@@ -158,7 +158,7 @@ struct ProfileView: View {
         }
         .padding(.vertical)
         .sheet(isPresented: $isEditProfile) {
-            ProfileEditView(authViewModel: authViewModel, playerViewModel: playerViewModel, isEditProfile: $isEditProfile, appState: $appState, alertTitle: $alertTitle, alertMessage: $alertMessage)
+            ProfileEditView(authViewModel: authViewModel, playerViewModel: playerViewModel, isEditProfile: $isEditProfile)
         }
     }
 }
