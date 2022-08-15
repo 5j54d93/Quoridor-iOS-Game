@@ -10,6 +10,7 @@
 		9C1548902872B5D7003E55A0 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C15488F2872B5D7003E55A0 /* SettingView.swift */; };
 		9C1548942872F230003E55A0 /* SecurityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1548932872F230003E55A0 /* SecurityView.swift */; };
 		9C1548962872F71B003E55A0 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1548952872F71B003E55A0 /* ChangePasswordView.swift */; };
+		9C22557728AA8A5400B52520 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C22557628AA8A5400B52520 /* LoadingView.swift */; };
 		9C36B73C286AE28F0042CE50 /* ChoosePlayerTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C36B73B286AE28F0042CE50 /* ChoosePlayerTypeView.swift */; };
 		9C36B745286AF69D0042CE50 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C36B744286AF69D0042CE50 /* View+.swift */; };
 		9C432E1328A4FAE3001646CF /* GamingPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C432E1228A4FAE3001646CF /* GamingPlayer.swift */; };
@@ -64,6 +65,7 @@
 		9C15488F2872B5D7003E55A0 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		9C1548932872F230003E55A0 /* SecurityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityView.swift; sourceTree = "<group>"; };
 		9C1548952872F71B003E55A0 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
+		9C22557628AA8A5400B52520 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		9C36B73B286AE28F0042CE50 /* ChoosePlayerTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePlayerTypeView.swift; sourceTree = "<group>"; };
 		9C36B744286AF69D0042CE50 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		9C432E1228A4FAE3001646CF /* GamingPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamingPlayer.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				9CE5F4D6286EA072000E8351 /* ProfileView.swift */,
 				9CE5F4DA286F23C8000E8351 /* ProfileEditView.swift */,
 				9CE5F4DC286F69A2000E8351 /* AvatarDesignView.swift */,
+				9C22557628AA8A5400B52520 /* LoadingView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				9CDBADF72882A5DF006F3C7A /* PrepareGameView.swift in Sources */,
 				9C8B009D286B358C002AC70A /* ChooseSignInMethodView.swift in Sources */,
 				9CECED82289F9F53008DF7A2 /* LeaderBoardView.swift in Sources */,
+				9C22557728AA8A5400B52520 /* LoadingView.swift in Sources */,
 				9CDBADF52882A397006F3C7A /* GameViewModel.swift in Sources */,
 				9CE5F4D3286DCF25000E8351 /* PlayerViewModel.swift in Sources */,
 				9C432E1328A4FAE3001646CF /* GamingPlayer.swift in Sources */,
