@@ -131,6 +131,12 @@ struct PrepareGameView: View {
                                         .scaledToFit()
                                 } placeholder: {
                                     Color.gray
+                                        .overlay {
+                                            Image(systemName: "questionmark")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .padding(25)
+                                        }
                                 }
                                 .frame(width: geometry.size.width/4, height: geometry.size.width/4)
                                 .clipShape(RoundedRectangle(cornerRadius: 5))
