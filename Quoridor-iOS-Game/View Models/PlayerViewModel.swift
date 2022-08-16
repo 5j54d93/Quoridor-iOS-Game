@@ -14,6 +14,7 @@ import FirebaseStorage
 class PlayerViewModel: ObservableObject {
     
     @Published var currentPlayer = Player(email: "loading", name: "loading", zodiacSign: .notSet, money: 2000, star: 0, maxStar: 0, birthYear: Calendar.current.component(.year, from: Date()) - 18, played: 0, win: 0, winRate: 0, haveGottenReward: false, joined: Date.now)
+    @Published var certainPlayer = Player(email: "loading", name: "loading", zodiacSign: .notSet, money: 2000, star: 0, maxStar: 0, birthYear: Calendar.current.component(.year, from: Date()) - 18, played: 0, win: 0, winRate: 0, haveGottenReward: false, joined: Date.now)
     @Published var sortedPlayers: [Player] = []
     
     let db = Firestore.firestore()
@@ -216,6 +217,19 @@ class PlayerViewModel: ObservableObject {
                     try? snapshot.data(as: Player.self)
                 }
                 self.sortedPlayers = players
+                completion(.success(()))
+                return
+            }
+            completion(.failure(error))
+        }
+    }
+    
+    func fetchCertainPlayer(id: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        let documentReference = db.collection("players").document(id)
+        documentReference.getDocument { document, error in
+            guard let error = error else {
+                guard let document = document, document.exists, let player = try? document.data(as: Player.self) else { return }
+                self.certainPlayer = player
                 completion(.success(()))
                 return
             }

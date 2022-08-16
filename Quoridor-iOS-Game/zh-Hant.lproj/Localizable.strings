@@ -182,6 +182,9 @@
 "Joined %@" = "加入 %@";
 
 /* No comment provided by engineer. */
+"Joined" = "加入日期";
+
+/* No comment provided by engineer. */
 "Just wait for room owner to start the game." = "等待房主開始遊戲。";
 
 /* No comment provided by engineer. */
@@ -243,6 +246,9 @@
 
 /* No comment provided by engineer. */
 "Played" = "場次";
+
+/* No comment provided by engineer. */
+"Playedr's Info" = "玩家資訊";
 
 /* No comment provided by engineer. */
 "Preparing..." = "準備中⋯";
@@ -354,6 +360,9 @@
 
 /* No comment provided by engineer. */
 "Watch Video" = "觀看影片";
+
+/* No comment provided by engineer. */
+"Wealth" = "財富";
 
 /* No comment provided by engineer. */
 "We're matching a player for you, please wait..." = "我們正在幫您配對玩家，請稍候⋯";

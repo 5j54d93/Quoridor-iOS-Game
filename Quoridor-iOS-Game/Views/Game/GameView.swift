@@ -16,6 +16,7 @@ struct GameView: View {
     @Binding var alertTitle: String
     @Binding var alertMessage: String
     
+    @State private var isShowPlayer = false
     @State private var geoWidth: CGFloat = 0
     @State private var isMovingChessman = false
     @State private var isBuildingWall = false
@@ -86,6 +87,20 @@ struct GameView: View {
                                     : Color.clear
                                     , lineWidth: 3)
                         }
+                }
+                .onTapGesture {
+                    if let id = gameViewModel.game.roomOwner?.id == playerViewModel.currentPlayer.id ? gameViewModel.game.joinedPlayer?.id : gameViewModel.game.roomOwner?.id {
+                        playerViewModel.fetchCertainPlayer(id: id) { result in
+                            switch result {
+                            case .success():
+                                isShowPlayer = true
+                            case .failure(let error):
+                                alertTitle = "ERROR"
+                                alertMessage = error.localizedDescription
+                                appState = .alert
+                            }
+                        }
+                    }
                 }
             }
             .frame(height: 45)
@@ -590,6 +605,20 @@ struct GameView: View {
                         }
                 }
                 .frame(height: 45)
+                .onTapGesture {
+                    if let id = playerViewModel.currentPlayer.id {
+                        playerViewModel.fetchCertainPlayer(id: id) { result in
+                            switch result {
+                            case .success():
+                                isShowPlayer = true
+                            case .failure(let error):
+                                alertTitle = "ERROR"
+                                alertMessage = error.localizedDescription
+                                appState = .alert
+                            }
+                        }
+                    }
+                }
                 
                 Spacer()
                 
@@ -645,6 +674,9 @@ struct GameView: View {
                     nextMoves = []
                     isMovingChessman = false
                 }
+        }
+        .sheet(isPresented: $isShowPlayer) {
+            PlayerSnapshotView(player: $playerViewModel.certainPlayer, isShowPlayer: $isShowPlayer)
         }
     }
 }

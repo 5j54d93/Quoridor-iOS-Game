@@ -16,6 +16,8 @@ struct PrepareGameView: View {
     @Binding var alertTitle: String
     @Binding var alertMessage: String
     
+    @State private var isShowPlayer = false
+    
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 25) {
@@ -106,6 +108,20 @@ struct PrepareGameView: View {
                             RoundedRectangle(cornerRadius: 5)
                                 .foregroundColor(gameViewModel.game.gameType.foregroundColor.opacity(0.5))
                         }
+                        .onTapGesture {
+                            if let id = gameViewModel.game.roomOwner?.id {
+                                playerViewModel.fetchCertainPlayer(id: id) { result in
+                                    switch result {
+                                    case .success():
+                                        isShowPlayer = true
+                                    case .failure(let error):
+                                        alertTitle = "ERROR"
+                                        alertMessage = error.localizedDescription
+                                        appState = .alert
+                                    }
+                                }
+                            }
+                        }
                         
                         VStack(spacing: 10) {
                             HStack {
@@ -173,6 +189,20 @@ struct PrepareGameView: View {
                         .background {
                             RoundedRectangle(cornerRadius: 5)
                                 .foregroundColor(gameViewModel.game.gameType.foregroundColor.opacity(0.5))
+                        }
+                        .onTapGesture {
+                            if let id = gameViewModel.game.joinedPlayer?.id {
+                                playerViewModel.fetchCertainPlayer(id: id) { result in
+                                    switch result {
+                                    case .success():
+                                        isShowPlayer = true
+                                    case .failure(let error):
+                                        alertTitle = "ERROR"
+                                        alertMessage = error.localizedDescription
+                                        appState = .alert
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -326,6 +356,9 @@ struct PrepareGameView: View {
                     }
                 }
             }
+        }
+        .sheet(isPresented: $isShowPlayer) {
+            PlayerSnapshotView(player: $playerViewModel.certainPlayer, isShowPlayer: $isShowPlayer)
         }
     }
 }
