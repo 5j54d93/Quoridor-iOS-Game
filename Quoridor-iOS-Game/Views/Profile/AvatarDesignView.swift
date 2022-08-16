@@ -90,7 +90,7 @@ struct AvatarDesignView: View {
                                             isAlert = true
                                         }
                                     }
-                                    playerViewModel.updatePlayer(name: currentPlayer.name, email: currentPlayer.email, zodiacSign: currentPlayer.zodiacSign, age: currentPlayer.age, avatar: avatarUrl) { result in
+                                    playerViewModel.updatePlayer(name: currentPlayer.name, email: currentPlayer.email, zodiacSign: currentPlayer.zodiacSign, birthYear: currentPlayer.birthYear, avatar: avatarUrl) { result in
                                         if case .failure(let error) = result {
                                             alertTitle = "ERROR"
                                             alertMessage = error.localizedDescription

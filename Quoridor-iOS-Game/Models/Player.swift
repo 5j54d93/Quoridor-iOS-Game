@@ -41,7 +41,7 @@ struct Player: Codable, Identifiable, Hashable {
     var money: Int
     var star: Int
     var maxStar: Int
-    var age: Int
+    var birthYear: Int
     var played: Int
     var win: Int
     var winRate: Double

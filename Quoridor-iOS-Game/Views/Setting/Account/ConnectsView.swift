@@ -301,7 +301,7 @@ struct ConnectsView: View {
             authViewModel.connectToEmail(email: email, password: password) { result in
                 switch result {
                 case .success():
-                    playerViewModel.updatePlayer(name: playerViewModel.currentPlayer.name, email: email, zodiacSign: playerViewModel.currentPlayer.zodiacSign, age: playerViewModel.currentPlayer.age, avatar: nil) { result in
+                    playerViewModel.updatePlayer(name: playerViewModel.currentPlayer.name, email: email, zodiacSign: playerViewModel.currentPlayer.zodiacSign, birthYear: playerViewModel.currentPlayer.birthYear, avatar: nil) { result in
                         switch result {
                         case .success():
                             appState = .null

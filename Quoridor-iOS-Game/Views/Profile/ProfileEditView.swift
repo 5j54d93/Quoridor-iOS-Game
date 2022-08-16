@@ -17,7 +17,7 @@ struct ProfileEditView: View {
     @State private var name = "Loading..."
     @State private var email = "Loading..."
     @State private var zodiacSign = Player.zodiacSignType.notSet
-    @State private var age: Double = 18
+    @State private var birthYear = Double(Calendar.current.component(.year, from: Date()) - 18)
     @State private var isConfirming = false
     @State private var isDesignAvatar = false
     
@@ -45,7 +45,7 @@ struct ProfileEditView: View {
                         authViewModel.updateUser(name: name, email: email, avatar: nil) { result in
                             switch result {
                             case .success():
-                                playerViewModel.updatePlayer(name: name, email: email, zodiacSign: zodiacSign, age: Int(age), avatar: nil) { result in
+                                playerViewModel.updatePlayer(name: name, email: email, zodiacSign: zodiacSign, birthYear: Int(birthYear), avatar: nil) { result in
                                     switch result {
                                     case .success():
                                         isLoading = false
@@ -175,14 +175,14 @@ struct ProfileEditView: View {
                 Group {
                     HStack {
                         HStack {
-                            Text("Age")
+                            Text("Birth Year")
                             Spacer()
                         }
                         .padding(.leading)
                         .frame(width: geometry.size.width/3)
                         
                         HStack {
-                            Text("\(Int(age)) years old")
+                            Text("\(Int(birthYear))")
                             Spacer()
                         }
                         .frame(width: geometry.size.width/3*2)
@@ -190,12 +190,12 @@ struct ProfileEditView: View {
                     .padding(.vertical, 10)
                     .font(.title3)
                     
-                    Slider(value: $age, in: 1...100, step: 1) {
-                        Text("age")
+                    Slider(value: $birthYear, in: Double(Calendar.current.component(.year, from: Date()) - 100)...Double(Calendar.current.component(.year, from: Date())), step: 1) {
+                        Text("Birth Year")
                     } minimumValueLabel: {
-                        Text("1")
+                        Text("\(Calendar.current.component(.year, from: Date()) - 100)")
                     } maximumValueLabel: {
-                        Text("100")
+                        Text("\(Calendar.current.component(.year, from: Date()))")
                     }
                     .tint(.lightBrown)
                     .padding(.horizontal)
@@ -212,7 +212,7 @@ struct ProfileEditView: View {
                 name = playerViewModel.currentPlayer.name
                 email = playerViewModel.currentPlayer.email
                 zodiacSign = playerViewModel.currentPlayer.zodiacSign
-                age = Double(playerViewModel.currentPlayer.age)
+                birthYear = Double(playerViewModel.currentPlayer.birthYear)
             }
             .sheet(isPresented: $isDesignAvatar) {
                 AvatarDesignView(authViewModel: authViewModel, playerViewModel: playerViewModel, isDesignAvatar: $isDesignAvatar)
@@ -224,7 +224,7 @@ struct ProfileEditView: View {
                     authViewModel.updateUser(name: currentPlayer.name, email: currentPlayer.email, avatar: URL(string: "https://firebasestorage.googleapis.com/v0/b/quoridor-ios-game.appspot.com/o/default.png?alt=media&token=d56342e8-76c0-4083-9a99-8c3f96d238b6")) { result in
                         switch result {
                         case .success():
-                            playerViewModel.updatePlayer(name: currentPlayer.name, email: currentPlayer.email, zodiacSign: currentPlayer.zodiacSign, age: currentPlayer.age, avatar: URL(string: "https://firebasestorage.googleapis.com/v0/b/quoridor-ios-game.appspot.com/o/default.png?alt=media&token=d56342e8-76c0-4083-9a99-8c3f96d238b6")) { result in
+                            playerViewModel.updatePlayer(name: currentPlayer.name, email: currentPlayer.email, zodiacSign: currentPlayer.zodiacSign, birthYear: currentPlayer.birthYear, avatar: URL(string: "https://firebasestorage.googleapis.com/v0/b/quoridor-ios-game.appspot.com/o/default.png?alt=media&token=d56342e8-76c0-4083-9a99-8c3f96d238b6")) { result in
                                 switch result {
                                 case .success():
                                     playerViewModel.deleteAvatar() { result in

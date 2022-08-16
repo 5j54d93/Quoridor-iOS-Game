@@ -115,7 +115,7 @@ struct ProfileView: View {
                         
                         Spacer()
                         
-                        Text("\(playerViewModel.currentPlayer.age)")
+                        Text("\(Calendar.current.component(.year, from: Date()) - playerViewModel.currentPlayer.birthYear)")
                     }
                     .padding(.top, 5)
                     

@@ -13,7 +13,7 @@ import FirebaseStorage
 
 class PlayerViewModel: ObservableObject {
     
-    @Published var currentPlayer = Player(email: "loading", name: "loading", zodiacSign: .notSet, money: 2000, star: 0, maxStar: 0, age: 18, played: 0, win: 0, winRate: 0, haveGottenReward: false, joined: Date.now)
+    @Published var currentPlayer = Player(email: "loading", name: "loading", zodiacSign: .notSet, money: 2000, star: 0, maxStar: 0, birthYear: Calendar.current.component(.year, from: Date()) - 18, played: 0, win: 0, winRate: 0, haveGottenReward: false, joined: Date.now)
     @Published var sortedPlayers: [Player] = []
     
     let db = Firestore.firestore()
@@ -38,7 +38,7 @@ class PlayerViewModel: ObservableObject {
     }
     
     func addPlayer(id: String, email: String?, name: String?, avatar: URL?, completion: @escaping (Result<Void, Error>) -> Void) {
-        let data = Player(id: id, email: email ?? "not set", name: name ?? "not set", avatar: avatar ?? URL(string:  "https://firebasestorage.googleapis.com/v0/b/quoridor-ios-game.appspot.com/o/default.png?alt=media&token=d56342e8-76c0-4083-9a99-8c3f96d238b6"), zodiacSign: .notSet, money: 2000, star: 0, maxStar: 0, age: 18, played: 0, win: 0, winRate: 0, haveGottenReward: false, joined: Date.now)
+        let data = Player(id: id, email: email ?? "not set", name: name ?? "not set", avatar: avatar ?? URL(string:  "https://firebasestorage.googleapis.com/v0/b/quoridor-ios-game.appspot.com/o/default.png?alt=media&token=d56342e8-76c0-4083-9a99-8c3f96d238b6"), zodiacSign: .notSet, money: 2000, star: 0, maxStar: 0, birthYear: Calendar.current.component(.year, from: Date()) - 18, played: 0, win: 0, winRate: 0, haveGottenReward: false, joined: Date.now)
         
         do {
             try db.collection("players").document(id).setData(from: data)
@@ -47,7 +47,7 @@ class PlayerViewModel: ObservableObject {
         }
     }
     
-    func updatePlayer(name: String, email: String, zodiacSign: Player.zodiacSignType, age: Int, avatar: URL?, completion: @escaping (Result<Void, Error>) -> Void) {
+    func updatePlayer(name: String, email: String, zodiacSign: Player.zodiacSignType, birthYear: Int, avatar: URL?, completion: @escaping (Result<Void, Error>) -> Void) {
         guard let id = currentPlayer.id else { return }
         let documentReference = db.collection("players").document(id)
         documentReference.getDocument { document, error in
@@ -55,7 +55,7 @@ class PlayerViewModel: ObservableObject {
             player.name = name
             player.email = email
             player.zodiacSign = zodiacSign
-            player.age = age
+            player.birthYear = birthYear
             if let avatar = avatar {
                 player.avatar = avatar
             }
