@@ -208,13 +208,18 @@ class PlayerViewModel: ObservableObject {
         }
     }
     
-    func fetchPlayers(sortType: String) {
+    func fetchPlayers(sortType: String, completion: @escaping (Result<Void, Error>) -> Void) {
         db.collection("players").order(by: sortType, descending: true).getDocuments { snapshot, error in
-            guard let snapshot = snapshot else { return }
-            let players = snapshot.documents.compactMap { snapshot in
-                try? snapshot.data(as: Player.self)
+            guard let error = error else {
+                guard let snapshot = snapshot else { return }
+                let players = snapshot.documents.compactMap { snapshot in
+                    try? snapshot.data(as: Player.self)
+                }
+                self.sortedPlayers = players
+                completion(.success(()))
+                return
             }
-            self.sortedPlayers = players
+            completion(.failure(error))
         }
     }
 }

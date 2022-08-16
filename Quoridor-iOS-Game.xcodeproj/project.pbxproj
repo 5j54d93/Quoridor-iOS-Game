@@ -52,6 +52,7 @@
 		9CE5F4D9286EF81C000E8351 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5F4D8286EF81C000E8351 /* Color+.swift */; };
 		9CE5F4DB286F23C8000E8351 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5F4DA286F23C8000E8351 /* ProfileEditView.swift */; };
 		9CE5F4DD286F69A2000E8351 /* AvatarDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5F4DC286F69A2000E8351 /* AvatarDesignView.swift */; };
+		9CE6096528ABD26200AD0130 /* PlayerSnapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE6096428ABD26200AD0130 /* PlayerSnapshotView.swift */; };
 		9CECED80289E5EC9008DF7A2 /* FullScreenCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CECED7F289E5EC9008DF7A2 /* FullScreenCoverView.swift */; };
 		9CECED82289F9F53008DF7A2 /* LeaderBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CECED81289F9F53008DF7A2 /* LeaderBoardView.swift */; };
 		9CECED85289FC738008DF7A2 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9CECED84289FC738008DF7A2 /* FirebaseAnalyticsSwift */; };
@@ -104,6 +105,7 @@
 		9CE5F4D8286EF81C000E8351 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		9CE5F4DA286F23C8000E8351 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 		9CE5F4DC286F69A2000E8351 /* AvatarDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarDesignView.swift; sourceTree = "<group>"; };
+		9CE6096428ABD26200AD0130 /* PlayerSnapshotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSnapshotView.swift; sourceTree = "<group>"; };
 		9CECED7F289E5EC9008DF7A2 /* FullScreenCoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenCoverView.swift; sourceTree = "<group>"; };
 		9CECED81289F9F53008DF7A2 /* LeaderBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardView.swift; sourceTree = "<group>"; };
 		9CECED89289FDA55008DF7A2 /* AdModViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdModViewModel.swift; sourceTree = "<group>"; };
@@ -158,9 +160,9 @@
 			children = (
 				9CBBE81A286ABEF80089994E /* ContentView.swift */,
 				9CB7975C28A3804A007EB98C /* StarterView.swift */,
-				9CECED81289F9F53008DF7A2 /* LeaderBoardView.swift */,
 				9CECED7F289E5EC9008DF7A2 /* FullScreenCoverView.swift */,
 				9C157ACF286AD51700B09F45 /* Sign In */,
+				9CE6096328ABD17700AD0130 /* LeaderBoard */,
 				9CEF095828813EA200F5C5F6 /* Game */,
 				9CE5F4D5286EA04E000E8351 /* Profile */,
 				9C15488E2872B5AF003E55A0 /* Setting */,
@@ -293,6 +295,15 @@
 				9C22557628AA8A5400B52520 /* LoadingView.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		9CE6096328ABD17700AD0130 /* LeaderBoard */ = {
+			isa = PBXGroup;
+			children = (
+				9CECED81289F9F53008DF7A2 /* LeaderBoardView.swift */,
+				9CE6096428ABD26200AD0130 /* PlayerSnapshotView.swift */,
+			);
+			path = LeaderBoard;
 			sourceTree = "<group>";
 		};
 		9CECED83289FC737008DF7A2 /* Frameworks */ = {
@@ -454,6 +465,7 @@
 				9CE5F4D9286EF81C000E8351 /* Color+.swift in Sources */,
 				9CE5F4DB286F23C8000E8351 /* ProfileEditView.swift in Sources */,
 				9CBBE819286ABEF80089994E /* Quoridor_iOS_GameApp.swift in Sources */,
+				9CE6096528ABD26200AD0130 /* PlayerSnapshotView.swift in Sources */,
 				9C839C2528742F77002E88F1 /* AccountView.swift in Sources */,
 				9C1548962872F71B003E55A0 /* ChangePasswordView.swift in Sources */,
 				9C861FD728A8DC79005B81FF /* SafariView.swift in Sources */,

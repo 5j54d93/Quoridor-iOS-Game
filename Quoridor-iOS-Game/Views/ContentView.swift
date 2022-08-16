@@ -103,7 +103,7 @@ struct ContentView: View {
                                         ForEach(TabType.allCases, id: \.self) { tabType in
                                             switch tabType {
                                             case .leaderBoard:
-                                                LeaderBoardView(playerViewModel: playerViewModel)
+                                                LeaderBoardView(playerViewModel: playerViewModel, appState: $appState, alertTitle: $alertTitle, alertMessage: $alertMessage)
                                             case .game:
                                                 GameLobbyView(playerViewModel: playerViewModel, gameViewModel: gameViewModel, appState: $appState, alertTitle: $alertTitle, alertMessage: $alertMessage)
                                             case .profile:
