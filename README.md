@@ -33,11 +33,25 @@ We'll show forgot passwrod button only if user is "RETURING PLAYER", this will s
 
 #### Change Password
 
-User could change password in settings but must have signed in recently.
+User could change password in settings but must have signed in recently. And if users haven't link an email account to Quoridor, they won't see change password in settings because sign in with Facebook, Google or Twitter didn't have to use password.
 
 <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/security.png" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/changePassword.png" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/changePassword.gif" width="33.33%"/>
 
 #### Link Multiple Auth Providers
+
+User could connect their social medias' account to a sigle Quoridor account. This let user could sign in through multiple methods！
+
+User could also disconnect account that have connected to Quoridor, but must remain at least one sign in method.
+
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/connects.gif" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/connects.png" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/connectError.png" width="33.33%"/>
+
+#### Delete Account
+
+Users could delete their Quoridor account if they want. We'll delete their data on Firestore, Firestorage and Firebase Authentication.
+
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/deleteAccount.gif" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/deleteAccount.png" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/confirmDeleteAccount.png" width="33.33%"/>
+
+### Player's Profile
 
 ## License：MIT
 
