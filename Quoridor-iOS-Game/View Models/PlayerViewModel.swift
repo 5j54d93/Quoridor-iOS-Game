@@ -93,6 +93,8 @@ class PlayerViewModel: ObservableObject {
                     let error = error as NSError
                     if error.code != StorageErrorCode.objectNotFound.rawValue {
                         completion(.failure(error))
+                    } else {
+                        completion(.success(()))
                     }
                 }
                 return
