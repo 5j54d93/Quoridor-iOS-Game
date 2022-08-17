@@ -184,7 +184,7 @@ struct ContentView: View {
                         StarterView(authViewModel: authViewModel, playerViewModel: playerViewModel, hadTouchedScreen: $hadTouchedScreen, geometry: geometry)
                     }
                 } else {
-                    SignInContentView(authViewModel: authViewModel, playerViewModel: playerViewModel, appState: $appState, alertTitle: $alertTitle, alertMessage: $alertMessage)
+                    SignInContentView(authViewModel: authViewModel, playerViewModel: playerViewModel, hadTouchedScreen: $hadTouchedScreen, appState: $appState, alertTitle: $alertTitle, alertMessage: $alertMessage)
                 }
                 
                 FullScreenCoverView(authViewModel: authViewModel, playerViewModel: playerViewModel, gameViewModel: gameViewModel, appState: $appState, alertTitle: $alertTitle, alertMessage: $alertMessage, geometry: geometry)
