@@ -12,6 +12,7 @@ struct SignInContentView: View {
     @ObservedObject var authViewModel: AuthViewModel
     @ObservedObject var playerViewModel: PlayerViewModel
     
+    @Binding var hadTouchedScreen: Bool
     @Binding var appState: ContentView.AppStateType
     @Binding var alertTitle: String
     @Binding var alertMessage: String
@@ -50,6 +51,9 @@ struct SignInContentView: View {
             }
             .frame(maxWidth: .infinity)
             .background(Color.backgroundColor)
+            .onAppear {
+                hadTouchedScreen = false
+            }
         }
     }
 }
