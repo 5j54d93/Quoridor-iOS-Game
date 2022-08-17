@@ -122,16 +122,21 @@ struct DeleteAccountView: View {
                                 Button {
                                     isDeletingAccount = true
                                     playerViewModel.deleteAvatar() { result in
-                                        if case .failure(let error) = result {
-                                            alertMessage = error.localizedDescription
-                                            isShowDeleteAccountAlert = true
-                                        }
-                                    }
-                                    playerViewModel.deleteUser()
-                                    authViewModel.deleteUser { result in
                                         switch result {
                                         case .success():
-                                            isShowSettings = false
+                                            playerViewModel.deleteUser() { result in
+                                                if case .success() = result {
+                                                    authViewModel.deleteUser { result in
+                                                        switch result {
+                                                        case .success():
+                                                            isShowSettings = false
+                                                        case .failure(let error):
+                                                            alertMessage = error.localizedDescription
+                                                            isShowDeleteAccountAlert = true
+                                                        }
+                                                    }
+                                                }
+                                            }
                                         case .failure(let error):
                                             alertMessage = error.localizedDescription
                                             isShowDeleteAccountAlert = true
