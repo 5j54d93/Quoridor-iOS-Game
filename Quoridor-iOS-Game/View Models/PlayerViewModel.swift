@@ -101,10 +101,11 @@ class PlayerViewModel: ObservableObject {
         }
     }
     
-    func deleteUser() {
+    func deleteUser(completion: @escaping (Result<Void, Error>) -> Void) {
         guard let id = currentPlayer.id else { return }
         let documentReference = db.collection("players").document(id)
         documentReference.delete()
+        completion(.success(()))
     }
     
     func getReward(haveGottenReward: Bool, completion: @escaping (Result<Int, Error>) -> Void) {
