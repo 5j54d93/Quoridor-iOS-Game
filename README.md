@@ -15,7 +15,7 @@ An iOS game develop with SwiftUI & Firebase, that has many features.
 
 ### Authentication
 
-User should choose form "Returing "
+User should choose form "RETURING PLAYER" or "NEW PLAYER" first, then we'll use this to decide displaying between "Sign in" and "Sign up".
 
 Provide 4 Sign-in method：
 
