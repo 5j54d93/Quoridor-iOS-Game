@@ -53,6 +53,12 @@ Users could delete their Quoridor account if they want. We'll delete their data 
 
 ### Player's Profile
 
+If user sign up with Facebook, Google or Twitter, we'll use their name and photo to initialize thier profile. User could edit their info, remove photo and create their avatar later.
+
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Profile/profile.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Profile/editProfile.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Profile/changePhotoMethods.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Profile/designAvatar.png" width="25%"/>
+
+### Game
+
 ## License：MIT
 
 This package is [MIT licensed](https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/LICENSE).
