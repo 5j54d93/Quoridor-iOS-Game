@@ -11,20 +11,17 @@ An iOS game develop with SwiftUI & Firebase, that has many features.
 
 ## Overview
 
-## Features
+## Introduction
 
 ### Authentication
 
-User should choose form "RETURING PLAYER" or "NEW PLAYER" first, then we'll use this to decide to display "Sign in" or "Sign up".
+User should choose form "RETURING PLAYER" or "NEW PLAYER" first, then we'll use this to decide to display "Sign in" or "Sign up". We provide 4 Sign-in method：Facebook、Google、Twitter、Email/Password
 
 <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/choosePlayerType.png" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/chooseSignInMethod.png" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/chooseSignUpMethod.png" width="33.33%"/>
 
-Provide 4 Sign-in method：
+We'll show forgot passwrod button only if user is "RETURING PLAYER", this will send a change password email to user.
 
-- Email/Password
-- Google
-- Facebook
-- Twitter
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/signInWithEmail.png" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/signUpWithEmail.png" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/forgotPassword.png" width="33.33%"/>
 
 ## License：MIT
 
