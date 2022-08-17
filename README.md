@@ -33,7 +33,7 @@ We'll show forgot passwrod button only if user is "RETURING PLAYER", this will s
 
 User could change password in settings but must have signed in recently.
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/changePassword.gif" width="33.33%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/changePassword.gif" width="33.33%"/>
 
 ## License：MIT
 
