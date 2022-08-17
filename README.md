@@ -5,15 +5,24 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/5j54d93/Quoridor-iOS-Game)
 ![Platform](https://img.shields.io/badge/platform-iOS｜iPadOS｜macOS-lightgrey)
 
-An iOS game develop with SwiftUI & Firebase.
+An iOS game develop with SwiftUI & Firebase, that has many features.
 
-> **iOS**：iPhone 13 Pro Max
-
-<img src="" width='25%' height='100%'/><img src="" width='25%' height='100%'/><img src="" width='25%' height='100%'/><img src="" width='25%' height='100%'/>
+<img src="https://repository-images.githubusercontent.com/524391031/4ae582a3-aa3f-49a8-a8ba-f51c5fae460f"/>
 
 ## Overview
 
-## How To Play
+## Features
+
+### Authentication
+
+User should choose form "Returing "
+
+Provide 4 Sign-in method：
+
+- Email/Password
+- Google
+- Facebook
+- Twitter
 
 ## License：MIT
 
