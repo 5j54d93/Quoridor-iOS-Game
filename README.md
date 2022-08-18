@@ -13,6 +13,8 @@ An iOS game develop with [**SwiftUI**](https://developer.apple.com/xcode/swiftui
 
 ## Authentication
 
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/firebaseAuthentication.png"/>
+
 ### Sign In／Sign Up
 
 - User should choose「**RETURING PLAYER**」or「**NEW PLAYER**」first
