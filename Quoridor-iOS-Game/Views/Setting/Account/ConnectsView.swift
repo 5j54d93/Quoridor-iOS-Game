@@ -11,6 +11,8 @@ struct ConnectsView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    @AppStorage("currentPassword") var currentPassword = ""
+    
     @ObservedObject var authViewModel: AuthViewModel
     @ObservedObject var playerViewModel: PlayerViewModel
     
@@ -301,6 +303,7 @@ struct ConnectsView: View {
             authViewModel.connectToEmail(email: email, password: password) { result in
                 switch result {
                 case .success():
+                    currentPassword = password
                     playerViewModel.updatePlayer(name: playerViewModel.currentPlayer.name, email: email, zodiacSign: playerViewModel.currentPlayer.zodiacSign, birthYear: playerViewModel.currentPlayer.birthYear, avatar: nil) { result in
                         switch result {
                         case .success():
