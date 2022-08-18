@@ -15,19 +15,24 @@ An iOS game develop with [**SwiftUI**](https://developer.apple.com/xcode/swiftui
 
 ### Sign In／Sign Up
 
-User should choose form "RETURING PLAYER" or "NEW PLAYER" first, then we'll use this to decide to display "Sign in" or "Sign up". We provide 4 Sign-in method：Facebook、Google、Twitter、Email/Password
+- User should choose「**RETURING PLAYER**」or「**NEW PLAYER**」first
+  - If user choose RETURING PLAYER will display「**Sign in**」and show「**Forgot your password？**」button
+  - If user choose NEW PLAYER will display「**Sign up**」and hide「**Forgot your password？**」button
+- We provide **4 Sign-in method**：Facebook、Google、Twitter、Email／Password
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/choosePlayerType.png" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/chooseSignInMethod.png" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/chooseSignUpMethod.png" width="33.33%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/choosePlayerType.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/chooseSignInMethod.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/chooseSignUpMethod.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/forgotPassword.gif" width="25%"/>
 
 > **Demo GIF**：iPhone 13 Pro Max
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/facebookLogin.gif" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/googleSignIn.gif" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/twitterSignIn.gif" width="33.33%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/facebookLogin.gif" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/googleSignIn.gif" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/twitterSignIn.gif" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/emailSignIn.gif" width="25%"/>
 
-### Forgot Password and Reset It
+### Forgot Password and Reset
 
-We'll show forgot passwrod button only if user is "RETURING PLAYER", this will send a change password email to user.
+- 「**Forgot your password？**」button will show only if user is a「**RETURING PLAYER**」
+- We'll send a reset password email to what email account user had inputed
+- User could follow the link in email to reset their password
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/forgotPassword.gif" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/emailSignIn.gif" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/resetPassword.gif" width="33.33%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/resetPassword.gif" width="25%"/>
 
 ### Change Password
 
