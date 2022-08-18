@@ -21,6 +21,9 @@ An iOS game develop with [**SwiftUI**](https://developer.apple.com/xcode/swiftui
   - If user choose RETURING PLAYER will display「**Sign in**」and show「**Forgot your password？**」button
   - If user choose NEW PLAYER will display「**Sign up**」and hide「**Forgot your password？**」button
 - We provide **4 Sign-in method**：Facebook、Google、Twitter、Email／Password
+- Email／Password：use `@FocusState` for user convenience
+  - If user has finished typing email, he/she could click「**Enter**」on the keyboard to switch `@FocusState` to password rather than touch the password field on screen
+  - If user has finished typing password, he/she could click「**Enter**」on the keyboard to process「Sign In」or「Sign Up」rather than click the button on screen
 
 <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/choosePlayerType.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/chooseSignInMethod.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/chooseSignUpMethod.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/forgotPassword.gif" width="25%"/>
 
