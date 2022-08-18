@@ -7,7 +7,7 @@
 
 An iOS game develop with [**SwiftUI**](https://developer.apple.com/xcode/swiftui) & [**Firebase**](https://firebase.google.com) in MVVM with so many excellent features！UI refer to [**STARLUX**](https://www.starlux-airlines.com)、[**Pokémon GO**](https://pokemongolive.com) and [**Instagram**](https://www.instagram.com). User could login with many social media accounts and play Quoridor with others on Internet.
 
-<img src="https://repository-images.githubusercontent.com/524391031/4ae582a3-aa3f-49a8-a8ba-f51c5fae460f"/>
+<img src="https://repository-images.githubusercontent.com/524391031/d73dd059-7e15-4adb-b99b-97d1fab9c4e1"/>
 
 ## Overview
 
