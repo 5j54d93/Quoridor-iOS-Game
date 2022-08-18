@@ -32,7 +32,7 @@ An iOS game develop with [**SwiftUI**](https://developer.apple.com/xcode/swiftui
 - We'll send a reset password email to what email account user had inputed
 - User could follow the link in email to reset their password
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/resetPassword.gif" width="25%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/resetPassword.gif" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/resetPasswordEmail.png" width="75%"/>
 
 ### Change Password
 
