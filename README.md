@@ -43,10 +43,14 @@ An iOS game develop with [**SwiftUI**](https://developer.apple.com/xcode/swiftui
 ### Change Password
 
 - Only if user had linked an email account to Quoridor could see security section and change their password in settings because sign in with Facebook, Google or Twitter doesn't need to use password
-- Because we couldn't access user's password through Firebase to check the current password that user inputed is correct, I save user's password in `@AppStorage` when they login using「Email／Password」successfully
+- Because we couldn't access user's password through Firebase to check the current password that user inputed is correct, I save user's password in `@AppStorage` when they login or link using「Email／Password」successfully
 - Because changing password is a security-sensitive action, Firebase need user to have signed in recently. If user had login for a while, we'll show error to tell user to relogin and try again
+- While `SecureField` is focused, the prompt will become smaller and move up, the clear button will appear on right
+- While `SecureField` is not focused, but it has value, the prompt will not back to down, the clear button will disappear
+- The third `SecureField`'s prompt,「New password, again」, will determine whether the second and third `SecureField`'s values are the same, if not, it will display red alert message instead
+- Only if all three  `SecureField` have value and two new passwords are match could click the「SAVE」button on top right to change password
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/changePassword.gif" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/security.png" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/changePassword.png" width="33.33%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/changePassword.gif" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/security.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/changePassword.png" width="25%"/>
 
 ### Link Multiple Auth Providers
 
