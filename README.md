@@ -48,7 +48,9 @@ An iOS game develop with [**SwiftUI**](https://developer.apple.com/xcode/swiftui
 - While `SecureField` is focused, the prompt will become smaller and move up, the clear button will appear on right
 - While `SecureField` is not focused, but it has value, the prompt will not back to down, the clear button will disappear
 - The third `SecureField`'s prompt,「New password, again」, will determine whether the second and third `SecureField`'s values are the same, if not, it will display red alert message instead
-- Only if all three  `SecureField` have value and two new passwords are match could click the「SAVE」button on top right to change password
+- Only if all three `SecureField` have value and two new passwords are match could click the「SAVE」button on top right to change password
+- Using `@FocusState` and `onSubmit` to let user could change focus to the next `SecureField` easily by clicking「Enter」on the keyboard
+- Click on the blank below will cancel any `@FocusState` on `SecureField`
 
 <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/changePassword.gif" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/security.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/changePassword.png" width="25%"/>
 
