@@ -5,7 +5,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/5j54d93/Quoridor-iOS-Game)
 ![Platform](https://img.shields.io/badge/platform-iOS｜iPadOS｜macOS-lightgrey)
 
-An iOS game develop with [**SwiftUI**](https://developer.apple.com/xcode/swiftui) & [**Firebase**](https://firebase.google.com) in MVVM with so many excellent features！UI refer to [**STARLUX**](https://www.starlux-airlines.com)、[**Pokémon GO**](https://pokemongolive.com)、[**Instagram**](https://www.instagram.com). User could login with many social media accounts and play Quoridor with others on Internet.
+An iOS game develop with [**SwiftUI**](https://developer.apple.com/xcode/swiftui) & [**Firebase**](https://firebase.google.com) in MVVM with so many excellent features！UI refer to [**STARLUX**](https://www.starlux-airlines.com)、[**Pokémon GO**](https://pokemongolive.com) and [**Instagram**](https://www.instagram.com). User could login with many social media accounts and play Quoridor with others on Internet.
 
 <img src="https://repository-images.githubusercontent.com/524391031/4ae582a3-aa3f-49a8-a8ba-f51c5fae460f"/>
 
