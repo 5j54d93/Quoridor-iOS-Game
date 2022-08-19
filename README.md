@@ -100,11 +100,22 @@ User can get random money from $1 to $200 every 4 games.
 
 ### Start the Game！
 
-- 
+- Players in a room could be a「**room owner**」or「**joined player**」
+- After the game be started, any player in the room could leave by tap the button on top left
+  - If there are 1 player in the room：
+    - We'll delete the room on Firestore
+  - If there are 2 players in the room：
+    - If user is a room owner, the other player will become the room owner
+    - If user is a joined player, just leave the room
+- Start the Game：
+  - If there are 1 player in the room：
+    - User could click「Start the Game」, we'll match a player for he/she
+  - If there are 2 players in the room：
+    - Room Owner：have permission to start the game but need the other player to had clicked「Ready to Play」to be in ready state
+    - Joined Player：can't start the game, could only click on「Ready to Play」when they're ready for playing
+- Players could read other player's info in the room
 
-If there are already 2 players in a room, only room owner could start the game but need the other player to click "Ready to Play". And if there are only 1 player in a room, user could also click the "Start the Game", we'll match player for user.
-
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/roomOwner.png" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/joinPlayer.png" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/matching.png" width="33.33%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/roomOwner.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/joinPlayer.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/matching.png" width="25%"/>
 
 ### Playing Quoridor！
 
@@ -131,4 +142,4 @@ Could sort by：Star、Win Rate、Money
 
 ## License：MIT
 
-This repository is [MIT licensed](https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/LICENSE).
+This package is [MIT licensed](https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/LICENSE).
