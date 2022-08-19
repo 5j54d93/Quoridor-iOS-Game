@@ -113,9 +113,9 @@ User can get random money from $1 to $200 every 4 games.
   - If there are 2 players in the room：
     - Room Owner：have permission to start the game but need the other player to had clicked「Ready to Play」to be in ready state
     - Joined Player：can't start the game, could only click on「Ready to Play」when they're ready for playing
-- Players could read other player's info in the room
+- Players could read other player's info simply by click on their block
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/roomOwner.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/joinPlayer.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/matching.png" width="25%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/roomOwner.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/joinPlayer.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/playerInfo.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/matching.png" width="25%"/>
 
 ### Playing Quoridor！
 
