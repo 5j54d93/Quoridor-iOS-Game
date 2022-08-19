@@ -56,11 +56,10 @@ An iOS game develop with [**SwiftUI**](https://developer.apple.com/xcode/swiftui
 
 ### Link Multiple Auth Providers
 
-User could connect their social medias' account to a sigle Quoridor account. This let user could sign in through multiple methods！
+- User could sign in Quoridor and access the same account using different social media accounts that they had connected.
+- User could also disconnect accounts that have connected to Quoridor, but must remain at least one sign in method, other wise, when they log out, they won't have any method to access their account.
 
-User could also disconnect account that have connected to Quoridor, but must remain at least one sign in method.
-
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/connects.gif" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/connects.png" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/connectError.png" width="33.33%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/connects.gif" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/connectUnexpandEmail.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/connects.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/connectError.png" width="25%"/>
 
 ### Delete Account
 
@@ -84,11 +83,24 @@ User can get random money from $1 to $200 every 4 games.
 
 ### Game Type：Rank、Casual
 
-User could create a rank room or casual room, but rank room need to cost $200, and casual room for free. Other players could also use room id to join. We use different color to separate rank and casual.
+- We use different colors to separate rank and casual.
+- Each room could have 2 players at most
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/rankRoom.png" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/casualRoom.png" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/inputRoomId.png" width="33.33%"/>
+|         |       Rank       |  Casual   |
+|   :-:   |       :-:        |    :-:    |
+|**Color**|    rose gold     |earthy gold|
+|**Cost** |       $200       |   free    |
+| **Win** |get $400 & 1 star |  nothing  |
+|**Lose** |lose $200 & 1 star|  nothing  |
+
+- Player could use room id to join room created by other player
+- If user's money is less than $200, we won't let he/she to create a rank room or join a rank room
+
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/gameReward2.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/rankRoom.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/casualRoom.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/inputRoomId.png" width="25%"/>
 
 ### Start the Game！
+
+- 
 
 If there are already 2 players in a room, only room owner could start the game but need the other player to click "Ready to Play". And if there are only 1 player in a room, user could also click the "Start the Game", we'll match player for user.
 
