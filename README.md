@@ -32,7 +32,7 @@ An iOS game develop with [**SwiftUI**](https://developer.apple.com/xcode/swiftui
 
 <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/facebookLogin.gif" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/googleSignIn.gif" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/twitterSignIn.gif" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/emailSignIn.gif" width="25%"/>
 
-### Forgot Password & Reset
+### Forgot & Reset Password
 
 - 「**Forgot your password？**」button will show only if user is a「**RETURING PLAYER**」
 - We'll send a reset password email to what email account user input
