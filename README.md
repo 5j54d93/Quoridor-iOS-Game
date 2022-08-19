@@ -52,7 +52,7 @@ An iOS game develop with [**SwiftUI**](https://developer.apple.com/xcode/swiftui
 - Using `@FocusState` and `onSubmit` to let user could change focus to the next `SecureField` easily by clicking「Enter」on the keyboard
 - Click on the blank below will cancel any `@FocusState` on `SecureField`
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/changePassword.gif" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/security.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/changePassword.png" width="25%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/changePassword.gif" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/security.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/changePassword.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/changePasswordError.png" width="25%"/>
 
 ### Link Multiple Auth Providers
 
