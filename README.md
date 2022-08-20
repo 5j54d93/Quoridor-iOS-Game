@@ -67,6 +67,13 @@ Users could delete their Quoridor account if they want. We'll delete their data 
 
 <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/deleteAccount.gif" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/deleteAccount.png" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/confirmDeleteAccount.png" width="33.33%"/>
 
+## Custom Launch Screen
+
+- After user login successfully or just opened Quoridor app, will show custom launch screen
+- We add a snapshot listener on player's data when user touch the screen
+
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/launchScreen.gif" width="50%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/launchScreen.png" width="50%"/>
+
 ## Player's Profile
 
 <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Profile/CloudFirestore.png"/>
