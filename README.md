@@ -147,7 +147,7 @@ Every day player could watch video one time to get $200！
 
 Could sort by：Star、Win Rate、Money
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Leader%20Board/sortByStar.png" width="33%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Leader%20Board/sortByWinRate.png" width="33%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Leader%20Board/sortByMoney.png" width="33%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Leader%20Board/sortByStar.png" width="32.99%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Leader%20Board/sortByWinRate.png" width="32.99%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Leader%20Board/sortByMoney.png" width="32.99%"/>
 
 ## License：MIT
 
