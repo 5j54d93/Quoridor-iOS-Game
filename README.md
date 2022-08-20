@@ -78,7 +78,9 @@ Users could delete their Quoridor account if they want. We'll delete their data 
 
 <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Profile/CloudFirestore.png"/>
 
-If user sign up with Facebook, Google or Twitter, we'll use their name and photo to initialize thier profile. User could edit their info, remove photo and create their avatar later.
+- If user sign up with Facebook, Google or Twitter, we'll use their name and photo to initialize thier profile
+- User could edit their info, remove photo and create their avatar later
+- We store user's avatar on Firestorage
 
 <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Profile/profile.png" width="24.5%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Profile/editProfile.png" width="24.5%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Profile/changePhotoMethods.png" width="24.5%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Profile/designAvatar.png" width="24.5%"/>
 
@@ -86,7 +88,7 @@ If user sign up with Facebook, Google or Twitter, we'll use their name and photo
 
 ### Game Reward
 
-User can get random money from $1 to $200 every 4 games.
+- User can get random money from $1 to $200 every 4 games.
 
 <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/gameRewardHint.png" width="24.5%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/gameReward2.png" width="24.5%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/gameReward4.png" width="24.5%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/getGameReward.png" width="24.5%"/>
 
@@ -148,6 +150,14 @@ Every day player could watch video one time to get $200！
 Could sort by：Star、Win Rate、Money
 
 <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Leader%20Board/sortByStar.png" width="32.9%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Leader%20Board/sortByWinRate.png" width="32.9%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Leader%20Board/sortByMoney.png" width="32.9%"/>
+
+## More Features
+
+- Localizable：English & Traditional Chinese
+- Background Music
+- Play sound effect when building wall and moving chessman
+- Vibrate differently when win or lose the game
+- Using Firebase Crashlytics to collect crash logs
 
 ## License：MIT
 
