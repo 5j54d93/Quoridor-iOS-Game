@@ -79,10 +79,17 @@ Users could delete their Quoridor account if they want. We'll delete their data 
 <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Profile/CloudFirestore.png"/>
 
 - If user sign up with Facebook, Google or Twitter, we'll use their name and photo to initialize thier profile
-- User could edit their info, remove photo and create their avatar later
+
+### Edit Profile
+
+- User could：edit their info, remove photo and create their avatar
+- Once if user had link their email account to Quoridor, user could change their email account
+
+### Design Avatar
+
 - We store user's avatar on Firestorage
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Profile/profile.png" width="24.5%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Profile/editProfile.png" width="24.5%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Profile/changePhotoMethods.png" width="24.5%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Profile/designAvatar.png" width="24.5%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Profile/updateProfile.gif" width="24.5%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Profile/profile.png" width="24.5%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Profile/changePhotoMethods.png" width="24.5%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Profile/designAvatar.png" width="24.5%"/>
 
 ## Game
 
