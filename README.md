@@ -30,7 +30,7 @@ An iOS game develop with [**SwiftUI**](https://developer.apple.com/xcode/swiftui
 
 > **Demo GIF** on iPhone 13 Pro Max：_This may need some time to load._
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/facebookLogin.gif" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/googleSignIn.gif" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/twitterSignIn.gif" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/emailSignIn.gif" width="25%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/facebookLogin.gif" width="24.6%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/googleSignIn.gif" width="24.6%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/twitterSignIn.gif" width="24.6%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/emailSignIn.gif" width="24.6%"/>
 
 ### Forgot & Reset Password
 
@@ -38,7 +38,7 @@ An iOS game develop with [**SwiftUI**](https://developer.apple.com/xcode/swiftui
 - We'll send a reset password email to what email account user input
 - User could follow the link in email to reset their password
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/resetPassword.gif" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/resetPasswordEmail.png" width="75%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/resetPassword.gif" width="24.56%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/resetPasswordEmail.png" width="74.84%"/>
 
 ### Change Password
 
@@ -52,14 +52,14 @@ An iOS game develop with [**SwiftUI**](https://developer.apple.com/xcode/swiftui
 - Using `@FocusState` and `onSubmit` to let user could change focus to the next `SecureField` easily by clicking「Enter」on the keyboard
 - Click on the blank below will cancel any `@FocusState` on `SecureField`
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/changePassword.gif" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/security.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/changePassword.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/changePasswordError.png" width="25%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/changePassword.gif" width="24.6%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/security.png" width="24.6%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/changePassword.png" width="24.6%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/changePasswordError.png" width="24.6%"/>
 
 ### Link Multiple Auth Providers
 
 - User could sign in Quoridor and access the same account using different social media accounts that they had connected.
 - User could also disconnect accounts that have connected to Quoridor, but must remain at least one sign in method, other wise, when they log out, they won't have any method to access their account.
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/connects.gif" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/connectUnexpandEmail.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/connects.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/connectError.png" width="25%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/connects.gif" width="24.6%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/connectUnexpandEmail.png" width="24.6%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/connects.png" width="24.6%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/connectError.png" width="24.6%"/>
 
 ### Delete Account
 
@@ -80,7 +80,7 @@ Users could delete their Quoridor account if they want. We'll delete their data 
 
 If user sign up with Facebook, Google or Twitter, we'll use their name and photo to initialize thier profile. User could edit their info, remove photo and create their avatar later.
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Profile/profile.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Profile/editProfile.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Profile/changePhotoMethods.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Profile/designAvatar.png" width="25%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Profile/profile.png" width="24.6%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Profile/editProfile.png" width="24.6%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Profile/changePhotoMethods.png" width="24.6%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Profile/designAvatar.png" width="24.6%"/>
 
 ## Game
 
@@ -88,7 +88,7 @@ If user sign up with Facebook, Google or Twitter, we'll use their name and photo
 
 User can get random money from $1 to $200 every 4 games.
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/gameRewardHint.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/gameReward2.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/gameReward4.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/getGameReward.png" width="25%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/gameRewardHint.png" width="24.6%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/gameReward2.png" width="24.6%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/gameReward4.png" width="24.6%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/getGameReward.png" width="24.6%"/>
 
 ### Game Type：Rank、Casual
 
@@ -105,7 +105,7 @@ User can get random money from $1 to $200 every 4 games.
 - Player could use room id to join room created by other player
 - If user's money is less than $200, we won't let he/she to create a rank room or join a rank room
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/gameReward2.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/rankRoom.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/casualRoom.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/inputRoomId.png" width="25%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/gameReward2.png" width="24.6%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/rankRoom.png" width="24.6%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/casualRoom.png" width="24.6%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/inputRoomId.png" width="24.6%"/>
 
 ### Start the Game！
 
@@ -124,7 +124,7 @@ User can get random money from $1 to $200 every 4 games.
     - Joined Player：can't start the game, could only click on「Ready to Play」when they're ready for playing
 - Players could read other player's info simply by click on their block
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/roomOwner.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/joinPlayer.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/playerInfo.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/matching.png" width="25%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/roomOwner.png" width="24.6%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/joinPlayer.png" width="24.6%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/playerInfo.png" width="24.6%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/matching.png" width="24.6%"/>
 
 ### Playing Quoridor！
 
@@ -135,13 +135,13 @@ User can get random money from $1 to $200 every 4 games.
 - If player do nothing 5 turns will lose this game.
 - Player could give up the game any time.
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/nextMove.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/playing.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/gameSettings.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/endGame.png" width="25%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/nextMove.png" width="24.6%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/playing.png" width="24.6%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/gameSettings.png" width="24.6%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/endGame.png" width="24.6%"/>
 
 ## Google AdMod：Watch Video to get money $200！
 
 Every day player could watch video one time to get $200！
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/haven'tWatchedAdMod.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/watchingAdMod.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/get$200.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/haveWatchedAdMod.png" width="25%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/haven'tWatchedAdMod.png" width="24.6%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/watchingAdMod.png" width="24.6%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/get$200.png" width="24.6%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/haveWatchedAdMod.png" width="24.6%"/>
 
 ## Leader Board
 
