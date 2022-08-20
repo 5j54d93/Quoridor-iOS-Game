@@ -38,7 +38,7 @@ An iOS game develop with [**SwiftUI**](https://developer.apple.com/xcode/swiftui
 - We'll send a reset password email to what email account user input
 - User could follow the link in email to reset their password
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/resetPassword.gif" width="24.57%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/resetPasswordEmail.png" width="74.84%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/resetPassword.gif" width="24.69%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/resetPasswordEmail.png" width="74.7%"/>
 
 ### Change Password
 
@@ -65,14 +65,14 @@ An iOS game develop with [**SwiftUI**](https://developer.apple.com/xcode/swiftui
 
 Users could delete their Quoridor account if they want. We'll delete their data on Firestore, Firestorage and Firebase Authentication.
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/deleteAccount.gif" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/deleteAccount.png" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/confirmDeleteAccount.png" width="33.33%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/deleteAccount.gif" width="33%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/deleteAccount.png" width="33%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/confirmDeleteAccount.png" width="33%"/>
 
 ## Custom Launch Screen
 
 - After user login successfully or just opened Quoridor app, will show custom launch screen
 - We add a snapshot listener on player's data when user touch the screen
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/launchScreen.gif" width="25%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/launchScreen.png" width="25%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/launchScreen.gif" width="33%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/launchScreen.png" width="33%"/>
 
 ## Player's Profile
 
@@ -147,7 +147,7 @@ Every day player could watch video one time to get $200！
 
 Could sort by：Star、Win Rate、Money
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Leader%20Board/sortByStar.png" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Leader%20Board/sortByWinRate.png" width="33.33%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Leader%20Board/sortByMoney.png" width="33.33%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Leader%20Board/sortByStar.png" width="33%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Leader%20Board/sortByWinRate.png" width="33%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Leader%20Board/sortByMoney.png" width="33%"/>
 
 ## License：MIT
 
