@@ -144,7 +144,7 @@ Users could delete their Quoridor account if they want. We'll delete their data 
 - If player do nothing 5 turns will lose this game.
 - Player could give up the game any time.
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/nextMove.png" width="24.5%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/playing.png" width="24.5%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/gameSettings.png" width="24.5%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/endGame.png" width="24.5%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/playing.gif" width="24.5%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/playing.png" width="24.5%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/gameSettings.png" width="24.5%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Game/endGame.png" width="24.5%"/>
 
 ## Google AdMod：Watch Video to get money $200！
 
