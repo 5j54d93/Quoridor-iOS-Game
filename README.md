@@ -26,7 +26,7 @@ An iOS game develop with [**SwiftUI**](https://developer.apple.com/xcode/swiftui
     - If user has finished typing email, he/she could click「**Enter**」on the keyboard to switch `@FocusState` to password rather than touch the password field on screen
     - If user has finished typing password, he/she could click「**Enter**」on the keyboard to process「Sign In」or「Sign Up」rather than click the button on screen
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/choosePlayerType.png" width="24.691%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/chooseSignInMethod.png" width="24.691%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/chooseSignUpMethod.png" width="24.691%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/forgotPassword.gif" width="24.691%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/choosePlayerType.png" width="24.6905%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/chooseSignInMethod.png" width="24.6905%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/chooseSignUpMethod.png" width="24.6905%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/forgotPassword.gif" width="24.6905%"/>
 
 > **Demo GIF** on iPhone 13 Pro Max：_This may need some time to load._
 
