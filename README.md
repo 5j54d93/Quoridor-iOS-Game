@@ -65,7 +65,7 @@ An iOS game develop with [**SwiftUI**](https://developer.apple.com/xcode/swiftui
 
 Users could delete their Quoridor account if they want. We'll delete their data on Firestore, Firestorage and Firebase Authentication.
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/deleteAccount.gif" width="32.98%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/deleteAccount.png" width="32.98%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/confirmDeleteAccount.png" width="32.98%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/deleteAccount.gif" width="32.99%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/deleteAccount.png" width="32.99%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Settings/confirmDeleteAccount.png" width="32.99%"/>
 
 ## Custom Launch Screen
 
