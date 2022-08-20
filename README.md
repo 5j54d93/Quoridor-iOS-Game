@@ -26,7 +26,7 @@ An iOS game develop with [**SwiftUI**](https://developer.apple.com/xcode/swiftui
     - If user has finished typing email, he/she could click「**Enter**」on the keyboard to switch `@FocusState` to password rather than touch the password field on screen
     - If user has finished typing password, he/she could click「**Enter**」on the keyboard to process「Sign In」or「Sign Up」rather than click the button on screen
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/choosePlayerType.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/chooseSignInMethod.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/chooseSignUpMethod.png" width="25%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/forgotPassword.gif" width="25%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/choosePlayerType.png" width="24.691%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/chooseSignInMethod.png" width="24.691%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/chooseSignUpMethod.png" width="24.691%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/forgotPassword.gif" width="24.691%"/>
 
 > **Demo GIF** on iPhone 13 Pro Max：_This may need some time to load._
 
@@ -72,7 +72,7 @@ Users could delete their Quoridor account if they want. We'll delete their data 
 - After user login successfully or just opened Quoridor app, will show custom launch screen
 - We add a snapshot listener on player's data when user touch the screen
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/launchScreen.gif" width="50%"/><img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/launchScreen.png" width="50%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/launchScreen.gif" width="25%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/launchScreen.png" width="25%"/>
 
 ## Player's Profile
 
