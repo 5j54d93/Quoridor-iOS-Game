@@ -11,6 +11,26 @@ An iOS game develop with [**SwiftUI**](https://developer.apple.com/xcode/swiftui
 
 ## Overview
 
+- [**Authentication**](https://github.com/5j54d93/Quoridor-iOS-Game#authentication)
+  - Sign In／Sign Up
+  - Forgot & Reset Password
+  - Change Password
+  - Link Multiple Auth Providers
+  - Delete Account
+- [**Custom Launch Screen**](https://github.com/5j54d93/Quoridor-iOS-Game#custom-launch-screen)
+- [**Player's Profile**](https://github.com/5j54d93/Quoridor-iOS-Game#players-profile)
+  - Edit Profile
+  - Design Avatar
+- [**Game**](https://github.com/5j54d93/Quoridor-iOS-Game#game)
+  - Game Reward
+  - Game Type：Rank、Casual
+  - Start the Game！
+  - Playing Quoridor！
+- [**Google AdMod**：Watch Video to get money $200！](https://github.com/5j54d93/Quoridor-iOS-Game#google-admodwatch-video-to-get-money-200)
+- [**Leader Board**](https://github.com/5j54d93/Quoridor-iOS-Game#leader-board)
+- [**More Features**](https://github.com/5j54d93/Quoridor-iOS-Game#more-features)
+- [**License**：MIT](https://github.com/5j54d93/Quoridor-iOS-Game#licensemit)
+
 ## Authentication
 
 <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Sign%20In/firebaseAuthentication.png"/>
