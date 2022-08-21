@@ -155,9 +155,10 @@ Every day player could watch video one time to get $200！
 ## Leader Board
 
 - Could sort by：Star、Win Rate、Money
+- User could read other player's info in the list
 - We'll search for the user and `scrollTo` that position in `List`
 
-<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Leader%20Board/sortByStar.png" width="32.9%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Leader%20Board/sortByWinRate.png" width="32.9%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Leader%20Board/sortByMoney.png" width="32.9%"/>
+<img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Leader%20Board/sortByStar.png" width="24.5%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Leader%20Board/sortByWinRate.png" width="24.5%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/Leader%20Board/sortByMoney.png" width="24.5%"/> <img src="https://github.com/5j54d93/Quoridor-iOS-Game/blob/main/.github/assets/playerInfo.png" width="24.5%"/>
 
 ## More Features
 
